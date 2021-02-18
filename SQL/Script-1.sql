@@ -24,7 +24,7 @@ create table fysiske_egenskaper (
 	bevegelighet smallint,
 	
 	constraint idrett_FK foreign key (idrettid) references idretter(idrettid),
-	constraint fe_PK primary key (idrettid)
+	constraint fe_PK primary key (fysiske_egenskaper)
 );
 
 create table koordinative_egenskaper (
@@ -37,7 +37,7 @@ create table koordinative_egenskaper (
 	romorientering smallint,
 	
 	constraint idrett_FK foreign key (idrettid) references idretter(idrettid),
-	constraint ke_PK primary key (idrettid)
+	constraint ke_PK primary key (koordinative_egenskaper)
 );
 
 create table psykologiske_faktorer (
@@ -50,6 +50,6 @@ create table psykologiske_faktorer (
 	samspill smallint,
 	
 	constraint idrett_FK foreign key (idrettid) references idretter(idrettid),
-	constraint pf_PK primary key (idrettid)
+	constraint pf_PK primary key (psykologise_faktorer)
 );
 --select * from idretter
