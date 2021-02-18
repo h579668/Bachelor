@@ -18,18 +18,17 @@ create table idretter (
 
 create table fysiske_egenskaper (
 	idrettid serial,
-	idNavn varchar,
 	styrke smallint,
 	spenst_hurtighet smallint,
 	utholdenhet smallint,
 	bevegelighet smallint,
 	
-	constraint idrett_FK foreign key (idrettid) references idretter(idrettid)
+	constraint idrett_FK foreign key (idrettid) references idretter(idrettid),
+	constraint fe_PK primary key (idrettid)
 );
 
 create table koordinative_egenskaper (
 	idrettid serial,
-	idNavn varchar,
 	balanse smallint,
 	rytme smallint,
 	dynamikk smallint,
@@ -37,12 +36,12 @@ create table koordinative_egenskaper (
 	oyehand smallint,
 	romorientering smallint,
 	
-	constraint idrett_FK foreign key (idrettid) references idretter(idrettid)
+	constraint idrett_FK foreign key (idrettid) references idretter(idrettid),
+	constraint ke_PK primary key (idrettid)
 );
 
 create table psykologiske_faktorer (
 	idrettid serial,
-	idNavn varchar,
 	presisjon_perfeksjonimske smallint,
 	taktikk smallint,
 	selvstendihet smallint,
@@ -50,7 +49,7 @@ create table psykologiske_faktorer (
 	kroppskontakt smallint,
 	samspill smallint,
 	
-	constraint idrett_FK foreign key (idrettid) references idretter(idrettid)
+	constraint idrett_FK foreign key (idrettid) references idretter(idrettid),
+	constraint pf_PK primary key (idrettid)
 );
-
 --select * from idretter
