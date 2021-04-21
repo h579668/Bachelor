@@ -5,6 +5,21 @@ set search_path = bruker_tabeller;
 
 --drop table if exists bruker;
 
+create table kategori(
+	kategori_id serial,
+	navn varchar,
+	constraint kategori_PK primary key(kategori_id)
+);
+
+create table egenskap(
+	egenskap_id serial,
+	kategori_id int,
+	navn varchar,
+	constraint egenskap_PK primary key(egenskap_id)
+	--constraint kategori_FK foreign key (kategori_id) references kategori(kategori_id)
+);
+
+
 create table bruker(
 	bruker_id serial,
 	alder_id int,
@@ -12,23 +27,6 @@ create table bruker(
 	constraint bruker_PK primary key(bruker_id)
 	--constraint aldersgruppe_FK foreign key (alder_id) references aldersgruppe(alder_id),
 	--constraint omraade_FK foreign key (omraade_id) references omraade(omraade_id)
-);
-
-create table omraade(
-	omraade_id serial,
-	land varchar,
-	kommune varchar,
-	fylke varchar,
-	constraint omraade_PK primary key(omraade_id)
-);
-
-create table egenskap(
-	egenskap_id serial,
-	navn varchar,
-	verdi int,
-	kategori_id int,
-	constraint egenskap_PK primary key(egenskap_id)
-	--constraint kategori_FK foreign key (kategori_id) references kategori(kategori_id)
 );
 
 create table bruker_egenskap(
@@ -42,6 +40,15 @@ create table bruker_egenskap(
 	
 );
 
+create table omraade(
+	omraade_id serial,
+	land varchar,
+	kommune varchar,
+	fylke varchar,
+	constraint omraade_PK primary key(omraade_id)
+);
+
+
 create table forbund(
 	forbund_id serial,
 	navn varchar,
@@ -52,6 +59,7 @@ create table forbund(
 	constraint forbund_PK primary key(forbund_id)
 	--constraint omraade_FK foreign key(omraade_id) references omraade(omraade_id)
 );
+
 
 create table aktivitet(
 	aktivitet_id serial,
@@ -65,16 +73,14 @@ create table aktivitet(
 	--constraint forbund_FK foreign key(forbund_id) references forbund(forbund_id)
 );
 
-create table aldersgruppe(
-	alder_id serial,
-	alder int,
-	constraint aldersgruppe_PK primary key(alder_id)
-);
-
-create table kategori(
-	kategori_id serial,
-	navn varchar,
-	constraint kategori_PK primary key(kategori_id)
+create table aktivitet_egenskap (
+	a_egenskap_id serial,
+	aktivitet_id int,
+	egenskap_id int,
+	aktivitet_verdi int,
+	constraint aktivitet_egenskap_PK primary key(a_egenskap_id)
+	--constraint aktivitet_FK foreign key (aktivitet_id) references aktivitet(aktivitet_id),
+	--constraint egenskap_FK foreign key (egenskap_id) references egenskap(egenskap_id);
 );
 
 create table bruker_aktivitet (
@@ -86,14 +92,25 @@ create table bruker_aktivitet (
 	aktuell int,
 	styrke int,
 	constraint bruker_aktivitet_PK primary key(bruker_aktivitet_id)
+	--constraint bruker_FK foreign key (bruker_id) references bruker(bruker_id),
+	--constraint aktivitet_FK foreign key (aktivitet_id) references aktivitet(aktivitet_id);
 );
+
+create table aldersgruppe(
+	alder_id serial,
+	alder int,
+	constraint aldersgruppe_PK primary key(alder_id)
+);
+
+
+
+alter table egenskap
+add constraint kategori_FK foreign key (kategori_id) references kategori(kategori_id);
 
 alter table bruker
 add constraint aldersgruppe_FK foreign key (alder_id) references aldersgruppe(alder_id),
 add constraint omraade_FK foreign key (omraade_id) references omraade(omraade_id);
 
-alter table egenskap
-add constraint kategori_FK foreign key (kategori_id) references kategori(kategori_id);
 
 alter table bruker_egenskap
 add constraint bruker_FK foreign key(bruker_id) references bruker(bruker_id),
@@ -106,6 +123,10 @@ alter table aktivitet
 add constraint egenskap_FK foreign key(egenskap_id) references egenskap(egenskap_id),
 add constraint aldersgruppe_FK foreign key(alder_id) references aldersgruppe(alder_id),
 add constraint forbund_FK foreign key(forbund_id) references forbund(forbund_id);
+
+alter table aktivitet_egenskap
+add constraint aktivitet_FK foreign key (aktivitet_id) references aktivitet(aktivitet_id),
+add constraint egenskap_FK foreign key (egenskap_id) references egenskap(egenskap_id);
 
 alter table bruker_aktivitet
 add constraint bruker_FK foreign key (bruker_id) references bruker(bruker_id),
