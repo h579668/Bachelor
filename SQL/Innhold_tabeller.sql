@@ -93,6 +93,7 @@ insert into aktivitet(forbund_id, alder_id, navn, tlf, epost, kommentar) values
 
 select * from aktivitet;
 
+--- AKTIVITET_EGENSKAP ---
 insert into aktivitet_egenskap(aktivitet_id, egenskap_id, verdi) values 
 (1, 1, 2),
 (1, 2, 3),
@@ -210,11 +211,17 @@ insert into aktivitet_egenskap(aktivitet_id, egenskap_id, verdi) values
 (4, 27, 3),
 (4, 28, 3);
 
+select * from aktivitet_egenskap;
+
+---- BRUKER ----
 insert into bruker(alder_id, omraade_id) values
 (1, 1),
 (1, 1);
 
-insert into bruker_egenskap(bruker_id, egenskap_id, bruker_verdi) values
+select * from bruker;
+
+---- BRUKER_EGENSKAP ----
+insert into bruker_egenskap(bruker_id, egenskap_id, verdi) values
 (1, 1, 3),
 (1, 2, 2),
 (1, 3, 1),
@@ -273,7 +280,7 @@ insert into bruker_egenskap(bruker_id, egenskap_id, bruker_verdi) values
 (2, 27, 1),
 (2, 28, 2);
 
-
+select * from bruker_egenskap;
 
 
 
