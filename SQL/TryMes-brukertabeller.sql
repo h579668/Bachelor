@@ -110,7 +110,6 @@ alter table bruker
 add constraint aldersgruppe_FK foreign key (alder_id) references aldersgruppe(alder_id),
 add constraint omraade_FK foreign key (omraade_id) references omraade(omraade_id);
 
-
 alter table bruker_egenskap
 add constraint bruker_FK foreign key(bruker_id) references bruker(bruker_id),
 add constraint egenskap_FK foreign key(egenskap_id) references egenskap(egenskap_id);
