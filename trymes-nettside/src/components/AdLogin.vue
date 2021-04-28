@@ -4,11 +4,11 @@
 
       <form class="logginn-container">
         <p>
-          <label>Brukernavn</label>
+          <label>Brukernavn </label>
           <input class="logginn-input" type="text">
         </p>
         <p>
-          <label>Passord</label>
+          <label>Passord </label>
           <input class="logginn-input" type="password">
         </p>
         <button class="logginn-btn logginn-purple">Logg inn</button>
@@ -27,6 +27,15 @@ export default {
 </script>
 
 <style scoped>
-
+.login{
+  border: 2px;
+  border-color: black;
+  border-style: solid;
+  justify-content: center;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 </style>
