@@ -1,17 +1,17 @@
 <template>
-  <div class="loggIn">
-    <AdLoggInn loginmsg="Innlogging (Kun for admin)" />
+  <div class="login">
+    <AdLogin loginmsg="Innlogging (Kun for admin)" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import AdLoggInn from "@/components/AdLoggInn.vue";
+import AdLogin from "@/components/AdLogin.vue";
 
 export default {
-  name: "AdloggInn",
+  name: "Login",
   components: {
-    AdLoggInn,
+    AdLogin,
   },
 };
 </script>
