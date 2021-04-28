@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Mål for denne nettsiden
+* Sette opp en forside
+* Sette opp en "start quiz" side (med hardkodede svar)
+* Kanskje sette opp en oversikt over "alle" aktivitetene
