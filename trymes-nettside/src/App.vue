@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div id="header">
+      <p>header kommer senere</p>
+    </div>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -17,8 +20,15 @@
   color: #2c3e50;
 }
 
+#header {
+  width: 100%;
+  height: 100px;
+  background-color: purple;
+}
+
 #nav {
-  padding: 30px;
+  padding: 5px;
+  
 }
 
 #nav a {
