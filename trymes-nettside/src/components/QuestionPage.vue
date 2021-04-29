@@ -1,17 +1,18 @@
-
 <template>
+  <div>
     <div>
-        <h1> {{ title}} </h1>
+        {{ title }}
         {{ information }} 
-      <div v-for="item in quizItems" :key="item.question">
-          <h2> {{ item.question }}</h2>
-          <input type="radio" :name= "item.id " value="God" />
-          <label> God </label><br />
-           <input type="radio" :name= "item.id" value="Noe god" />
-          <label> Noe god </label><br />
-          <input  type="radio" :name= "item.id" value="Ikke god" />
-          <label> Ikke god </label>
-        </div>
+    </div>
+    <div v-for="item in quizItems" :key="item.question">
+        <h2> {{ item.question }}</h2>
+        <input type="radio" :name= "item.id " value="God" />
+        <label> God </label><br />
+        <input type="radio" :name= "item.id" value="Noe god" />
+        <label> Noe god </label><br />
+        <input  type="radio" :name= "item.id" value="Ikke god" />
+        <label> Ikke god </label>
+    </div>
     </div>
 </template>
 
@@ -19,7 +20,9 @@
 <script>
 export default {
    name: "QuestionPage",
-   props: ['title', 'information'], //INFORMATION DOES NOT WORK 
+   props: {  title: String,
+            information: String,
+            }, //INFORMATION DOES NOT WORK 
         data() {
         return {
               quizItems: [
