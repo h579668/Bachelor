@@ -4,9 +4,9 @@
       <p>header kommer senere</p>
     </div>
     <div id="nav">
-      <router-link :to="{ name: 'Home' }">Home</router-link> |
-      <router-link :to="{ name: 'Quiz' }">Quiz</router-link> |
-      <router-link :to="{ name: 'Login' }">Logg Inn</router-link>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/quiz">Quiz</router-link> |
+      <router-link to="/login">Logg Inn</router-link>
     </div>
     <router-view />
   </div>
