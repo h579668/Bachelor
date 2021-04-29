@@ -11,7 +11,7 @@
           <label>Passord </label>
           <input class="logginn-input" type="password">
         </p>
-        <button class="logginn-btn logginn-purple">Logg inn</button>
+        <button @click="login" id="loginbtn" class="logginn-btn logginn-purple">Logg inn</button>
       </form>
   
     </div>
@@ -23,6 +23,12 @@ export default {
   props: {
     loginmsg: String,
   },
+  methods: {
+    login() {
+      this.$router.push({path: '/admenu'});
+      //window.location.href = "http://localhost:8080/?#/admenu"
+    }
+  }
 };
 </script>
 
