@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Quiz from "../views/Quiz.vue";
 import Login from "../views/Login.vue";
+import Menu from "../views/Menu.vue";
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,12 @@ const routes = [
     name: "Login",
     component: Login,
     
+  },
+  {
+    path: "/admenu",
+    name: "Menu",
+    component: Menu,
+
   },
 ];
 
