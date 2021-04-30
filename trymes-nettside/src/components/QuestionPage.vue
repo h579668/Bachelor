@@ -10,13 +10,13 @@
         <h2>{{ item.question }}</h2>
         <p>{{ item.info }}</p>
         <input type="radio" :name="item.id" value="1" />
-        <label> Liker ikke i det hele tatt </label><br />
+        <label> Synes det er kjempegøy </label> <br />
 
         <input type="radio" :name="item.id" value="2" />
         <label> Helt greit </label><br />
 
         <input type="radio" :name="item.id" value="3" />
-        <label> Synes det er kjempegøy </label>
+        <label> Liker ikke i det hele tatt </label>
       </div>
     </div>
 
