@@ -1,14 +1,21 @@
 <template>
   <div id="app">
+
     <div id="header">
       <p>header kommer senere</p>
     </div>
+
     <div id="nav">
-      <router-link :to="{ name: 'Home' }">Home</router-link> |
-      <router-link :to="{ name: 'Quiz' }">Quiz</router-link> |
+      <router-link :to="{ name: 'Home' }">Hjem</router-link> |
       <router-link :to="{ name: 'Login' }">Logg Inn</router-link>
     </div>
+
     <router-view />
+
+    <!--<div id="footer">
+      <p>Bunntekst</p>
+    </div>-->
+
   </div>
 </template>
 
@@ -39,5 +46,12 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+#footer {
+  border: 2px red dotted;
+  margin-bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 </style>
