@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Quiz from "../views/Quiz.vue";
 import Login from "../views/Login.vue";
 import Menu from "../views/Menu.vue";
+import Results from "../views/Results.vue";
 
 Vue.use(VueRouter);
 
@@ -17,19 +18,22 @@ const routes = [
     path: "/quiz",
     name: "Quiz",
     component: Quiz,
-    
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
-    
+
   },
   {
     path: "/admenu",
     name: "Menu",
     component: Menu,
-
+  },
+  {
+    path: "/quiz/results",
+    name: "Results",
+    component: Results,
   },
 ];
 

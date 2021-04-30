@@ -1,6 +1,17 @@
 <template>
   <div>
-    <QuestionPage :title="title" :information="information" />
+    <div>
+      <QuestionPage :title="title" :information="information" />
+    </div>
+    <div>
+      <button
+        @click="result"
+        id="resultbtn"
+        class="restult-btn result-purple"
+      >
+        Gå til resultater
+      </button>
+    </div>
   </div>
 </template>
 
@@ -16,8 +27,12 @@ export default {
     return {
       title: "Velkommen til test-siden!",
       information: "Hei og hå, stå no på!",
-    };
+    }
   },
+  methods: {
+    result() {
+      this.$router.push({ path: "/quiz/results" });
+    },
+  }
 };
-
 </script>

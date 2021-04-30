@@ -1,23 +1,14 @@
 <template>
-    <div class="admenu">
-      <h1>{{ menumsg }}</h1>
+  <div class="admenu">
+    <h1>{{ menumsg }}</h1>
 
-      <form class="logginn-container">
-        <p>
-          Legg til ny aktivitet
-        </p>
-        <p>
-          Endre/slette aktivitet
-        </p>
-         <p>
-          Se alle registrerte aktiviteter
-        </p>
-         <p>
-          Redigere geografiske områder
-        </p>
-      </form>
-
-    </div>
+    <form class="logginn-container">
+      <p>Legg til ny aktivitet</p>
+      <p>Endre/slette aktivitet</p>
+      <p>Se alle registrerte aktiviteter</p>
+      <p>Redigere geografiske områder</p>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -30,7 +21,7 @@ export default {
 </script>
 
 <style scoped>
-.admenu{
+.admenu {
   border: 2px;
   border-color: black;
   border-style: solid;
