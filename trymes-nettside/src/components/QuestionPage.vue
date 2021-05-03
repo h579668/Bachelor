@@ -32,7 +32,7 @@
 <script>
 export default {
   name: "QuestionPage",
-  props: { title: String, information: String }, //INFORMATION DOES NOT WORK
+  props: { title: String, information: String },
   data() {
     return {
       quizItems: [

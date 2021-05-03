@@ -32,4 +32,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+p:hover {
+  text-decoration:underline;
+}
 </style>

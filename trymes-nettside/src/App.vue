@@ -31,21 +31,28 @@
 #header {
   width: 100%;
   height: 100px;
-  background-color: #865F6D;
+  background-color: #98473E;
 }
 
 #nav {
+  font-size: 20px;
   padding: 5px;
+  background-color: #98473E;
   
 }
 
 #nav a {
+  text-decoration: none;
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffff;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #ffff;
+}
+
+#nav a:hover{
+  text-decoration: underline;
 }
 
 #footer {

@@ -34,6 +34,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+h1 {
+  font-size: 40px;
+
+}
 #quizButton {
   background-color: #424242;
   color: #ffffff;
@@ -41,6 +46,7 @@ export default {
 }
 
 h3 {
+  font-size: 20px;
   margin: 40px 0 0;
   font-family: "Courier New", Courier, monospace;
 }

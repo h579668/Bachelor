@@ -17,8 +17,8 @@ export default {
   },
   data() {
     return {
-      title: "Hvordan du liker å trene?",
-      information: "Kartlegging av hvordan du liker å drive aktiviteter",
+      title: "Hvordan liker du å trene?",
+      information: "Kartlegging av hvordan du liker å drive med aktiviteter",
     }
   },
   

@@ -1,16 +1,27 @@
 <template>
   <div class="login">
     <h1>{{ loginmsg }}</h1>
-
     <form class="logginn-container">
-      <p>
-        <label>Brukernavn </label>
-        <input class="logginn-input" type="text" />
-      </p>
-      <p>
-        <label>Passord </label>
-        <input class="logginn-input" type="password" />
-      </p>
+      <tbody>
+        <table>
+       <!---   <th>{{ loginmsg }}</th>-->
+          <tr>
+            <td>
+              <label>{{ username }}</label>
+            </td>
+            <td>
+              <input class="logginn-input" type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>{{ password }}</label>
+            </td>
+            <input class="logginn-input" type="password" />
+            <td></td>
+          </tr>
+        </table>
+      </tbody>
       <button @click="login" id="loginbtn" class="logginn-btn logginn-purple">
         Logg inn
       </button>
@@ -30,6 +41,12 @@ export default {
       //window.location.href = "http://localhost:8080/?#/admenu"
     },
   },
+  data () {
+    return {
+      username: "Brukernavn:",
+      password: "Passord:",
+    };
+  }
 };
 </script>
 
@@ -45,4 +62,9 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+td {
+  text-align: right;
+}
+
 </style>
