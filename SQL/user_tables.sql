@@ -16,14 +16,14 @@ set search_path = user_tables;
 
 create table categories(
 	categories_id serial,
-	navn varchar,
+	cat_name varchar,
 	constraint categorys_PK primary key(categories_id)
 );
 
 create table features(
 	features_id serial,
 	categories_id int,
-	navn varchar,
+	feat_name varchar,
 	constraint features_PK primary key(features_id)
 	--constraint features_FK foreign key (categories_id) references features(features_id)
 );
@@ -42,7 +42,7 @@ create table users_features(
 	users_features_id serial,
 	users_id int,
 	features_id int,
-	verdi int,
+	uf_value int,
 	constraint users_features_PK primary key(users_features_id)
 	--constraint users_FK foreign key(users_id) references users(users_id),
 	--constraint features_FK foreign key(features_id) references features(features_id)
@@ -51,9 +51,9 @@ create table users_features(
 
 create table areas(
 	areas_id serial,
-	land varchar,
-	kommune varchar,
-	fylke varchar,
+	country varchar,
+	municipality varchar, 	--kommune
+	county varchar,			--fylke
 	constraint areas_PK primary key(areas_id)
 );
 
@@ -61,7 +61,7 @@ create table areas(
 create table associations(
 	associations_id serial,
 	areas_id int,
-	navn varchar,
+	ass_name varchar,
 	constraint associations_PK primary key(associations_id)
 	--constraint areas_FK foreign key(areas_id) references areas(areas_id)
 );
@@ -71,10 +71,10 @@ create table activities(
 	activities_id serial,
 	associations_id int,
 	age_id int,
-	navn varchar,
-	tlf varchar,
-	epost varchar,
-	kommentar varchar,
+	act_name varchar,
+	tel varchar,
+	email varchar,
+	comment varchar,
 	constraint activities_PK primary key(activities_id)
 	--constraint age_intervalls_FK foreign key(age_id) references age_intervalls(age_id),
 	--constraint associations_FK foreign key(associations_id) references associations(associations_id)
@@ -83,7 +83,7 @@ create table activities_features (
 	activities_features_id serial,
 	activities_id int,
 	features_id int,
-	verdi int,
+	af_value int,
 	constraint activities_features_PK primary key(activities_features_id)
 	--constraint activities_FK foreign key (activities_id) references activities(activities_id),
 	--constraint features_FK foreign key (features_id) references features(features_id);
@@ -93,9 +93,9 @@ create table users_activities (
 	users_activities_id serial,
 	users_id int,
 	activities_id int,
-	skaare int,
-	treff int,
-	aktuell int,
+	score int,
+	hit int,	  --treff
+	relevant int, --aktuell
 	styrke int,
 	constraint users_activities_PK primary key(users_activities_id)
 	--constraint users_FK foreign key (users_id) references users(users_id),
@@ -104,10 +104,9 @@ create table users_activities (
 
 create table age_intervalls(
 	age_id serial,
-	alder varchar,
+	age varchar,
 	constraint age_intervalls_PK primary key(age_id)
 );
-
 
 
 alter table features

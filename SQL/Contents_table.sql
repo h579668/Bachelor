@@ -2,7 +2,7 @@
 set search_path = user_tables;
 
 ---- CATEGORIES ----
-insert into categories(navn) values
+insert into categories(cat_name) values
 ('Fysiske egenskaper'),
 ('Koordinative egenskaper'),
 ('Psykologiske faktorer'),
@@ -12,7 +12,7 @@ insert into categories(navn) values
 select * from categories;
 
 ---- FEATURES ----
-insert into features(categories_id, navn) values
+insert into features(categories_id, feat_name values
 (1, 'Styrke'),
 (1, 'Spenst/Hurtighet'),
 (1, 'Utholdenhet'),
@@ -46,13 +46,13 @@ insert into features(categories_id, navn) values
 select * from features;
 
 ---- AREAS ----
-insert into areas(land, kommune, fylke) values 
+insert into areas(country, municipality, county) values 
 ('Norge', 'Bergen', 'Vestland');
 
 select * from areas;
 
 ---- AGE_INTERVALLS ----
-insert into age_intervalls(alder) values 
+insert into age_intervalls(age) values 
 ('6 til 12'),
 ('13 til 17'),
 ('18 pluss');
@@ -60,7 +60,7 @@ insert into age_intervalls(alder) values
 select * from age_intervalls;
 
 ---- ASSOCIASTIONS ----
-insert into associations(areas_id, navn) values
+insert into associations(areas_id, ass_name) values
 (1, 'Brettforbundet'),
 (1, 'Det frivillige Skyttervesen (ingen tilknytning til NIF)'),
 (1, 'Luftsportforbundet'),
@@ -75,7 +75,7 @@ select * from associations;
 
 
 ---- ACTIVITIES ----
-insert into activities(associations_id, age_id, navn, tlf, epost, kommentar) values
+insert into activities(associations_id, age_id, act_name, tel, email, comments) values
 (1, 1, 'Skateboard', '454 64 166', 'henning@norb.no', ''),
 (1, 1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', ''),
 (2, 2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', ''),
@@ -94,7 +94,7 @@ insert into activities(associations_id, age_id, navn, tlf, epost, kommentar) val
 select * from activities;
 
 --- ACTIVITIES_FEATURES ---
-insert into activities_features(activities_id, features_id, verdi) values 
+insert into activities_features(activities_id, features_id, af_value) values 
 (1, 1, 2),
 (1, 2, 3),
 (1, 3, 2),
@@ -221,7 +221,7 @@ insert into users(age_id, areas_id) values
 select * from users;
 
 ---- USERS_FEATURES ----
-insert into users_features(users_id, features_id, verdi) values
+insert into users_features(users_id, features_id, uf_value) values
 (1, 1, 3),
 (1, 2, 2),
 (1, 3, 1),
