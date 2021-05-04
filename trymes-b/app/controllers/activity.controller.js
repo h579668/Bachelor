@@ -2,7 +2,7 @@ const db = require("../models");
 const Activity = db.activites;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Actvity
+// Create and Save a new Activity
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -12,14 +12,14 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create an Actvity
-  const actvity = {
+  // Create an Activity
+  const activity = {
     title: req.body.title,
     description: req.body.description,
     published: req.body.published ? req.body.published : false
   };
 
-  // Save Actvity in the database
+  // Save Activity in the database
   Activity.create(activity)
     .then(data => {
       res.send(data);
@@ -27,12 +27,12 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Actvity."
+          err.message || "Some error occurred while creating the Activity."
       });
     });
 };
 
-// Retrieve all Actvities from the database.
+// Retrieve all Activities from the database.
 exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
