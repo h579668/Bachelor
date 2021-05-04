@@ -5,7 +5,7 @@
 npm install
 ```
 
-## Project install express, sequelize, pg, pg-hstore and bodyparser eith node.js and express
+## Project install express, sequelize, pg, pg-hstore and bodyparser with node.js and express
 ```
 npm install express sequelize pg pg-hstore body-parser cors --save
 ```
