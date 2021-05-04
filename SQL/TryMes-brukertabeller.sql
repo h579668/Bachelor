@@ -5,6 +5,9 @@ set search_path = bruker_tabeller;
 
 --drop table if exists bruker;
 --drop table if exists aldersgruppe;
+drop table if exists activities;
+drop table if exists aktivitets;
+drop table if exists tutorials;
 
 create table kategori(
 	kategori_id serial,
