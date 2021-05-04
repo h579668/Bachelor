@@ -1,19 +1,22 @@
 <template>
     <div>
-       <!-- <tbody>
-            <table class="tableList">
-            <tr>
-                <th>{{ list_of_results }}</th>
-            </tr>
-            <tr v-for="item in itemList" :key="item.activity">
-                <td> {{ item.activity }}</td>
-            </tr>
-            </table>
-        </tbody>-->
-        <h2>{{ list_of_results }}</h2>
+        <table class="tableList">
+            <thead>
+                <tr>
+                    <th>{{ list_of_results }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in itemList" :key="item.activity">
+                    <td> {{ item.activity }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- <h2>{{ list_of_results }}</h2>
         <ul>
             <li v-for="item in itemList" :key="item.activity"> {{ item.activity }} </li>
-        </ul>
+        </ul>-->
     </div>
 </template>
 
@@ -45,12 +48,11 @@
 
 <style scoped>
 
-table.tableList { 
-
-margin-right: auto;
-
-margin-left: auto;
-
+.tableList {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+   
 }
    
 
