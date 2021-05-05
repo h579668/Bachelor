@@ -9,14 +9,16 @@
       <div id="questions">
         <h2>{{ item.question }}</h2>
         <p>{{ item.info }}</p>
-        <input type="radio" :id="item.id+'a'" :name="item.id" value="1" />
-        <label :for="item.id+'a'"> Synes det er kjempegøy </label> <br />
+        <div id="inputRadio">
+          <input type="radio" :id="item.id+'a'" :name="item.id" value="1" />
+          <label :for="item.id+'a'"> Synes det er kjempegøy </label> <br />
 
-        <input type="radio" :id="item.id+'b'" :name="item.id" value="2" />
-        <label :for="item.id+'b'"> Helt greit </label><br />
+          <input type="radio" :id="item.id+'b'" :name="item.id" value="2" />
+          <label :for="item.id+'b'"> Helt greit </label><br />
 
-        <input type="radio" :id="item.id+'c'"  :name="item.id" value="3" />
-        <label :for="item.id +'c'"> Liker ikke i det hele tatt </label>
+          <input type="radio" :id="item.id+'c'"  :name="item.id" value="3" />
+          <label :for="item.id +'c'"> Liker ikke i det hele tatt </label>
+        </div>
       </div>
     </div>
 
@@ -74,12 +76,33 @@ export default {
 
 <style scoped>
 .quiz {
-margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
 
 #questions {
   padding-bottom: 20px;
   padding-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+input[type="radio"]:hover, label:hover{
+  background-color: #548687;
+  color: #ffff;
+}
+
+#inputRadio {
+  margin: 0 auto;
+  width: auto;
+  text-align: left;
+  display: table;
+  line-height: 35px;
+  font-size: 20px;
+
 }
 
 #resultbtn {
@@ -87,10 +110,11 @@ margin: 20px;
   color: #ffffff;
   font-size: 30px;
 }
-  input[type="radio"]:hover, label:hover{
-    background-color: #548687;
-    color: #ffff;
-  }
+#resultbtn:hover {
+  background-color: #548687;
+  
+}
+
 
 </style>
 
