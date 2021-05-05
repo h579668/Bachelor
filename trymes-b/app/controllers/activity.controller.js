@@ -34,8 +34,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Activities from the database.
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
+    const navn = req.query.navn;
+    var condition = navn ? { navn: { [Op.iLike]: `%${navn}%` } } : null;
   
     Activity.findAll({ where: condition })
       .then(data => {
