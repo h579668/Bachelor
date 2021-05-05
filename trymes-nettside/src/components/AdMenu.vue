@@ -7,7 +7,7 @@
       <p>Endre/slette aktivitet</p>
       <p><router-link :to="{ name: 'Activities' }">Se alle registrerte aktiviteter</router-link></p>
       <p>Redigere geografiske områder</p>
-      <p>Endre passord</p>
+      <p><router-link :to="{ name: 'Password' }">Endre passord</router-link></p>
     </form>
   </div>
 </template>

@@ -6,6 +6,7 @@ import Login from "../views/Login.vue";
 import Menu from "../views/Menu.vue";
 import Results from "../views/Results.vue";
 import Activities from "../views/Activities.vue";
+import Password from "../views/Password.vue";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,12 @@ const routes = [
     name: "Activities",
     component: Activities,
   },
+  {
+    path: "/pass",
+    name: "Password",
+    component: Password,
+  },
+
 ];
 
 const router = new VueRouter({
