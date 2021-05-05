@@ -14,6 +14,9 @@ In order to create an example on node.js and express, we followed this tutorial:
 
 ### Front-end tutorial with Vue Router and Axios
 Followed this link in order to build an example page with vue: https://bezkoder.com/vue-js-crud-app/
+```
+npm install axios --save
+```
 
 ### Binding front-end and back-end together
 Followed this link: https://bezkoder.com/serve-vue-app-express/
