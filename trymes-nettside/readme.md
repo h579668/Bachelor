@@ -5,6 +5,11 @@
 npm install
 ```
 
+### To display chart
+```
+npm install chart.js@2.9.4
+```
+
 ## Project install express, sequelize, pg, pg-hstore and bodyparser with node.js and express
 ```
 npm install express sequelize pg pg-hstore body-parser cors --save
@@ -41,10 +46,7 @@ npm run build
 npm run lint
 ```
 
-### To display chart
-```
-npm install chart.js@2.9.4
-```
+
 Follow the tutorial on this page: https://www.digitalocean.com/community/tutorials/vuejs-vue-chart-js
 
 ### Customize configuration
