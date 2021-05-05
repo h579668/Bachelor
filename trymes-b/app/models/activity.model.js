@@ -1,21 +1,26 @@
+'use strict';
+/*
+ * We dropped writing the "s" on the end of the table names
+ * The "s" is added automatically when the table is being initialized
+*/
 module.exports = (sequelize, Sequelize) => {
     const Activity = sequelize.define("activitie", {
-      forbund_id: {
+      associations_id: {
         type: Sequelize.INTEGER
       },
-      alder_id: {
+      age_id: {
         type: Sequelize.INTEGER
       },
-      navn: {
+      act_name: {
         type: Sequelize.STRING
       },
-      tlf: {
+      tel: {
         type: Sequelize.STRING
       },
-      epost: {
+      email: {
         type: Sequelize.STRING
       },
-      kommentar: {
+      comments: {
         type: Sequelize.STRING
       },
     });

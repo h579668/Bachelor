@@ -42,7 +42,7 @@ create table users_features(
 	users_features_id serial,
 	users_id int,
 	features_id int,
-	uf_value int,
+	us_fe_value int,
 	constraint users_features_PK primary key(users_features_id)
 	--constraint users_FK foreign key(users_id) references users(users_id),
 	--constraint features_FK foreign key(features_id) references features(features_id)
@@ -83,7 +83,7 @@ create table activities_features (
 	activities_features_id serial,
 	activities_id int,
 	features_id int,
-	af_value int,
+	ac_fe_value int, --activities_feature_value
 	constraint activities_features_PK primary key(activities_features_id)
 	--constraint activities_FK foreign key (activities_id) references activities(activities_id),
 	--constraint features_FK foreign key (features_id) references features(features_id);
@@ -102,7 +102,7 @@ create table users_activities (
 	--constraint activities_FK foreign key (activities_id) references activities(activities_id);
 );
 
-create table age_intervalls(
+create table age_intervals(
 	age_id serial,
 	age varchar,
 	constraint age_intervalls_PK primary key(age_id)
