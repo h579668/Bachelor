@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import ActivityDataService from "../services/ActivityDataService";
 
 export default {
   name: "ActivityList",
@@ -60,54 +59,6 @@ export default {
       navn: ""
     };
   },
-  methods: {
-    retrieveActivities() {
-      ActivityDataService.getAll()
-        .then(response => {
-          this.activities = response.data;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
-
-    refreshList() {
-      this.retrieveActivities();
-      this.currentActivity = null;
-      this.currentIndex = -1;
-    },
-
-    setActiveActivity(activity, index) {
-      this.currentActivity = activity;
-      this.currentIndex = index;
-    },
-
-    removeAllActivities() {
-      ActivityDataService.deleteAll()
-        .then(response => {
-          console.log(response.data);
-          this.refreshList();
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
-    
-    searchTitle() {
-      ActivityDataService.findByTitle(this.navn)
-        .then(response => {
-          this.activities = response.data;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    }
-  },
-  mounted() {
-    this.retrieveActivities();
-  }
 };
 </script>
 
