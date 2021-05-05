@@ -21,6 +21,10 @@ npm install axios --save
 ### Binding front-end and back-end together
 Followed this link: https://bezkoder.com/serve-vue-app-express/
 
+### Creating an alert for logg-in
+```
+npm i vue-simple-alert
+```
 
 ### Compiles and hot-reloads for development
 ```
