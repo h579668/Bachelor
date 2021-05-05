@@ -4,21 +4,19 @@
       <h1>{{ title }}</h1>
       <p>{{ information }}</p>
     </div>
-    
+
     <div v-for="item in quizItems" :key="item.question">
       <div id="questions">
         <h2>{{ item.question }}</h2>
         <p>{{ item.info }}</p>
-        <div id="inputRadio">
-          <input type="radio" :id="item.id+'a'" :name="item.id" value="1" />
-          <label :for="item.id+'a'"> Synes det er kjempegøy </label> <br />
+        <input type="radio" :id="item.id + 'a'" :name="item.id" value="1" />
+        <label :for="item.id + 'a'"> Synes det er kjempegøy </label> <br />
 
-          <input type="radio" :id="item.id+'b'" :name="item.id" value="2" />
-          <label :for="item.id+'b'"> Helt greit </label><br />
+        <input type="radio" :id="item.id + 'b'" :name="item.id" value="2" />
+        <label :for="item.id + 'b'"> Helt greit </label><br />
 
-          <input type="radio" :id="item.id+'c'"  :name="item.id" value="3" />
-          <label :for="item.id +'c'"> Liker ikke i det hele tatt </label>
-        </div>
+        <input type="radio" :id="item.id + 'c'" :name="item.id" value="3" />
+        <label :for="item.id + 'c'"> Liker ikke i det hele tatt </label>
       </div>
     </div>
 
@@ -30,7 +28,10 @@
   </div>
 </template>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11" type="JavaScript"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/vue@2.6.11"
+  type="JavaScript"
+></script>
 <script>
 export default {
   name: "QuestionPage",
@@ -38,30 +39,31 @@ export default {
   data() {
     return {
       quizItems: [
-        { 
-          id: "1", 
+        {
+          id: "1",
           question: "Styrkeøvelser",
-          info: "(armhevinger, knebøy, situps, vekter osv)"
-          },
-        { 
-          id: "2", 
+          info: "(armhevinger, knebøy, situps, vekter osv)",
+        },
+        {
+          id: "2",
           question: "Spenst/hurtighet",
-          info: "(hopping, sprint, kasting osv)"
-          },
+          info: "(hopping, sprint, kasting osv)",
+        },
         {
           id: "3",
           question: "Utholdenhet",
-          info: "(gåturer, jogging, svømme langt, sykkeltur osv)"
+          info: "(gåturer, jogging, svømme langt, sykkeltur osv)",
         },
         {
           id: "4",
           question: "Bevegelighet",
-          info: "(tøying, spagat, utstrekking osv)"
+          info: "(tøying, spagat, utstrekking osv)",
         },
         {
           id: "5",
           question: "Balanse",
-          info: "(gå på bom/line, stå på en fot, bygge store tårn, stå på tærne osv)"
+          info:
+            "(gå på bom/line, stå på en fot, bygge store tårn, stå på tærne osv)",
         },
       ],
     };
@@ -70,39 +72,18 @@ export default {
     result() {
       this.$router.push({ path: "/quiz/results" });
     },
-  }
+  },
 };
 </script>
 
 <style scoped>
 .quiz {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
+  margin: 20px;
 }
 
 #questions {
   padding-bottom: 20px;
   padding-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-
-input[type="radio"]:hover, label:hover{
-  background-color: #548687;
-  color: #ffff;
-}
-
-#inputRadio {
-  margin: 0 auto;
-  width: auto;
-  text-align: left;
-  display: table;
-  line-height: 35px;
-  font-size: 20px;
-
 }
 
 #resultbtn {
@@ -110,11 +91,9 @@ input[type="radio"]:hover, label:hover{
   color: #ffffff;
   font-size: 30px;
 }
-#resultbtn:hover {
+input[type="radio"]:hover,
+label:hover {
   background-color: #548687;
-  
+  color: #ffff;
 }
-
-
 </style>
-
