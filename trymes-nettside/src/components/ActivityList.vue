@@ -1,6 +1,6 @@
 <template>
      <div>
-        <table class="tableList">
+        <table class="tableActivity">
             <thead>
                 <tr>
                     <th>Aktivitet</th>

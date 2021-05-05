@@ -1,7 +1,7 @@
 export const activityChartData = {
     type: "bar",
     data: {
-      labels: ["Handball", "Fotball", "Sjakk", "Orientering", "Hekkeløp", "Hesteriding", "Skyting på bane", "Paintball", "Curling", "Dans"],
+      labels: ["Skateboard", "Snøbrett", "Baneskyting", "Fallskjermhopping", "Bueskyting", "Enduro motorsykkel", "Aikido", "Amerikansk fotball", "Cheerleading", "Freesbeegolf"],
       datasets: [
         {
           label: "Aktiviteter",
