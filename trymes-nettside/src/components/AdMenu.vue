@@ -7,6 +7,7 @@
       <p>Endre/slette aktivitet</p>
       <p>Se alle registrerte aktiviteter</p>
       <p>Redigere geografiske områder</p>
+      <p>Endre passord</p>
     </form>
   </div>
 </template>
