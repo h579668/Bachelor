@@ -5,12 +5,6 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const Users_Activities = sequelize.define("users_activitie", {
-      users_id: {
-        type: Sequelize.INTEGER
-      },
-      activities_id: {
-        type: Sequelize.INTEGER
-      },
       score: {
         type: Sequelize.INTEGER
       },

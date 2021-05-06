@@ -7,14 +7,16 @@
           <th>Telefon</th>
           <th>E-post</th>
           <th>Forbund</th>
+          <th>Kommentar</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in labels" :key="index">
+        <tr v-for="(item, index) in activities" :key="index">
           <td>{{ item.activity }}</td>
           <td>{{ item.tel }}</td>
           <td>{{ item.email }}</td>
           <td>{{ item.associations }}</td>
+          <td>{{ item.comments }}</td>
         </tr>
       </tbody>
     </table>
@@ -22,49 +24,54 @@
 </template>
 
 <script>
-import labels from "@/services/ActivityDataService.js";
-    export default {
-        name: "ResultsList",
-        props: {
-            list_of_results:String,
-        },
-        data(){
-            return { /*
-                activities: [
-                    { activity: "Skateboard", tlf:"454 64 166", epost:"henning@norb.no", associations: "Brettforbundet"}, 
-                    { activity: "Snøbrett", tlf:"922 49 073", epost:"magnus@snowboardforbundet.no", associations: "Brettforbundet"}, 
-                    { activity: "Baneskyting", tlf:"975 92 754", epost:"ofh@dfs.no", associations: "Det frivillige Skyttervesen (ingen tilknytning til NIF)"}, 
-                    { activity: "Fallskjermhopping", tlf:"907 04 646", epost:"janerik.wang@nlf.no", associations: "Luftsportforbundet"}, 
-                    { activity: "Bueskyting", tlf:"-", epost:"-", associations: "NIF/Norges Bueskytterforbund. Og Norsk Langbuelag (NL)"}, 
-                    { activity: "Enduro motorsykkel", tlf:"415 64 430", epost:"a.sletholt@gmail.com", associations: "NMF"}, 
-                    { activity: "Aikido", tlf:"918 64 797", epost:"idalagosandersen@gmail.com", associations: "Norges Aikidoforbund"}, 
-                    { activity: "Amerikansk fotball", tlf:"472 01 596", epost:"tone.sparby@nif.idrett.no", associations: "Norges amerikanske idretters forbund"},  
-                    { activity: "Cheerleading", tlf:"986 66 494", epost:"daniela.ohnstad@nif.idrett.no", associations: "Norges amerikanske idretters forbund"},  
-                    { activity: "Freesbeegolf", tlf:"454 64 166", epost:"tone.sparby@nif.idrett.no", associations: "Norges amerikanske idretters forbund"}, 
-                ],*/
-             
-                labels: [],
-                activity:"",
-                tel: "",
-                email:"",
-                assosiations:"",
+import ActivityDataService from "@/services/ActivityDataService.js";
+  export default {
+    name: "ResultsList",
+    props: {
+      list_of_results:String,
+    },
+    data(){
+      return { /*
+        activities: [
+          { activity: "Skateboard", tel:"454 64 166", email:"henning@norb.no", associations: "Brettforbundet"}, 
+          { activity: "Snøbrett", tel:"922 49 073", email:"magnus@snowboardforbundet.no", associations: "Brettforbundet"}, 
+          { activity: "Baneskyting", tel:"975 92 754", email:"ofh@dfs.no", associations: "Det frivillige Skyttervesen (ingen tilknytning til NIF)"}, 
+          { activity: "Fallskjermhopping", tel:"907 04 646", email:"janerik.wang@nlf.no", associations: "Luftsportforbundet"}, 
+          { activity: "Bueskyting", tel:"-", email:"-", associations: "NIF/Norges Bueskytterforbund. Og Norsk Langbuelag (NL)"}, 
+          { activity: "Enduro motorsykkel", tel:"415 64 430", email:"a.sletholt@gmail.com", associations: "NMF"}, 
+          { activity: "Aikido", tel:"918 64 797", email:"idalagosandersen@gmail.com", associations: "Norges Aikidoforbund"}, 
+          { activity: "Amerikansk fotball", tel:"472 01 596", email:"tone.sparby@nif.idrett.no", associations: "Norges amerikanske idretters forbund"},  
+          { activity: "Cheerleading", tel:"986 66 494", email:"daniela.ohnstad@nif.idrett.no", associations: "Norges amerikanske idretters forbund"},  
+          { activity: "Freesbeegolf", tel:"454 64 166", email:"tone.sparby@nif.idrett.no", associations: "Norges amerikanske idretters forbund"}, 
+        ],*/
+        
+        activities: [],
+        activity:"",
+        tel: "",
+        email:"",
+        associations:"",
+        comments:"",
 
-             };
-        },
-        methods: {
-            retrieveLabels() {
-                labels.getAll()
-                    .then(response => {
-                    this.labels = response.data;
-                    console.log(response.data);
-                })
-                .catch(e => {
-                console.log(e);
-            });
-        },
+      };
+    },
+    methods: {
+      retrieveLabels() {
+        ActivityDataService.getAll()
+            .then(response => {
+            this.activities = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+          console.log(e);
+        });
+      },
+      refreshList() {
+        this.retrieveLabels();
+      
+      },
     },
     mounted() {
-        this.retrieveTutorials();
+      this.retrieveLabels();
     } 
 };
 </script>

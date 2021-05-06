@@ -5,9 +5,6 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const Feature= sequelize.define("feature", {
-      categories_id: {
-        type: Sequelize.INTEGER
-      },
       feat_name: { //Feature name
         type: Sequelize.STRING
       },

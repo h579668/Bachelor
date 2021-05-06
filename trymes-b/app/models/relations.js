@@ -6,7 +6,7 @@ const Area = require("./area.model.js")(sequelize, Sequelize);
 
 const Feature = require("./feature.model.js")(sequelize, Sequelize);
 const Category = require("./category.model.js")(sequelize, Sequelize);
-const Assosiation = require("./assosiation.model.js")(sequelize, Sequelize);
+const Association = require("./association.model.js")(sequelize, Sequelize);
 
 //many-to-many tables
 const User_Activity = require("./user_activity.model.js")(sequelize, Sequelize);
@@ -24,8 +24,8 @@ const Activity_Feature = require("./activity_feature.model.js")(sequelize, Seque
 //Feature.belongsToMany(Activity,{ through: Activity_Feature });
 
 //many-to-many relation (N-M)
-//Assosiation.belongsToMany(Area);
-//Area.belongsToMany(Assosiation);
+//Association.belongsToMany(Area);
+//Area.belongsToMany(Association);
 
 //User.belongsToMany(Area);
 //Area.belongsToMany(User);
@@ -41,8 +41,8 @@ const Activity_Feature = require("./activity_feature.model.js")(sequelize, Seque
 //Feature.hasOne(Category);
 //Category.belongsToMany(Feature);
 
-//Activity.hasOne(Assosiation);
-//Assosiation.belongsToMany(Activity);
+//Activity.hasOne(Association);
+//Association.belongsToMany(Activity);
 
 //User.hasOne(Age);
 //Age.belongsToMany(User);

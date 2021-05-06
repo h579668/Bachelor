@@ -1,5 +1,5 @@
 const db = require("../models");
-const Activity = db.activites;
+const Activity = db.activity;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Activity
@@ -14,10 +14,9 @@ exports.create = (req, res) => {
 
   // Create an Activity
   const activity = {
-    score: req.body.name,
+    act_name: req.body.act_name,
     tel: req.body.tel,
     email: req.body.email,
-    act_name: req.body.act_name,
     comments: req.body.comments,
     published: req.body.published ? req.body.published : false
   };

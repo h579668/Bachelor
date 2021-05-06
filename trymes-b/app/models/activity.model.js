@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
       Activity.belongsToMany(models.user, { through: models.user_activity });
       Activity.belongsToMany(models.feature,{ through: models.activity_feature });
       Activity.belongsToMany(models.age);
-      Activity.hasOne(models.assosiation);
+      Activity.hasOne(models.association);
     }
     
     return Activity;

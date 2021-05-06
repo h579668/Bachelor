@@ -3,7 +3,7 @@ const db = require("../models");
 const Area = db.areas;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Age
+// Create and Save a new Area
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.country) {
@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create an Age
+  // Create an Area
   const area = {
     country: req.body.country,
     municipality: req.body.municipality,
@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     published: req.body.published ? req.body.published : false
   };
 
-  // Save Age in the database
+  // Save Area in the database
   Area.create(area)
     .then(data => {
       res.send(data);

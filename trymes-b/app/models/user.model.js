@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("user", {});
 
     User.associate = function (models){
-      User.belongsToMany(models.assosiation);
+      User.belongsToMany(models.association);
       User.hasOne(models.age_interval);
       User.belongsToMany(models.area);
       User.belongsToMany(models.activity, { through: models.user_activity });
