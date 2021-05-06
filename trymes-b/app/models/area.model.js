@@ -16,5 +16,10 @@ module.exports = (sequelize, Sequelize) => {
       },
     });
   
+    Area.associate = function (models) {
+      Area.belongsTo(models.area);
+      Area.belongsToMany(models.user);
+
+    }
     return Area;
   };
