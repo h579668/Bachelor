@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Activity
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.act_name) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,8 +14,11 @@ exports.create = (req, res) => {
 
   // Create an Activity
   const activity = {
-    title: req.body.title,
-    description: req.body.description,
+    score: req.body.name,
+    tel: req.body.tel,
+    email: req.body.email,
+    act_name: req.body.act_name,
+    comments: req.body.comments,
     published: req.body.published ? req.body.published : false
   };
 
@@ -34,8 +37,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Activities from the database.
 exports.findAll = (req, res) => {
-    const navn = req.query.navn;
-    var condition = navn ? { navn: { [Op.iLike]: `%${navn}%` } } : null;
+    const act_name = req.query.act_name;
+    var condition = act_name ? { act_name: { [Op.iLike]: `%${act_name}%` } } : null;
   
     Activity.findAll({ where: condition })
       .then(data => {
