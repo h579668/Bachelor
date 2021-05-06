@@ -28,7 +28,7 @@ Assosiation.belongsToMany(Area);
 Area.belongsToMany(Assosiation);
 
 Activity.belongsToMany(Age);
-Age.belongsToMany(Activity);
+Age.belongsToMany(Activity); 
 
 //one-to-one relation (1-1)
 User.hasOne(Age);
