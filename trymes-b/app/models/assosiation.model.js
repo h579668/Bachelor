@@ -10,5 +10,9 @@ module.exports = (sequelize, Sequelize) => {
       },
     });
   
+    Assosiation.associate = function(models){
+      Assosiation.belongsTo(models.User);
+      Assosiation.belongsToMany(models.activity);
+    }
     return Assosiation;
   };
