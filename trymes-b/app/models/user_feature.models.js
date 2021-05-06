@@ -4,7 +4,7 @@
  * The "s" is added automatically when the table is being initialized
 */
 module.exports = (sequelize, Sequelize) => {
-    const users_feature = sequelize.define("users_feature", {
+    const User_Feature = sequelize.define("users_feature", {
       users_id: {
         type: Sequelize.INTEGER
       },
@@ -16,5 +16,5 @@ module.exports = (sequelize, Sequelize) => {
       },
     });
   
-    return users_feature;
+    return User_Feature;
   };
