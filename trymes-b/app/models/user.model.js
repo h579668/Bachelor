@@ -4,23 +4,15 @@
  * The "s" is added automatically when the table is being initialized
 */
 module.exports = (sequelize, Sequelize) => {
-    const Users_Activities = sequelize.define("users_activitie", {
-      score: {
-        type: Sequelize.INTEGER
-      },
-      hit: {
-        type: Sequelize.INTEGER
-      },
-      relevant: {
-        type: Sequelize.INTEGER
-      },
-      comments: {
-        type: Sequelize.STRING
-      },
-      strength: {
-        type: Sequelize.STRING
-      }
-    });
-  
-    return Users_Activities;
+    const User = sequelize.define("user", {});
+
+    User.associate = function (models){
+      User.belongsToMany(models.assosiation);
+      User.hasOne(models.age_interval);
+      User.belongsToMany(models.area);
+      User.belongsToMany(models.activity, { through: models.user_activity });
+      User.belongsToMany(models.feature, { through: models.user_feature });
+    }
+
+    return User;
   };
