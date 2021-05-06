@@ -2,11 +2,12 @@
   <div class="login">
     <h1>{{ loginmsg }}</h1>
     <form class="logginn-container">
-      <tbody>
+      
         <table>
+          <tbody>
        <!---   <th>{{ loginmsg }}</th>-->
           <tr>
-            <td>
+            <td >
               <label>{{ username }}</label>
             </td>
             <td>
@@ -17,11 +18,12 @@
             <td>
               <label>{{ password }}</label>
             </td>
+            <td>
             <input class="logginn-input" type="password" />
-            <td></td>
+            </td>
           </tr>
+          </tbody>
         </table>
-      </tbody>
       <button @click="login" id="loginbtn" class="logginn-btn logginn-purple">
         Logg inn
       </button>
@@ -63,7 +65,10 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-td {
+.loginn-input{
+  align-content: left;
+}
+td{
   text-align: right;
 }
 
