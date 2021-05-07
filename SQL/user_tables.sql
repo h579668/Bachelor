@@ -32,7 +32,6 @@ create table features(
 create table users(
 	users_id serial,
 	age_id int,
-	areas_id int,
 	constraint user_PK primary key(users_id)
 	--constraint age_intervalls_FK foreign key (age_id) references age_intervalls(age_id),
 	--constraint areas_FK foreign key (areas_id) references areas(areas_id)
@@ -60,7 +59,6 @@ create table areas(
 
 create table associations(
 	associations_id serial,
-	areas_id int,
 	ass_name varchar,
 	constraint associations_PK primary key(associations_id)
 	--constraint areas_FK foreign key(areas_id) references areas(areas_id)
@@ -70,7 +68,6 @@ create table associations(
 create table activities(
 	activities_id serial,
 	associations_id int,
-	age_id int,
 	act_name varchar,
 	tel varchar,
 	email varchar,
@@ -127,7 +124,7 @@ alter table features
 add constraint features_FK foreign key (categories_id) references features(features_id);
 
 alter table users
-add constraint age_intervalls_FK foreign key (age_id) references age_intervalls(age_id),
+--add constraint age_intervalls_FK foreign key (age_id) references age_intervalls(age_id),
 add constraint areas_FK foreign key (areas_id) references areas(areas_id);
 
 alter table users_features
@@ -135,10 +132,10 @@ add constraint users_FK foreign key(users_id) references users(users_id),
 add constraint features_FK foreign key(features_id) references features(features_id);
 
 alter table associations
-add constraint areas_FK foreign key(areas_id) references areas(areas_id);
+--add constraint areas_FK foreign key(areas_id) references areas(areas_id);
 
 alter table activities
-add constraint age_intervalls_FK foreign key(age_id) references age_intervalls(age_id),
+--add constraint age_intervalls_FK foreign key(age_id) references age_intervalls(age_id),
 add constraint associations_FK foreign key(associations_id) references associations(associations_id);
 
 alter table activities_features

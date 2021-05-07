@@ -5,6 +5,12 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const Association = sequelize.define("association", {
+      associations_id:{
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
       ass_name: {
         type: Sequelize.STRING
       },

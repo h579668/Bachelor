@@ -4,8 +4,14 @@
  * The "s" is added automatically when the table is being initialized
 */
 module.exports = (sequelize, Sequelize) => {
-    const Activity_Feature = sequelize.define("activites_feature", {
-      ac_fe_value: {            //activites_features_value
+    const Activity_Feature = sequelize.define("activities_feature", {
+      activities_features_id:{
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      ac_fe_value: {            //activities_features_value
         type: Sequelize.INTEGER
       },
     });

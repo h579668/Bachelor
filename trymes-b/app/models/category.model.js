@@ -5,6 +5,12 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const Category = sequelize.define("categorie", {
+      categories_id:{
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
       cat_name: {
         type: Sequelize.STRING
       },

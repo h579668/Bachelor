@@ -6,6 +6,12 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const Activity = sequelize.define("activitie", {
+      activities_id:{
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
       act_name: {
         type: Sequelize.STRING
       },
