@@ -12,6 +12,9 @@ set search_path = user_tables;
 --drop table if exists activities_features;
 --drop table if exists users_activities;
 --drop table if exists age_intervalls;
+--drop table if exists activities_age_interval
+--drop table if exists users_areas;
+--drop table if exists associations_areas;
 
 
 create table categories(
@@ -102,21 +105,34 @@ create table users_activities (
 create table age_intervals(
 	age_id serial,
 	age varchar,
-	constraint age_intervalls_PK primary key(age_id)
+	constraint age_intervalls_PK primary key(age_id);
 );
 
 create table activities_age_interval(
+	activities_age_interval_id serial,
 	activities_id int,
-	age_id int
+	age_id int,
+	constraint activities_age_interval_PK primary key(activities_age_interval_id)
+	--constraint activities_FK foreign key (activities_id) references activities(activities_id),
+	--constraint age_FK foreign key (age_id) references age_intervals(age_id);
 );
+
 create table users_areas(
+	users_areas_id serial,
 	users_id int,
 	areaa_id int
+	constraint users_areas_PK primary key(users_areas_id)
+	--constraint users_FK foreign key (users_id) references users(users_id),
+	--constraint areas_FK foreign key (areas_id) references areas(areas_id);
 );
 
 create table associations_areas(
+	associations_areas_id serial,
 	association_id int,
-	areas_id int
+	areas_id int,
+	constraint associations_areas_PK primary key(associations_areas_id)
+	--constraint associations_FK foreign key (associations_id) references associations(associations_id),
+	--constraint areas_FK foreign key (areas_id) references areas(areas_id);
 );
 
 
