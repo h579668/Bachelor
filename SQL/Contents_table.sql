@@ -89,7 +89,7 @@ insert into associations_areas(association_id, areas_id) values
 (9, 1);
 
 ---- ACTIVITIES ----
-insert into activities(associations_id, act_name, tel, email, comments) values
+insert into activities(associations_id, act_name, tel, email, act_comments) values
 (1, 'Skateboard', '454 64 166', 'henning@norb.no', ''),
 (1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', ''),
 (2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', ''),
