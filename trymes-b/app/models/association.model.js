@@ -10,9 +10,9 @@ module.exports = (sequelize, Sequelize) => {
       },
     });
   
-    Association.associate = function(models){
+    /*Association.associate = function(models){
       Association.belongsTo(models.user);
       Association.belongsToMany(models.activity);
-    }
+    }*/
     return Association;
   };

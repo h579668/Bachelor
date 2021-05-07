@@ -9,11 +9,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
     });
-    Feature.associate = function(models){
+   /* Feature.associate = function(models){
       Feature.belongsToMany(User, { through: models.user_feature });
       Feature.belongsToMany(Activity,{ through: models.activity_feature });
       Feature.hasOne(models.category);
-    }
+    }*/
   
     return Feature;
   };

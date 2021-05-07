@@ -5,15 +5,21 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const Age_Interval = sequelize.define("age_interval", {
+      age_id:{
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
       age: {
         type: Sequelize.STRING
       },
     });
-    Age_Interval.associate=function(models){
+   /* Age_Interval.associate=function(models){
       Age_Interval.belongsToMany(models.activity);
       Age_Interval.belongsToMany(models.user);
 
-    }
+    }*/
 
     return Age_Interval;
   };

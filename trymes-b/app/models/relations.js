@@ -1,3 +1,5 @@
+//const { associations } = require("./index.js");
+
 module.exports = (sequelize, Sequelize) => {
 const User = require("./user.model.js")(sequelize, Sequelize);
 const Age = require("./age_interval.model.js")(sequelize, Sequelize);
@@ -14,36 +16,43 @@ const User_Feature = require("./user_feature.model.js")(sequelize, Sequelize);
 const Activity_Feature = require("./activity_feature.model.js")(sequelize, Sequelize);
 
 //many-to-many relation (N-M) in a separate table
-//User.belongsToMany(Activity, { through: User_Activity });
-//Activity.belongsToMany(User, { through: User_Activity });
+User.belongsToMany(Activity, { through: User_Activity });
+Activity.belongsToMany(User, { through: User_Activity });
 
-//User.belongsToMany(Feature, { through: User_Feature });
-//Feature.belongsToMany(User, { through: User_Feature });
+User.belongsToMany(Feature, { through: User_Feature });
+Feature.belongsToMany(User, { through: User_Feature });
 
-//Activity.belongsToMany(Feature,{ through: Activity_Feature });
-//Feature.belongsToMany(Activity,{ through: Activity_Feature });
+Activity.belongsToMany(Feature,{ through: Activity_Feature });
+Feature.belongsToMany(Activity,{ through: Activity_Feature });
 
 //many-to-many relation (N-M)
-//Association.belongsToMany(Area);
-//Area.belongsToMany(Association);
+Association.belongsToMany(Area, { through: "association_area"});
+Area.belongsToMany(Association, {through: "association_area" });
 
-//User.belongsToMany(Area);
-//Area.belongsToMany(User);
+User.belongsToMany(Area, {through: "user_area"});
+Area.belongsToMany(User, {through: "user_area"});
 
-//Activity.belongsToMany(Age);
-//Age.belongsToMany(Activity);
+Activity.belongsToMany(Age, {through: "activity_age"});
+Age.belongsToMany(Activity, {through: "activity_age"});
 
 //one-to-one relation (1-1)
-//User.hasOne(Age);
+//User.belongsTo(Area);
 //User.hasOne(Area);
 
 //One-to-many relation (1-N)
-//Feature.hasOne(Category);
-//Category.belongsToMany(Feature);
+Feature.belongsTo(Category);
+Category.hasMany(Feature);
 
-//Activity.hasOne(Association);
-//Association.belongsToMany(Activity);
+Activity.belongsTo(Association);
+Association.hasMany(Activity);
 
-//User.hasOne(Age);
-//Age.belongsToMany(User);
-};
+User.belongsTo(Age, {
+    foreignKey: {
+        name: 'age_id'
+    }
+});
+Age.hasMany(User, {
+    foreignKey: {
+        name: 'age_id'
+    }
+});}

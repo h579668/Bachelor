@@ -41,5 +41,6 @@ db.categories = require("./category.model.js")(sequelize, Sequelize);
 db.users_activites = require("./user_activity.model.js")(sequelize, Sequelize);
 db.users_features= require("./user_feature.model.js")(sequelize, Sequelize);
 db.associations = require("./association.model.js")(sequelize, Sequelize);
+db.relations = require("./relations.js")(sequelize, Sequelize);
 
 module.exports = db;

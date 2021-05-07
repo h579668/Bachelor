@@ -15,17 +15,17 @@ module.exports = (sequelize, Sequelize) => {
       email: {
         type: Sequelize.STRING
       },
-      comments: {
+      act_comments: {
         type: Sequelize.STRING
       },
     });
-  
+  /*
     Activity.associate = function(models){
       Activity.belongsToMany(models.user, { through: models.user_activity });
       Activity.belongsToMany(models.feature,{ through: models.activity_feature });
       Activity.belongsToMany(models.age);
       Activity.hasOne(models.association);
     }
-    
+    */
     return Activity;
   };

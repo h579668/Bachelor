@@ -15,11 +15,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
     });
-  
+  /*
     Area.associate = function (models) {
       Area.belongsTo(models.area);
       Area.belongsToMany(models.user);
 
-    }
+    }*/
     return Area;
   };
