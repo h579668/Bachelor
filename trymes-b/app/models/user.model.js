@@ -5,7 +5,7 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("user", {
-      user_id:{
+      users_id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

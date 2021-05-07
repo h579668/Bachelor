@@ -60,41 +60,41 @@ insert into age_intervalls(age) values
 select * from age_intervalls;
 
 ---- ASSOCIASTIONS ----
-insert into associations(areas_id, ass_name) values
-(1, 'Brettforbundet'),
-(1, 'Det frivillige Skyttervesen (ingen tilknytning til NIF)'),
-(1, 'Luftsportforbundet'),
-(1, 'NIF/Norges Bueskytterforbund. Og Norsk Langbuelag (NL)'),
-(1, 'NMF'),
-(1, 'Norges Aikidoforbund'),
-(1, 'Norges amerikanske idretters forbund'),
-(1, 'Norges Badminton Forbund'),
-(1, 'Norges Bandyforbund');
+insert into associations( ass_name) values
+('Brettforbundet'),
+('Det frivillige Skyttervesen (ingen tilknytning til NIF)'),
+('Luftsportforbundet'),
+('NIF/Norges Bueskytterforbund. Og Norsk Langbuelag (NL)'),
+('NMF'),
+('Norges Aikidoforbund'),
+('Norges amerikanske idretters forbund'),
+('Norges Badminton Forbund'),
+('Norges Bandyforbund');
 
 select * from associations;
 
 
 ---- ACTIVITIES ----
-insert into activities(associations_id, age_id, act_name, tel, email, comments) values
-(1, 1, 'Skateboard', '454 64 166', 'henning@norb.no', ''),
-(1, 1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', ''),
-(2, 2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', ''),
-(3, 3, 'Fallskjermhopping', '907 04 646', 'janerik.wang@nlf.no', ''),
-(4, 1, 'Bueskyting', '', '', ''),
-(5, 1, 'Enduro motorsykkel', '415 64 430', 'a.sletholt@gmail.com', ''),
-(6, 1, 'Aikido', '918 64 797', 'idalagosandersen@gmail.com', ''),
-(7, 1, 'Amerikansk fotball', '47201596', 'tone.sparby@nif.idrett.no', ''),
-(7, 1, 'Cheerleading', '98666494', 'daniela.ohnstad@nif.idrett.no', ''),
-(7, 1, 'Freesbeegolf', '472 01 596', 'tone.sparby@nif.idrett.no', ''),
-(7, 2, 'Lacrosse', '971 80 074', 'leder@naiflacrosse.no', ''),
-(8, 1, 'Badminton', '93038999', 'espen.larsen@badminton.no', ''),
-(9, 1, 'Innebandy', '450 35 235', 'eivind.tysdal@bandyforbundet.no', '')
+insert into activities(associations_id, act_name, tel, email, comments) values
+(1, 'Skateboard', '454 64 166', 'henning@norb.no', ''),
+(1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', ''),
+(2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', ''),
+(3, 'Fallskjermhopping', '907 04 646', 'janerik.wang@nlf.no', ''),
+(4, 'Bueskyting', '', '', ''),
+(5, 'Enduro motorsykkel', '415 64 430', 'a.sletholt@gmail.com', ''),
+(6, 'Aikido', '918 64 797', 'idalagosandersen@gmail.com', ''),
+(7, 'Amerikansk fotball', '47201596', 'tone.sparby@nif.idrett.no', ''),
+(7, 'Cheerleading', '98666494', 'daniela.ohnstad@nif.idrett.no', ''),
+(7, 'Freesbeegolf', '472 01 596', 'tone.sparby@nif.idrett.no', ''),
+(7, 'Lacrosse', '971 80 074', 'leder@naiflacrosse.no', ''),
+(8, 'Badminton', '93038999', 'espen.larsen@badminton.no', ''),
+(9, 'Innebandy', '450 35 235', 'eivind.tysdal@bandyforbundet.no', '')
 ;
 
 select * from activities;
 
 --- ACTIVITIES_FEATURES ---
-insert into activities_features(activities_id, features_id, af_value) values 
+insert into activities_features(activities_id, features_id, ac_fe_value) values 
 (1, 1, 2),
 (1, 2, 3),
 (1, 3, 2),
@@ -214,14 +214,14 @@ insert into activities_features(activities_id, features_id, af_value) values
 select * from activities_features;
 
 ---- USERS ----
-insert into users(age_id, areas_id) values
-(1, 1),
-(1, 1);
+insert into users(age_id) values
+(1),
+(1);
 
 select * from users;
 
 ---- USERS_FEATURES ----
-insert into users_features(users_id, features_id, uf_value) values
+insert into users_features(users_id, features_id, us_fe_value) values
 (1, 1, 3),
 (1, 2, 2),
 (1, 3, 1),

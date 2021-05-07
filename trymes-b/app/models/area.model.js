@@ -5,6 +5,12 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const Area = sequelize.define("area", {
+      areas_id:{
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
       country: {
         type: Sequelize.STRING
       },
