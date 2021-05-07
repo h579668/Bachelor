@@ -1,3 +1,4 @@
+const { regexp } = require("sequelize/types/lib/operators");
 const db = require("../models");
 const User = db.users;
 const Op = db.Sequelize.Op;
@@ -14,9 +15,8 @@ exports.create = (req, res) => {
 
   // Create a User
   const user = {
-    age_id: req.body.age_id,
-    areas_id: req.body.areas_id,
-    published: req.body.published ? req.body.published : false
+    area : req.body.area,
+    age : req.body.age
   };
 
   // Save User in the database

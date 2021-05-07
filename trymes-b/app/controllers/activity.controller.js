@@ -17,7 +17,7 @@ exports.create = (req, res) => {
     act_name: req.body.act_name,
     tel: req.body.tel,
     email: req.body.email,
-    comments: req.body.comments,
+    act_comments: req.body.act_comments,
     published: req.body.published ? req.body.published : false
   };
 

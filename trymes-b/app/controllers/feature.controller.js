@@ -14,7 +14,6 @@ exports.create = (req, res) => {
 
   // Create a Feature
   const feature = {
-    categories_id: req.body.categories_id,
     feat_name: req.body.feat_name,
     published: req.body.published ? req.body.published : false
   };

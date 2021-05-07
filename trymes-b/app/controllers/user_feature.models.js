@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new User_Feature
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.users_id) {
+  if (!req.body.us_fe_value) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,9 +14,7 @@ exports.create = (req, res) => {
 
   // Create a User_Feature
   const user_feature = {
-    users_id: req.body.users_id,
-    features_id: req.body.feature_id,
-    us_fe_value: req.body.comments,
+    us_fe_value: req.body.us_fe_value,
     published: req.body.published ? req.body.published : false
   };
 
@@ -35,8 +33,8 @@ exports.create = (req, res) => {
 
 // Retrieve all User_Feature from the database.
 exports.findAll = (req, res) => {
-    const users_id = req.query.users_id;
-    var condition = users_id ? { users_id: { [Op.iLike]: `%${users_id}%` } } : null;
+    const us_fe_value = req.query.us_fe_value;
+    var condition = us_fe_value ? { us_fe_value: { [Op.iLike]: `%${us_fe_value}%` } } : null;
   
     User_Feature.findAll({ where: condition })
       .then(data => {

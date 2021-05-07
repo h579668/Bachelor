@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new User_Activity
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.users_id) {
+  if (!req.body.score) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,12 +14,10 @@ exports.create = (req, res) => {
 
   // Create a User_Activity
   const user_activity = {
-    users_id: req.body.users_id,
-    activities: req.body.aktivities_id,
     score: req.body.score,
     hit: req.body.hit,
     relevant: req.body.relevant,
-    comments:req.body.comments,
+    strength:req.body.strength,
     published: req.body.published ? req.body.published : false
   };
 
@@ -38,8 +36,8 @@ exports.create = (req, res) => {
 
 // Retrieve all User_Activity from the database.
 exports.findAll = (req, res) => {
-    const users_id = req.query.users_id;
-    var condition = users_id ? { users_id: { [Op.iLike]: `%${users_id}%` } } : null;
+    const score= req.query.score;
+    var condition = score? { score: { [Op.iLike]: `%${score}%` } } : null;
   
     User_Activity.findAll({ where: condition })
       .then(data => {

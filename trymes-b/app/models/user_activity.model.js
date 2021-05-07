@@ -20,8 +20,8 @@ module.exports = (sequelize, Sequelize) => {
       relevant: {
         type: Sequelize.INTEGER
       },
-      comments: {
-        type: Sequelize.STRING
+      strength: {
+        type: Sequelize.INTEGER
       },
     });
   
