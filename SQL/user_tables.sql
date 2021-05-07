@@ -11,7 +11,7 @@ set search_path = user_tables;
 --drop table if exists activities;
 --drop table if exists activities_features;
 --drop table if exists users_activities;
---drop table if exists age_intervalls;
+--drop table if exists age_intervals;
 --drop table if exists activities_age_interval
 --drop table if exists users_areas;
 --drop table if exists associations_areas;
@@ -105,7 +105,7 @@ create table users_activities (
 create table age_intervals(
 	age_id serial,
 	age varchar,
-	constraint age_intervalls_PK primary key(age_id);
+	constraint age_intervals_PK primary key(age_id);
 );
 
 create table activities_age_interval(
