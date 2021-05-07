@@ -53,12 +53,12 @@ insert into areas(country, municipality, county) values
 select * from areas;
 
 ---- AGE_INTERVALLS ----
-insert into age_intervalls(age) values 
+insert into age_intervals(age) values 
 ('6 til 12'),
 ('13 til 17'),
 ('18 pluss');
 
-select * from age_intervalls;
+select * from age_intervals;
 
 ---- ASSOCIASTIONS ----
 insert into associations( ass_name) values
