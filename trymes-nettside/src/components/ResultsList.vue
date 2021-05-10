@@ -6,17 +6,15 @@
           <th>Aktivitet</th>
           <th>Telefon</th>
           <th>E-post</th>
-          <th>Forbund</th>
           <th>Kommentar</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in activities" :key="index">
-          <td>{{ item.activity }}</td>
-          <td>{{ item.tel }}</td>
+          <td>{{ item.activities_name }}</td>
+          <td>{{ item.telephone }}</td>
           <td>{{ item.email }}</td>
-          <td>{{ item.associations }}</td>
-          <td>{{ item.comments }}</td>
+          <td>{{ item.activities_comments }}</td>
         </tr>
       </tbody>
     </table>
@@ -46,11 +44,10 @@ import ActivityDataService from "@/services/ActivityDataService.js";
         ],*/
         
         activities: [],
-        activity:"",
-        tel: "",
+        activities_name:"",
+        telephone: "",
         email:"",
-        associations:"",
-        comments:"",
+        activities_comments:"",
 
       };
     },
