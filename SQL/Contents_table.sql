@@ -2,7 +2,7 @@
 set search_path = user_tables;
 
 ---- CATEGORIES ----
-insert into categories(cat_name) values
+insert into categories(categories_name) values
 ('Fysiske egenskaper'),
 ('Koordinative egenskaper'),
 ('Psykologiske faktorer'),
@@ -12,7 +12,7 @@ insert into categories(cat_name) values
 select * from categories;
 
 ---- FEATURES ----
-insert into features(categories_id, feat_name values
+insert into features(categories_id, features_name) values
 (1, 'Styrke'),
 (1, 'Spenst/Hurtighet'),
 (1, 'Utholdenhet'),
@@ -48,12 +48,11 @@ select * from features;
 ---- AREAS ----
 insert into areas(country, municipality, county) values 
 ('Norge', 'Bergen', 'Vestland');
-('Norge', 'Øygarden', 'Vestland');
 
 select * from areas;
 
 ---- AGE_INTERVALLS ----
-insert into age_intervals(age) values 
+insert into age_intervals(age_value) values 
 ('6 til 12'),
 ('13 til 17'),
 ('18 pluss');
@@ -61,7 +60,7 @@ insert into age_intervals(age) values
 select * from age_intervals;
 
 ---- ASSOCIASTIONS ----
-insert into associations( ass_name) values
+insert into associations(associations_name) values
 ('Brettforbundet'),
 ('Det frivillige Skyttervesen (ingen tilknytning til NIF)'),
 ('Luftsportforbundet'),
@@ -74,22 +73,9 @@ insert into associations( ass_name) values
 
 select * from associations;
 
----- ASSOCIATIONS_AREAS ----
-insert into associations_areas(association_id, areas_id) values
-(1, 1),
-(1, 2),
-(2, 2),
-(3, 1),
-(4, 1),
-(4, 2),
-(5, 1),
-(6, 2),
-(7, 1),
-(8, 1),
-(9, 1);
 
 ---- ACTIVITIES ----
-insert into activities(associations_id, act_name, tel, email, act_comments) values
+insert into activities(associations_id, activities_name, telephone, email, activities_comments) values
 (1, 'Skateboard', '454 64 166', 'henning@norb.no', ''),
 (1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', ''),
 (2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', ''),
@@ -108,7 +94,7 @@ insert into activities(associations_id, act_name, tel, email, act_comments) valu
 select * from activities;
 
 --- ACTIVITIES_FEATURES ---
-insert into activities_features(activities_id, features_id, ac_fe_value) values 
+insert into activities_features(activities_id, features_id, activities_features_values) values 
 (1, 1, 2),
 (1, 2, 3),
 (1, 3, 2),
@@ -227,56 +213,15 @@ insert into activities_features(activities_id, features_id, ac_fe_value) values
 
 select * from activities_features;
 
----- ACTIVITIES_AGE_INTERVAL ----
-
-insert into activities_age_interval(activities_id, age_id) values 
-(1, 1),
-(1, 2),
-(1, 3),
-(2, 1),
-(2, 2),
-(2, 3),
-(3, 2),
-(3, 3),
-(4, 3),
-(5, 1),
-(5, 2),
-(5, 3),
-(6, 2),
-(6, 3),
-(7, 1),
-(7, 2),
-(7, 3),
-(8, 1),
-(8, 2),
-(8, 3),
-(9, 1),
-(9, 2),
-(9, 3),
-(10, 1),
-(10, 2),
-(10, 3),
-(11, 1),
-(11, 2),
-(11, 3),
-(12, 1),
-(12, 2),
-(12, 3),
-(13, 1),
-(13, 2),
-(13, 3);
-
-select * from activities_age_interval;
-
 ---- USERS ----
 insert into users(age_id) values
 (1),
-(2);
+(1);
 
 select * from users;
 
 ---- USERS_FEATURES ----
-insert into users_features(users_id, features_id, us_fe_value) values
+insert into users_features(users_id, features_id, users_features_value) values
 (1, 1, 3),
 (1, 2, 2),
 (1, 3, 1),
@@ -336,10 +281,3 @@ insert into users_features(users_id, features_id, us_fe_value) values
 (2, 28, 2);
 
 select * from users_features;
-
----- USERS_AREAS ----
-insert into users_areas(users_id, areas_id) values
-(1, 1);
-(1, 2);
-(2, 2);
-

@@ -32,7 +32,7 @@ import RegisterUser from "@/components/RegisterUser.vue";
   margin-top: 5%;
   background-color: #424242;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 23px;
 }
 
 #nextbtn:hover {

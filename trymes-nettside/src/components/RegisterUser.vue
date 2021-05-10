@@ -64,12 +64,14 @@ export default {
 <style scoped>
 #spanelement {
   margin-top: 3%;
+  font-size:20px;
 }
 
 select {
   margin-top: 5%;
   padding: 1%;
   width: 22%;
+  font-size: 17px;
 }
 
 option {
