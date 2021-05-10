@@ -15,7 +15,6 @@ exports.create = (req, res) => {
   // Create an Activity_Feature
   const activity_feature = {
     ac_fe_value: req.body.ac_fe_value,
-    published: req.body.published ? req.body.published : false
   };
 
   // Save Activity_Feature in the database

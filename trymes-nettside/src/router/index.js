@@ -7,7 +7,7 @@ import Menu from "../views/Menu.vue";
 import Results from "../views/Results.vue";
 import Activities from "../views/Activities.vue";
 import Password from "../views/Password.vue";
-//import Register from "../views/Register.vue";
+import Register from "../views/Register.vue";
 
 Vue.use(VueRouter);
 
@@ -48,11 +48,11 @@ const routes = [
     name: "Password",
     component: Password,
   },
-  /*{
+  {
     path: "/register",
     name: "Register",
     component: Register,
-  },*/
+  },
 
 ];
 

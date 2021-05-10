@@ -15,7 +15,6 @@ exports.create = (req, res) => {
   // Create a User_Feature
   const user_feature = {
     us_fe_value: req.body.us_fe_value,
-    published: req.body.published ? req.body.published : false
   };
 
   // Save User_Feature in the database

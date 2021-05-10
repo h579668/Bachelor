@@ -18,7 +18,6 @@ exports.create = (req, res) => {
     country: req.body.country,
     municipality: req.body.municipality,
     county: req.body.county,
-    published: req.body.published ? req.body.published : false
   };
 
   // Save Area in the database

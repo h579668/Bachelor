@@ -15,7 +15,6 @@ exports.create = (req, res) => {
   // Create a Association
   const association = {
     ass_name: req.body.ass_name,
-    published: req.body.published ? req.body.published : false
   };
 
   // Save Association in the database

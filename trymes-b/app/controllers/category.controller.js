@@ -15,7 +15,6 @@ exports.create = (req, res) => {
   // Create a Category
   const category = {
     cat_name: req.body.cat_name,
-    published: req.body.published ? req.body.published : false
   };
 
   // Save Category in the database

@@ -18,7 +18,6 @@ exports.create = (req, res) => {
     tel: req.body.tel,
     email: req.body.email,
     act_comments: req.body.act_comments,
-    published: req.body.published ? req.body.published : false
   };
 
   // Save Activity in the database

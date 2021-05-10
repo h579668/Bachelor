@@ -1,7 +1,7 @@
 <template>
     <div>
         <RegisterUser :register="register" />
-        <button @click="quizpage"> {{ next }} </button>
+        <button id="nextbtn" @click="quizpage"> {{ next }} </button>
     </div>
 </template>
 
@@ -10,17 +10,17 @@ import RegisterUser from "@/components/RegisterUser.vue";
 
     export default {
         name: "Register",
-        component: RegisterUser,
         register:"En kort registrering",
+        components: { RegisterUser },
         data(){
             return{
-                next:"Neste",
-            };
+                next:"Start testen!",
+        }
 
         },
         methods:{
             quizpage(){
-                this.$router.push({ path: "/register/quiz" });
+                this.$router.push({ path: "/quiz" });
             }
         }
     };
@@ -28,5 +28,15 @@ import RegisterUser from "@/components/RegisterUser.vue";
 </script>
 
 <style scoped>
+#nextbtn {
+  margin-top: 5%;
+  background-color: #424242;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+#nextbtn:hover {
+   background-color: #548687;
+ }
 
 </style>

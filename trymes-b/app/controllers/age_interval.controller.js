@@ -15,7 +15,6 @@ exports.create = (req, res) => {
   // Create an Age
   const age = {
     age: req.body.age,
-    published: req.body.published ? req.body.published : false
   };
 
   // Save Age in the database

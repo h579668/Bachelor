@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ msg }}</h1>
-    <router-link :to="{ name: 'Quiz' }">
+    <router-link :to="{ name: 'Register' }">
       <button id="quizButton" class="foo bar">Start test</button>
     </router-link>
     <p>Og finn 10 passende aktiviteter nær deg!</p>
