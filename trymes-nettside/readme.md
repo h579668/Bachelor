@@ -31,6 +31,10 @@ Followed this link: https://bezkoder.com/serve-vue-app-express/
 rm -rf node_modules
 ```
 
+### Could use this to add things to the database:
+https://petermaxdreyer.com/sequelize-foreign-keys/
+
+
 ### Creating an alert for logg-in
 ```
 npm i vue-simple-alert
