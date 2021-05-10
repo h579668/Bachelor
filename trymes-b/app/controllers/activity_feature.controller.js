@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Activity_Feature
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.ac_fe_value) {
+  if (!req.body.activities_features_values) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
 
   // Create an Activity_Feature
   const activity_feature = {
-    ac_fe_value: req.body.ac_fe_value,
+    activities_features_values: req.body.activities_features_values,
   };
 
   // Save Activity_Feature in the database
@@ -32,8 +32,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Activities_Features from the database.
 exports.findAll = (req, res) => {
-    const ac_fe_value = req.query.ac_fe_value;
-    var condition = ac_fe_value ? { ac_fe_value: { [Op.iLike]: `%${ac_fe_value}%` } } : null;
+    const activities_features_values = req.query.activities_features_values;
+    var condition = activities_features_values ? { activities_features_values: { [Op.iLike]: `%${activities_features_values}%` } } : null;
   
     Activity_Feature.findAll({ where: condition })
       .then(data => {

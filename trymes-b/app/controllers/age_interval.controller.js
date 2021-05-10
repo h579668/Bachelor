@@ -1,5 +1,5 @@
 const db = require("../models");
-const Age = db.age;
+const Age = db.age_intervals;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Age
