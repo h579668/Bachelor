@@ -3,7 +3,7 @@
     <h1>{{ menumsg }}</h1>
 
     <form class="logginn-container">
-      <p>Legg til ny aktivitet</p>
+      <p><router-link :to="{ name: 'NewActivity' }">Legg til ny aktivitet</router-link></p>
       <p>Endre/slette aktivitet</p>
       <p><router-link :to="{ name: 'Activities' }">Se alle registrerte aktiviteter</router-link></p>
       <p>Redigere geografiske områder</p>
