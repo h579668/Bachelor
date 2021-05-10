@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ac_fe_value: {            //activities_features_value
+      activities_features_values: {          
         type: Sequelize.INTEGER
       },
     });

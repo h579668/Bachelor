@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      feat_name: { //Feature name
+      features_name: { //Feature name
         type: Sequelize.STRING
       },
     });

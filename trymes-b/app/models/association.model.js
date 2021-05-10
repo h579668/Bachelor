@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ass_name: {
+      associations_name: {
         type: Sequelize.STRING
       },
     });

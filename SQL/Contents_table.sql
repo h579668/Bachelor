@@ -52,7 +52,7 @@ insert into areas(country, municipality, county) values
 select * from areas;
 
 ---- AGE_INTERVALLS ----
-insert into age_intervals(age_value) values 
+insert into age_intervals(age_values) values 
 ('6 til 12'),
 ('13 til 17'),
 ('18 pluss');
@@ -221,7 +221,7 @@ insert into users(age_id) values
 select * from users;
 
 ---- USERS_FEATURES ----
-insert into users_features(users_id, features_id, users_features_value) values
+insert into users_features(users_id, features_id, users_features_values) values
 (1, 1, 3),
 (1, 2, 2),
 (1, 3, 1),

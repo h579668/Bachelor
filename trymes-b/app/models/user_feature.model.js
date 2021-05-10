@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      us_fe_value: { //users_features value
+      users_features_values: {
         type: Sequelize.INTEGER
       },
     });

@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      cat_name: {
+      categories_name: {
         type: Sequelize.STRING
       },
     });

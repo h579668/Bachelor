@@ -12,16 +12,16 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      act_name: {
+      activities_name: {
         type: Sequelize.STRING
       },
-      tel: {
+      telephone: {
         type: Sequelize.STRING
       },
       email: {
         type: Sequelize.STRING
       },
-      act_comments: {
+      activities_comments: {
         type: Sequelize.STRING
       },
     });

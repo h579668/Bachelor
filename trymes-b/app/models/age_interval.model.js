@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      age: {
+      age_values: {
         type: Sequelize.STRING
       },
     });
