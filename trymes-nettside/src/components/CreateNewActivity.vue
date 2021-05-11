@@ -7,27 +7,44 @@
         </p>
         <h2>Kategorier</h2>
         <table>
-          <tbody>
+            <thead>
             <tr>
-              <th v-for="(feat, index) in features" :key="index"> {{ feat.features_name }}</th>
+              <th v-for="(feat, index) in features.slice(0,4)" :key="index"> {{ feat.features_name }}</th>
             </tr>
+             </thead>
+            <tbody>
             <tr>
-              <td v-for="(feat, index) in features" :key="index"> <input type="number" :id="feat.index" /> </td>
+              <td v-for="(feat, index) in features.slice(0,4)" :key="index"> <input type="number" :id="feat.index" /> </td>
             </tr>
-          </tbody>
+            </tbody>
+            
+            <thead>
+            <tr>
+              <th v-for="(feat, index) in features.slice(4,8)" :key="index"> {{ feat.features_name }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td v-for="(feat, index) in features.slice(4,8)" :key="index"> <input type="number" :id="feat.index" /> </td>
+            </tr>
+            </tbody>
+
+               <thead>
+            <tr>
+              <th v-for="(feat, index) in features.slice(8,12)" :key="index"> {{ feat.features_name }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td v-for="(feat, index) in features.slice(8,12)" :key="index"> <input type="number" :id="feat.index" /> </td>
+            </tr>
+            </tbody>
+          
         </table>
-       <!-- <ul>
-            <li v-for="(item, index) in categories" :key="index">
-                {{ item.categories_name }}
-                
-            </li>
-            <li>
-              ...
-            </li>
-        </ul>-->
+    
     </form>
   </div>
-</template>
+</template> 
 
 <script>
 import CategoryDataService from "@/services/CategoryDataService.js";
