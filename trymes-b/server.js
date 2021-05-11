@@ -23,7 +23,7 @@ app.get('/', function (req,res) {
   res.sendFile(path + "index.html");
 });
 
-require("./app/routes/activity.routes.js")(app);
+app.use('/api', require("./app/routes/index.js"));
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
