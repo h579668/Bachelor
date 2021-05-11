@@ -7,7 +7,8 @@
 
     <div id="nav">
       <router-link :to="{ name: 'Home' }">Hjem</router-link> |
-      <router-link :to="{ name: 'Login' }">Logg Inn</router-link>
+      <router-link :to="{ name: 'Login' }">Logg Inn</router-link>|
+      <router-link :to="{ name: 'AllActivities' }">Alle aktiviteter</router-link>
     </div>
 
     <router-view />

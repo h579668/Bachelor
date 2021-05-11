@@ -2,6 +2,7 @@
   <div>
     <div>
       <QuestionPage :title="title" :information="information" />
+     <!-- <QuestionYesNo :yeNoTite="yesNoTitle" /> -->
     </div>
     
   </div>
@@ -9,6 +10,7 @@
 
 <script>
 import QuestionPage from "@/components/QuestionPage.vue";
+//import QuestionYesNo from "@/components/QuestionYesNo.vue"
 
 export default {
   name: "Quiz",
@@ -19,6 +21,7 @@ export default {
     return {
       title: "Hvordan liker du å trene?",
       information: "Kartlegging av hvordan du liker å drive med aktiviteter",
+      //yesNoTitle: "Nå har vi noen ja/nei spørsmål",
     }
   },
   

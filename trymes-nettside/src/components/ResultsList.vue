@@ -79,7 +79,9 @@ import ActivityDataService from "@/services/ActivityDataService.js";
   margin-right: auto;
   margin-top: 50px;
 }
-
+table th, table td{
+        padding: 10px; /* Apply cell padding */
+    }
 tbody {
   text-align: left;
 }

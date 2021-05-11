@@ -10,6 +10,7 @@ import Password from "../views/Password.vue";
 import Register from "../views/Register.vue";
 import NewActivity from "../views/NewActivity.vue";
 import ChangeActivity from "../views/ChangeActivity.vue";
+import AllActivities from "@/views/AllActivities.vue";
 
 Vue.use(VueRouter);
 
@@ -65,7 +66,11 @@ const routes = [
     name: "ChangeActivity",
     component: ChangeActivity,
   },
-
+  {
+    path: "/AllActivities",
+    name: "AllActivities",
+    component: AllActivities,
+  },
 ];
 
 const router = new VueRouter({
