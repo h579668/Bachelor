@@ -23,20 +23,20 @@
 import CategoryDataService from "@/services/CategoryDataService.js";
 export default {
     
-  name: "createNewActivity",
+  name: "CreateNewActivity",
   props: {
     msg: String,
   },
 
   data() {
         return { 
-        categories: [],
-        categories_name: "",
+          categories: [],
+          categories_name: "",
         };
     },
 
     methods: {
-      retrievcategory() {
+      retrieveCategory() {
         CategoryDataService.getAll()
             .then(response => {
             this.categories = response.data;
@@ -47,12 +47,12 @@ export default {
         });
       },
       refreshList() {
-        this.retrievcategory();
+        this.retrieveCategory();
       
       },
     },
     mounted() {
-      this.retrievcategory();
+      this.retrieveCategory();
     } 
 };
 </script>
