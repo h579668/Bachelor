@@ -6,7 +6,17 @@
             <label for="name">Navn på aktivitet: </label><input type="text" id="name">
         </p>
         <h2>Kategorier</h2>
-        <ul>
+        <table>
+          <tbody>
+            <tr>
+              <th v-for="(feat, index) in features" :key="index"> {{ feat.features_name }}</th>
+            </tr>
+            <tr>
+              <td v-for="(feat, index) in features" :key="index"> <input type="number" :id="feat.index" /> </td>
+            </tr>
+          </tbody>
+        </table>
+       <!-- <ul>
             <li v-for="(item, index) in categories" :key="index">
                 {{ item.categories_name }}
                 
@@ -14,13 +24,15 @@
             <li>
               ...
             </li>
-        </ul>
+        </ul>-->
     </form>
   </div>
 </template>
 
 <script>
 import CategoryDataService from "@/services/CategoryDataService.js";
+import FeatureDataService from "@/services/FeatureDataService.js";
+
 export default {
     
   name: "CreateNewActivity",
@@ -32,6 +44,8 @@ export default {
         return { 
           categories: [],
           categories_name: "",
+          features:[],
+          feature_name: "",
         };
     },
 
@@ -46,18 +60,32 @@ export default {
           console.log(e);
         });
       },
+      retrieveFeature() {
+        FeatureDataService.getAll()
+            .then(response => {
+            this.features = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+          console.log(e);
+        });
+      },
       refreshList() {
+        this.retrieveFeature();
         this.retrieveCategory();
       
       },
     },
     mounted() {
       this.retrieveCategory();
+      this.retrieveFeature();
     } 
 };
 </script>
 
 <style scoped>
-
+table{
+  width:100%;
+}
 
 </style>

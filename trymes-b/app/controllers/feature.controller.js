@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Feature
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.feat_name) {
+  if (!req.body.features_name) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,8 +14,7 @@ exports.create = (req, res) => {
 
   // Create a Feature
   const feature = {
-    feat_name: req.body.feat_name,
-    published: req.body.published ? req.body.published : false
+    features_name: req.body.features_name,
   };
 
   // Save Feature in the database
@@ -33,8 +32,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Features from the database.
 exports.findAll = (req, res) => {
-    const feat_name = req.query.feat_name;
-    var condition = feat_name ? { feat_name: { [Op.iLike]: `%${feat_name}%` } } : null;
+    const features_name = req.query.features_name;
+    var condition = features_name ? { features_name: { [Op.iLike]: `%${features_name}%` } } : null;
   
     Feature.findAll({ where: condition })
       .then(data => {

@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Category
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.cat_name) {
+  if (!req.body.categories_name) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
 
   // Create a Category
   const category = {
-    cat_name: req.body.cat_name,
+    categories_name: req.body.categories_name,
   };
 
   // Save Category in the database
@@ -32,8 +32,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Categories from the database.
 exports.findAll = (req, res) => {
-    const cat_name = req.query.cat_name;
-    var condition = cat_name ? { cat_name: { [Op.iLike]: `%${cat_name}%` } } : null;
+    const categories_name = req.query.categories_name;
+    var condition = categories_name ? { categories_name: { [Op.iLike]: `%${categories_name}%` } } : null;
   
     Category.findAll({ where: condition })
       .then(data => {
