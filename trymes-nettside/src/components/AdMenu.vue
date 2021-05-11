@@ -4,7 +4,7 @@
 
     <form class="logginn-container">
       <p><router-link :to="{ name: 'NewActivity' }">Legg til ny aktivitet</router-link></p>
-      <p>Endre/slette aktivitet</p>
+      <p><router-link :to="{ name: 'ChangeActivity' }">Endre/slette aktivitet</router-link></p>
       <p><router-link :to="{ name: 'Activities' }">Se alle registrerte aktiviteter</router-link></p>
       <p>Redigere geografiske områder</p>
       <p><router-link :to="{ name: 'Password' }">Endre passord</router-link></p>

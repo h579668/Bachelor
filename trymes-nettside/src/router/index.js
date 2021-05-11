@@ -9,6 +9,7 @@ import Activities from "../views/Activities.vue";
 import Password from "../views/Password.vue";
 import Register from "../views/Register.vue";
 import NewActivity from "../views/NewActivity.vue";
+import ChangeActivity from "../views/ChangeActivity.vue";
 
 Vue.use(VueRouter);
 
@@ -58,6 +59,11 @@ const routes = [
     path: "/newActivity",
     name: "NewActivity",
     component: NewActivity,
+  },
+  {
+    path: "/changeActivity",
+    name: "ChangeActivity",
+    component: ChangeActivity,
   },
 
 ];
