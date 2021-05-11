@@ -104,7 +104,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .deleteActivity-container {
     width: 70%;
     margin-left: auto;
