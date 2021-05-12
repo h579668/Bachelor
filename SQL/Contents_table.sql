@@ -214,9 +214,9 @@ insert into activities_features(activities_id, features_id, activities_features_
 select * from activities_features;
 
 ---- USERS ----
-insert into users(age_id) values
-(1),
-(1);
+insert into users(age_id, areas_id) values
+(1,1),
+(1,1);
 
 select * from users;
 

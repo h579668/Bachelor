@@ -65,7 +65,7 @@ Area.belongsToMany(Association, {
     foreignKey: 'areas_id'
 }
 );
-
+/*
 User.belongsToMany(Area, {
     through: 'users_areas',
     as: 'areas',
@@ -76,7 +76,7 @@ Area.belongsToMany(User, {
     through: 'users_areas',
     as: 'users',
     foreignKey: 'areas_id' 
-});
+});*/
 
 Activity.belongsToMany(Age, {
     through: 'activities_age_interval',
@@ -125,4 +125,14 @@ Age.hasMany(User, {
     foreignKey: {
         name: 'age_id'
     }
-});}
+});
+
+User.belongsTo(Area, {
+    foreignKey: 'age_id'
+});
+
+Area.hasMany(User, {
+    foreignKey: 'age_id'
+});
+
+}
