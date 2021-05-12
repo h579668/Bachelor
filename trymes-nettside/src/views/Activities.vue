@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      msg: "Liste over aktiviteter:",
+      msg: "Aktiviteter med egenskaper",
     }
   },
 };
