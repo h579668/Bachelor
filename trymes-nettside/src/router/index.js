@@ -67,7 +67,7 @@ const routes = [
     component: ChangeActivity,
   },
   {
-    path: "/AllActivities",
+    path: "/allActivities",
     name: "AllActivities",
     component: AllActivities,
   },
