@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
+
+//A function that allows import of the views the user visits.
 function lazyLoad(view){
   return() => import(`@/views/${view}.vue`)
 }
