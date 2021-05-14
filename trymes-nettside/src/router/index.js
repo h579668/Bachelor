@@ -1,75 +1,67 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import Quiz from "../views/Quiz.vue";
-import Login from "../views/Login.vue";
-import Menu from "../views/Menu.vue";
-import Results from "../views/Results.vue";
-import Activities from "../views/Activities.vue";
-import Password from "../views/Password.vue";
-import Register from "../views/Register.vue";
-import NewActivity from "../views/NewActivity.vue";
-import ChangeActivity from "../views/ChangeActivity.vue";
-import AllActivities from "@/views/AllActivities.vue";
 
 Vue.use(VueRouter);
+function lazyLoad(view){
+  return() => import(`@/views/${view}.vue`)
+}
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: lazyLoad("Home"),
   },
   {
     path: "/quiz",
     name: "Quiz",
-    component: Quiz,
+    component: lazyLoad("Quiz"),
   },
   {
     path: "/login",
     name: "Login",
-    component: Login,
+    component: lazyLoad("Login"),
 
   },
   {
     path: "/admenu",
     name: "Menu",
-    component: Menu,
+    component: lazyLoad("Menu"),
   },
   {
     path: "/quiz/results",
     name: "Results",
-    component: Results,
+    component: lazyLoad("Results"),
   },
   {
     path: "/Activities",
     name: "Activities",
-    component: Activities,
+    component: lazyLoad("Activities"),
   },
   {
     path: "/pass",
     name: "Password",
-    component: Password,
+    component: lazyLoad("Password"),
   },
   {
     path: "/register",
     name: "Register",
-    component: Register,
+    component: lazyLoad("Register"),
   },
   {
     path: "/newActivity",
     name: "NewActivity",
-    component: NewActivity,
+    component: lazyLoad("NewActivity"),
   },
   {
     path: "/changeActivity",
     name: "ChangeActivity",
-    component: ChangeActivity,
+    component: () => lazyLoad("ChangeActivity"),
   },
   {
     path: "/allActivities",
     name: "AllActivities",
-    component: AllActivities,
+    component: lazyLoad("AllActivities"),
   },
 ];
 
