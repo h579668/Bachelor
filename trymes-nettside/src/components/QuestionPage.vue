@@ -5,41 +5,45 @@
       <p>{{ information }}</p>
     </div>
 
-    <div v-for="item in quizItems" :key="item.question">
+    <div v-for="(item, index) in quizItems" :key="index">
       <div id="questions">
         <h2>{{ item.question }}</h2>
         <p>{{ item.info }}</p>
         <div id="inputRadio">
-          <input type="radio" :id="item.id + 'a'" :name="item.id" value="1" />
+          <input type="radio" :id="item.id + 'a'" :name="item.id" value="3" />
           <label :for="item.id + 'a'"> Synes det er kjempegøy </label> <br />
 
           <input type="radio" :id="item.id + 'b'" :name="item.id" value="2" />
           <label :for="item.id + 'b'"> Helt greit </label><br />
 
-          <input type="radio" :id="item.id + 'c'" :name="item.id" value="3" />
+          <input type="radio" :id="item.id + 'c'" :name="item.id" value="1" />
           <label :for="item.id + 'c'"> Liker ikke i det hele tatt </label>
         </div>
       </div>
     </div>
 
     <div>
-      <button @click="result" id="resultbtn" class="restult-btn result-purple">
+      <button @click="changeComponent()" id="btn-navigation" class="btn-navigation navigation-purple">
+        Gå tilbake
+      </button>
+      <!--<button @click="nextQuestions" id="btn-navigation" class="btn-navigation navigation-purple">
+        Neste
+      </button>-->
+     <button @click="result" id="btn-navigation" class="btn-navigation navigation-purple">
         Gå til resultater
       </button>
     </div>
   </div>
 </template>
 
-<script
-  src="https://cdn.jsdelivr.net/npm/vue@2.6.11"
-  type="JavaScript"
-></script>
 <script>
 export default {
   name: "QuestionPage",
   props: { title: String, information: String },
   data() {
     return {
+       minQuestions: 0,
+       maxQuestions: 4,
       quizItems: [
         {
           id: "1",
@@ -68,12 +72,35 @@ export default {
             "(gå på bom/line, stå på en fot, bygge store tårn, stå på tærne osv)",
         },
       ],
+     
     };
   },
   methods: {
+    changeComponent(){
+                this.$emit("nextComponent","QuestionYesNo");
+            },
     result() {
       this.$router.push({ path: "/quiz/results" });
     },
+    nextQuestions(){
+      console.log("NEXT!");
+      this.minQuestions + 4;
+      this.maxQuestions + 4;
+      this.quizList = this.quizItems.slice(this.minQuestions,this.maxQuestions);
+    
+    },
+    previousQuestions(){
+      if(this.maxQuestions > 3){
+        this.maxQuestions - 4;
+        this.minQuestions -4;
+        this.quizList= this.quizItems.slice(this.minQuestions,this.maxQuestions);
+      }
+    },
+    computed: {
+      filterRange (){
+        return this.quizList = this.quizItems.slice(this.minQuestions,this.maxQuestions);
+      }
+    }
   },
 };
 </script>
@@ -106,13 +133,13 @@ export default {
    font-size: 20px;
 }
 
-#resultbtn {
+#btn-navigation {
   background-color: #424242;
   color: #ffffff;
   font-size: 30px;
 }
 
-#resultbtn:hover {
+#btn-navigation:hover {
    background-color: #548687;
  }
 </style>
