@@ -5,16 +5,17 @@
         <p>
             <label for="name">Navn på aktivitet: </label><input type="text" id="name">
         </p>
-        <h2>Kategorier</h2>
+        <h2></h2>
         <table>
             <thead>
-            <tr v-for="(cat, index) in categories" :key="index">
-              <th> {{ cat.categories_name }}</th>
+            <tr>
+              <th> Egenskaper</th>
             </tr>
              </thead>
             <tbody>
-                <tr v-for="(feat, index) in categories.feature_name" :key="index">
-                    <td> {{ feat.feature_name }} </td>
+                <tr v-for="(feat, index) in features" :key="index">
+                    <td> {{ feat.features_name }} </td>
+                    <td> {{ feat.categories_id }} </td>
                 </tr>
             </tbody>
         </table>
@@ -24,7 +25,7 @@
 </template> 
 
 <script>
-import CategoryDataService from "@/services/CategoryDataService.js";
+//import CategoryDataService from "@/services/CategoryDataService.js";
 import FeatureDataService from "@/services/FeatureDataService.js";
 
 export default {
@@ -36,15 +37,16 @@ export default {
 
   data() {
         return { 
-          categories: [],
+          //categories: [],
           categories_name: "",
-          //features:[],
-          feature_name: "",
+          categories_id : "",
+          features:[],
+          features_name: "",
         };
     },
 
     methods: {
-      retrieveCategory() {
+      /*retrieveCategory() {
         CategoryDataService.getAll()
             .then(response => {
             this.categories = response.data;
@@ -53,7 +55,7 @@ export default {
           .catch(e => {
           console.log(e);
         });
-      },
+      },*/
       retrieveFeature() {
         FeatureDataService.getAll()
             .then(response => {
@@ -66,12 +68,12 @@ export default {
       },
       refreshList() {
         this.retrieveFeature();
-        this.retrieveCategory();
+        //this.retrieveCategory();
       
       },
     },
     mounted() {
-      this.retrieveCategory();
+      //this.retrieveCategory();
       this.retrieveFeature();
     } 
 };

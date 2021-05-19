@@ -1,5 +1,6 @@
 const db = require("../models");
 const Feature = db.features;
+const Category = db.categories;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Feature
@@ -15,10 +16,11 @@ exports.create = (req, res) => {
   // Create a Feature
   const feature = {
     features_name: req.body.features_name,
+    category_id: req.body.category_id,
   };
 
   // Save Feature in the database
-  Feature.create(feature)
+  Feature.create(category_id,feature)
     .then(data => {
       res.send(data);
     })
@@ -35,7 +37,11 @@ exports.findAll = (req, res) => {
     const features_name = req.query.features_name;
     var condition = features_name ? { features_name: { [Op.iLike]: `%${features_name}%` } } : null;
   
-    Feature.findAll({ where: condition })
+    Feature.findAll({ where: condition}, {
+      include: { 
+        model: Category,
+        required:true,
+      }})
       .then(data => {
         res.send(data);
       })
