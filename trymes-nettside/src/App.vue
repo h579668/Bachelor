@@ -1,15 +1,10 @@
 <template>
   <div id="app">
+    
+    <headerPage/>
 
-    <div id="header">
-      <p>header kommer senere</p>
-    </div>
 
-    <div id="nav">
-      <router-link :to="{ name: 'HomePage' }">Hjem</router-link> |
-      <router-link :to="{ name: 'AdLogin' }">Logg Inn</router-link>|
-      <router-link :to="{ name: 'AllActivities' }">Alle aktiviteter</router-link>
-    </div>
+    <NavPage/>
 
     <router-view />
 
@@ -19,6 +14,21 @@
 
   </div>
 </template>
+
+<script>
+import HeaderPage from "@/components/Header.vue"
+import NavPage from "@/components/Navigation.vue"
+
+export default {
+  name: 'app',
+  components: {
+    HeaderPage,
+    NavPage
+  },
+}
+
+</script>
+
 
 <style>
 #app {
