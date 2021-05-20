@@ -1,12 +1,13 @@
 <template>
   <div class="activities">
-    <Categories :list_of_results="list_of_results" />>
+    <Categories :list_of_results="list_of_results" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Categories from "@/components/Categories.vue";
+//Is not going to be like this...
+import Categories from "@/views/Categories.vue";
 
 export default {
   name: "AllActivities",

@@ -138,9 +138,6 @@ import FeatureDataService from "@/services/FeatureDataService.js";
 
   export default {
     name: "ActivityList",
-    props: {
-      msg: String,
-    },
     data(){
       return { 
         activities: [],
@@ -151,6 +148,7 @@ import FeatureDataService from "@/services/FeatureDataService.js";
 
         features: [],
         features_name: "",
+        msg: "Aktiviteter med egenskaper"
       };
     },
     methods: {

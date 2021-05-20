@@ -39,9 +39,6 @@
 <script>
 export default {
   name: "ChangePass",
-  props: {
-    changePassMsg: String,
-  },
   methods: {
     change() {
       window.alert("Passordet ble endret.");
@@ -53,6 +50,7 @@ export default {
       oldPass: "Gammelt passord:",
       password: "Nytt passord:",
       repeatPass: "Gjenta det nye passordet:",
+      changePassMsg:"Endre passord"
     };
   }
   

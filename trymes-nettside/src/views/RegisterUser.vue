@@ -35,6 +35,7 @@
         <span> Valgt alder: {{ select_age }} </span>
       </div>
     </div>
+    <button id="nextbtn" @click="quizpage"> {{ next }} </button>
   </div>
 </template>
 
@@ -57,10 +58,15 @@ export default {
       select_age:"",
       age_intervals: [],
       age_values:"",
+      //Button
+      next:"Start testen!",
       
     };
   },
   methods: {
+    quizpage(){
+      this.$router.push({ path: "/questions" });
+    },
       retrieveAges() {
         AgeDataService.getAll()
             .then(response => {
@@ -99,4 +105,14 @@ option {
   line-height: 10%;
   font-display: 10%;
 }
+#nextbtn {
+  margin-top: 5%;
+  background-color: #424242;
+  color: #ffffff;
+  font-size: 23px;
+}
+
+#nextbtn:hover {
+   background-color: #548687;
+ }
 </style>

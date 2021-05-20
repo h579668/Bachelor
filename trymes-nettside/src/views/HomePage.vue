@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ msg }}</h1>
-    <router-link :to="{ name: 'Register' }">
+    <router-link :to="{ name: 'RegisterUser' }">
       <button id="quizButton" class="foo bar">Start test</button>
     </router-link>
     <p>Og finn 10 passende aktiviteter nær deg!</p>
@@ -26,9 +26,10 @@
 <script>
 export default {
   name: "HomePage",
-  props: {
-    msg: String,
-  },
+  data () {
+    return{ msg: "Velkommen"}
+    
+  }
 };
 </script>
 

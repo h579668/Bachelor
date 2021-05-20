@@ -53,16 +53,13 @@ import FeatureDataService from "@/services/FeatureDataService.js";
 export default {
     
   name: "CreateNewActivity",
-  props: {
-    msg: String,
-  },
-
   data() {
         return { 
           categories: [],
           categories_name: "",
           features:[],
           feature_name: "",
+           msg: "Legg til ny aktivitet",
         };
     },
 

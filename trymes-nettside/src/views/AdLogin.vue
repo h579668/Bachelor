@@ -34,9 +34,6 @@
 <script>
 export default {
   name: "AdLogin",
-  props: {
-    loginmsg: String,
-  },
   methods: {
     login() {
       this.$router.push({ path: "/admenu" });
@@ -47,6 +44,7 @@ export default {
     return {
       username: "Brukernavn:",
       password: "Passord:",
+      loginmsg: "Innlogging (Kun for admin)",
     };
   }
 };

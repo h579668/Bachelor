@@ -39,12 +39,14 @@
 <script>
 export default {
   name: "QuestionPage",
-  props: { title: String, information: String },
   data() {
     return {
        minQuestions: 0,
        maxQuestions: 4,
        picked:null,
+       title: "Hvordan liker du å trene?",
+      information: "Kartlegging av hvordan du liker å drive med aktiviteter",
+      yesNoTitle: "Nå har vi noen ja/nei spørsmål",
       quizItems: [
         {
           id: "1",
@@ -81,7 +83,7 @@ export default {
                 this.$emit("nextComponent","QuestionYesNo");
             },
     result() {
-      this.$router.push({ path: "/quiz/results" });
+      this.$router.push({ path: "/questions/results" });
     },
     nextQuestions(){
       console.log("NEXT!");
