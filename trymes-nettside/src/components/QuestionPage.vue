@@ -10,13 +10,13 @@
         <h2>{{ item.question }}</h2>
         <p>{{ item.info }}</p>
         <div id="inputRadio">
-          <input type="radio" :id="item.id + 'a'" :name="item.id" value="3" />
+          <input type="radio" :id="item.id + 'a'" :name="item.id" :value="item.id + 'a'" v-model="picked" />
           <label :for="item.id + 'a'"> Synes det er kjempegøy </label> <br />
 
-          <input type="radio" :id="item.id + 'b'" :name="item.id" value="2" />
+          <input type="radio" :id="item.id + 'b'" :name="item.id" :value="item.id + 'b'" v-model="picked" />
           <label :for="item.id + 'b'"> Helt greit </label><br />
 
-          <input type="radio" :id="item.id + 'c'" :name="item.id" value="1" />
+          <input type="radio" :id="item.id + 'c'" :name="item.id" :value="item.id + 'c'"  v-model="picked"/>
           <label :for="item.id + 'c'"> Liker ikke i det hele tatt </label>
         </div>
       </div>
@@ -44,6 +44,7 @@ export default {
     return {
        minQuestions: 0,
        maxQuestions: 4,
+       picked:null,
       quizItems: [
         {
           id: "1",

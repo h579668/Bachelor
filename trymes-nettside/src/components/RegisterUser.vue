@@ -2,13 +2,13 @@
   <div>
     <h1> {{ register }} </h1>
     <div>
-        <!-- choose location-->
+        <!-- select geographical location-->
       <select
         class="form-control"
         v-model="select_area"
         :required="true"
         @change="changeLocation">
-        <option diabled :value="select_area">{{ select_area }}</option>
+        <option disabled :value="select_area">{{ select_area }}</option>
         <option v-for="a in area" :value="a.place" :key="a.id">
           {{ a.place }}
         </option>
@@ -18,16 +18,16 @@
         <span> Valgt område: {{ select_area }} </span>
       </div>
     </div>
-    <!-- Choose age-->
+    <!-- select an age_interval -->
     <div>
       <select
         class="form-control"
         v-model="select_age"
         :required="true"
         @change="changeAge">
-        <option diabled :value="select_age">{{ select_age }}</option>
-        <option v-for="ag in age" :value="ag.year" :key="ag.id">
-          {{ ag.year }}
+        <option disabled value="">{{ select_an_age }}</option>
+        <option v-for="(age,index) in age_intervals" :value="age.age_values" :key="index">
+          {{ age.age_values }}
         </option>
       </select>
       <br />
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import AgeDataService from "@/services/AgeDataService.js"
+
 export default {
   name: "RegisterUser",
   props: {
@@ -51,13 +53,32 @@ export default {
         { id: 2, place: "Oslo" },
       ],
       select_area: "Velg område",
-      age: [
-        { id: 1, year: "9-11" },
-        { id: 2, year: "12-14" },
-      ],
-      select_age: "Velg alder",
+      select_an_age: "Velg alder",
+      select_age:"",
+      age_intervals: [],
+      age_values:"",
+      
     };
   },
+  methods: {
+      retrieveAges() {
+        AgeDataService.getAll()
+            .then(response => {
+            this.age_intervals = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+          console.log(e);
+        });
+      },
+      refreshList() {
+        this.retrieveAges();
+      
+      },
+    },
+    mounted() {
+      this.retrieveAges();
+    } 
 };
 </script>
 

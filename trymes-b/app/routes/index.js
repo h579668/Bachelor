@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 
 const activity = require("../controllers/activity.controller.js");
+const age = require("../controllers/age_interval.controller.js");
 const category = require("../controllers/category.controller.js");
 const feature = require("../controllers/feature.controller.js");
 
@@ -9,10 +10,19 @@ const feature = require("../controllers/feature.controller.js");
 router.post("/activities/", activity.create); //create
 router.get("/activities/", activity.findAll); // Retrieve all activities
 router.get("/activities/published", activity.findAllPublished); // Retrieve all published activities
-router.get("/activities/:id", activity.findOne); // Retrieve a single Activity with id
-router.put("/activities/:id", activity.update); // Update a Activity with id
-router.delete("/activities/:id", activity.delete); // Delete a Activity with id
-router.delete("/actactivitiesvity/", activity.deleteAll); // Delete all Activity
+router.get("/activities/:id", activity.findOne); // Retrieve a single activity with id
+router.put("/activities/:id", activity.update); // Update an activity with id
+router.delete("/activities/:id", activity.delete); // Delete an activity with id
+router.delete("/actactivitiesvity/", activity.deleteAll); // Delete all activity
+
+/* Age_Interval Router */
+router.post("/age_intervals/", age.create); //create
+router.get("/age_intervals/", age.findAll); // Retrieve all ages
+router.get("/age_intervals/published", age.findAllPublished); // Retrieve all published age
+router.get("/age_intervals/:id", age.findOne); // Retrieve a single age with id
+router.put("/age_intervals/:id", age.update); // Update an age with id
+router.delete("/age_intervals/:id", age.delete); // Delete an age with id
+router.delete("/age_intervals/", age.deleteAll); // Delete all ages
 
 /* Category Router */
 router.post("/categories/", category.create); //create
@@ -31,6 +41,7 @@ router.get("/features/:id", feature.findOne); // Retrieve a single feature with 
 router.put("/features/:id", feature.update); // Update a feature with id
 router.delete("/features/:id", feature.delete); // Delete a feature with id
 router.delete("/features/", feature.deleteAll); // Delete all feature
+
 
 
 

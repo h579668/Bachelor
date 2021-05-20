@@ -16,6 +16,7 @@ const User_Feature = require('./user_feature.model.js')(sequelize, Sequelize);
 const Activity_Feature = require('./activity_feature.model.js')(sequelize, Sequelize);
 
 //many-to-many relation (N-M) in a separate table
+//Users_Activities table
 User.belongsToMany(Activity, { 
     through: User_Activity,
     as: 'activities',
@@ -28,6 +29,7 @@ Activity.belongsToMany(User, {
     foreignKey: 'activities_id'
 });
 
+//Users_Features table
 User.belongsToMany(Feature, { 
     through: User_Feature,
     as: 'features',
@@ -40,6 +42,7 @@ Feature.belongsToMany(User, {
     
 });
 
+//Activities_Features table
 Activity.belongsToMany(Feature,{ 
     through: Activity_Feature, 
     as: 'feeatures',
@@ -53,6 +56,7 @@ Feature.belongsToMany(Activity,{
     
 });
 
+//Associations_Area table
 Association.belongsToMany(Area, { 
     through: 'associations_areas',
     as:'areas',
@@ -78,6 +82,7 @@ Area.belongsToMany(User, {
     foreignKey: 'areas_id' 
 });*/
 
+//Activities_Age_Interval table
 Activity.belongsToMany(Age, {
     through: 'activities_age_interval',
     as: 'age_intervals',
@@ -94,6 +99,7 @@ Age.belongsToMany(Activity, {
 //User.hasOne(Area);
 
 //One-to-many relation (1-N)
+//FeatureFK is created in Category
 Feature.belongsTo(Category, {
     foreignKey:{
         name: 'categories_id'
@@ -105,6 +111,7 @@ Category.hasMany(Feature, {
     }
 });
 
+//ActivityFK is created in Association
 Activity.belongsTo(Association, {
     foreignKey:{
         name: 'associations_id'
@@ -116,6 +123,7 @@ Association.hasMany(Activity, {
     }
 });
 
+//AgeFK is created in User
 User.belongsTo(Age, {
     foreignKey: {
         name: 'age_id'
@@ -127,6 +135,7 @@ Age.hasMany(User, {
     }
 });
 
+//AreaFK is created in User
 User.belongsTo(Area, {
     foreignKey: 'age_id'
 });

@@ -5,17 +5,18 @@
         <p>
             <label for="name">Navn på aktivitet: </label><input type="text" id="name">
         </p>
-        <h2></h2>
+        <h2>Kategorier</h2>
         <table>
             <thead>
             <tr>
-              <th> Egenskaper</th>
+              <th> Egenskap</th> <!--v-for="(cat, index) in categories" :key="index"-->
+              <th> kategorier </th>
             </tr>
              </thead>
             <tbody>
-                <tr v-for="(feat, index) in features" :key="index">
-                    <td> {{ feat.features_name }} </td>
-                    <td> {{ feat.categories_id }} </td>
+                <tr v-for="(feat, index) in features" :key="index" >
+                    <td v-for="cat in features.categories_name" :key="cat" > {{ feat.features_name }} </td>
+                    <td> {{ cat.categories_name }} </td>
                 </tr>
             </tbody>
         </table>
@@ -37,7 +38,7 @@ export default {
 
   data() {
         return { 
-          //categories: [],
+          categories: [],
           categories_name: "",
           categories_id : "",
           features:[],
@@ -67,9 +68,8 @@ export default {
         });
       },
       refreshList() {
-        this.retrieveFeature();
         //this.retrieveCategory();
-      
+        this.retrieveFeature();
       },
     },
     mounted() {

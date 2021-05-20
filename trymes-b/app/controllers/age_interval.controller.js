@@ -32,8 +32,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Ages from the database.
 exports.findAll = (req, res) => {
-    const age = req.query.age;
-    var condition = age ? { age: { [Op.iLike]: `%${age}%` } } : null;
+    const age_values = req.query.age_values;
+    var condition = age_values ? { age_values: { [Op.iLike]: `%${age_values}%` } } : null;
   
     Age.findAll({ where: condition })
       .then(data => {

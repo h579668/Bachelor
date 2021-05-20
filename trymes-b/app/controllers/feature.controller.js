@@ -1,3 +1,4 @@
+const { features } = require("../models");
 const db = require("../models");
 const Feature = db.features;
 const Category = db.categories;
@@ -35,13 +36,14 @@ exports.create = (req, res) => {
 // Retrieve all Features from the database.
 exports.findAll = (req, res) => {
     const features_name = req.query.features_name;
-    var condition = features_name ? { features_name: { [Op.iLike]: `%${features_name}%` } } : null;
+    //var condition = features_name ? { features_name: { [Op.iLike]: `%${features_name}%` } } : null;
   
-    Feature.findAll({ where: condition}, {
-      include: { 
-        model: Category,
-        required:true,
-      }})
+    Feature.findAll( {
+      include:[ { 
+        model: db.categories,
+        attributes: ["categories_name"],
+        required: false
+      }]})
       .then(data => {
         res.send(data);
       })

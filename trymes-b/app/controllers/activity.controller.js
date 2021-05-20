@@ -1,5 +1,7 @@
+const { activities, associations } = require("../models");
 const db = require("../models");
 const Activity = db.activities;
+const Association = db.associations;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Activity
@@ -19,9 +21,17 @@ exports.create = (req, res) => {
     email: req.body.email,
     activities_comments: req.body.activities_comments,
   };
+  const age ={
+    age_values: req.body.age_values
+  };
+  const association ={
+    associations_name: req.boyd.associations
+  };
 
   // Save Activity in the database
   Activity.create(activity)
+    //.then((activity) => { activity.add(age) })
+    //.then((activity)=> { activity.add(association) })
     .then(data => {
       res.send(data);
     })
@@ -39,6 +49,7 @@ exports.findAll = (req, res) => {
     var condition = activities_name ? { activities_name: { [Op.iLike]: `%${activities_name}%` } } : null;
   
     Activity.findAll({ where: condition })
+   //    .then((activities_associations) => activities_associations.getAssociations())
       .then(data => {
         res.send(data);
       })
