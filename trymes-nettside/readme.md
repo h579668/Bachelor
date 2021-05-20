@@ -9,6 +9,11 @@ npm install
 ```
 npm install chart.js@2.9.4
 ```
+### To gain access to element components:
+```
+npm i element-ui -S
+```
+#Link: https://element.eleme.io/#/en-US/component/installation 
 
 ## Project install express, sequelize, pg, pg-hstore and bodyparser with node.js and express
 ```
