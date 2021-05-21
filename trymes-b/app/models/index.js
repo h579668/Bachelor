@@ -144,7 +144,7 @@ db.features.belongsToMany(db.users, {
   
 });
 
-//FeatureFK is created in Category
+//CategoriesFK is created in Features
 db.features.belongsTo(db.categories, {
   foreignKey:{
       name: "categories_id"

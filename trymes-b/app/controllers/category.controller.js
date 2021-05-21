@@ -33,14 +33,14 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Categories from the database.
+
 exports.findAll = (req, res) => {
-    const categories_name = req.query.categories_name;
-    var condition = categories_name ? { categories_name: { [Op.iLike]: `%${categories_name}%` } } : null;
+  const categories_name = req.query.categories_name;
+  var condition = categories_name ? { categories_name: { [Op.iLike]: `%${categories_name}%` } } : null;
   
-    Category.findAll({ 
-      where: condition, 
-      model : Feature,
-    },
+  Category.findAll({
+        
+      }
       )
       .then(data => {
         res.send(data);

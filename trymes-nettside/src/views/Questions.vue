@@ -2,24 +2,29 @@
   <div class="quiz">
     <div>
       <h1>{{ title }}</h1>
-      <p>{{ information }}</p>
     </div>
-
+    <div role="main"> 
+    <fieldset>
+    <legend> {{ information }}</legend>
     <div v-for="(item, index) in quizItems" :key="index">
       <div id="questions">
         <h2>{{ item.question }}</h2>
         <p>{{ item.info }}</p>
         <div id="inputRadio">
-          <input type="radio" :id="item.id + 'a'" :name="item.id" :value="item.id + 'a'" v-model="picked" />
+          
+          <input type="radio" :id="item.id + 'a'" :name="item.id" :value="item.id + 'a'" />
           <label :for="item.id + 'a'"> Synes det er kjempegøy </label> <br />
 
-          <input type="radio" :id="item.id + 'b'" :name="item.id" :value="item.id + 'b'" v-model="picked" />
+          <input type="radio" :id="item.id + 'b'" :name="item.id" :value="item.id + 'b'"  />
           <label :for="item.id + 'b'"> Helt greit </label><br />
 
-          <input type="radio" :id="item.id + 'c'" :name="item.id" :value="item.id + 'c'"  v-model="picked"/>
+          <input type="radio" :id="item.id + 'c'" :name="item.id" :value="item.id + 'c'"  />
           <label :for="item.id + 'c'"> Liker ikke i det hele tatt </label>
+          
         </div>
       </div>
+    </div>
+    </fieldset>
     </div>
 
     <div>
@@ -144,5 +149,9 @@ export default {
 
 #btn-navigation:hover {
    background-color: #548687;
+ }
+ fieldset{
+    border-color: #ffff;
+    border-style: solid;
  }
 </style>
