@@ -1,5 +1,5 @@
 //const { associations } = require('./index.js');
-
+//NOt CURRENTLY IN USE
 module.exports = (sequelize, Sequelize) => {
 const User = require('./user.model.js')(sequelize, Sequelize);
 const Age = require('./age_interval.model.js')(sequelize, Sequelize);

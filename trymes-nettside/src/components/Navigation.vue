@@ -1,3 +1,4 @@
+<!-- contains the three main navigation at the top of the page-->
 <template>
     <div id="nav">
       <router-link :to="{ name: 'HomePage' }">Hjem</router-link> |
