@@ -2,7 +2,6 @@
   <div>
     <h1> {{ table_of_results }} </h1>
     <canvas id="activity-chart"></canvas>
-    <ResultsList :list_of_results="list_of_results" />
   </div>
 </template>
 
@@ -10,6 +9,7 @@
 import Chart from "chart.js";
 import activityChartData from "../activity-data.js";
 import ActivityDataService from "@/services/ActivityDataService.js";
+
 export default {
   name: "Restults",
     data(){
@@ -17,6 +17,8 @@ export default {
         activityChartData: activityChartData,
         list_of_results: "Liste over resultatene",
         table_of_results: "Tabell over resultatene",/*
+        
+        Inital testing table
         activities: [
           { activity: "Skateboard", tel:"454 64 166", email:"henning@norb.no", associations: "Brettforbundet"}, 
           { activity: "Snøbrett", tel:"922 49 073", email:"magnus@snowboardforbundet.no", associations: "Brettforbundet"}, 
@@ -30,6 +32,7 @@ export default {
           { activity: "Freesbeegolf", tel:"454 64 166", email:"tone.sparby@nif.idrett.no", associations: "Norges amerikanske idretters forbund"}, 
         ],*/
         
+         //Must be spelled correctly like models in the database
         activities: [],
         activities_name:"",
         telephone: "",
@@ -39,6 +42,8 @@ export default {
       };
     },
     methods: {
+      //Method from bezcoders front end vue fullstack app. Link in readme
+      //Getting all activities from database and storing them in activities table
       retrieveLabels() {
         ActivityDataService.getAll()
             .then(response => {
@@ -49,11 +54,12 @@ export default {
           console.log(e);
         });
       },
+      //Refreshing the list
       refreshList() {
         this.retrieveLabels();
-      
       },
     },
+     //Putting it on the page
     mounted() {
       this.retrieveLabels();
       const ctx = document.getElementById("activity-chart");
@@ -85,4 +91,3 @@ li {
   list-style-type: none;
 }
 </style>
-

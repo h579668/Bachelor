@@ -49,13 +49,17 @@ export default {
   },
   data() {
     return {
+      //Area information that user can select
       area: [
         { id: 1, place: "Vestland" },
         { id: 2, place: "Oslo" },
       ],
+      //Default values
       select_area: "Velg område",
       select_an_age: "Velg alder",
       select_age:"",
+      
+      //Age intervals table
       age_intervals: [],
       age_values:"",
       //Button
@@ -64,9 +68,11 @@ export default {
     };
   },
   methods: {
+    //Redirecting the user to questions page
     quizpage(){
       this.$router.push({ path: "/questions" });
     },
+    //Getting all the age_intervals from database
       retrieveAges() {
         AgeDataService.getAll()
             .then(response => {
@@ -77,11 +83,13 @@ export default {
           console.log(e);
         });
       },
+      //Updating the list
       refreshList() {
         this.retrieveAges();
       
       },
     },
+    //Put it on the page
     mounted() {
       this.retrieveAges();
     } 

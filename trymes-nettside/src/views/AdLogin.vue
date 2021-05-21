@@ -1,25 +1,24 @@
+<!-- Admin login menu-->
 <template>
-  <div class="login">
-    <h1>{{ loginmsg }}</h1>
+  <div class="login" role="main">
     <form class="logginn-container">
-      
         <table>
           <tbody>
-       <!---   <th>{{ loginmsg }}</th>-->
+       <th colspan=2>{{ loginmsg }}</th>
           <tr>
             <td >
-              <label>{{ username }}</label>
+              <label for="username">{{ username }}</label>
             </td>
             <td>
-              <input class="logginn-input" type="text" />
+              <input class="logginn-input" type="text" name="username" id="username"/>
             </td>
           </tr>
           <tr>
             <td>
-              <label>{{ password }}</label>
+              <label for="password">{{ password }}</label>
             </td>
             <td>
-            <input class="logginn-input" type="password" />
+            <input class="logginn-input" type="password" name="password" id="password" />
             </td>
           </tr>
           </tbody>
@@ -68,6 +67,10 @@ export default {
 }
 td{
   text-align: right;
+}
+th{
+  font-size: 25px;
+  padding: 3%;
 }
 
 </style>

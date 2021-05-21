@@ -1,10 +1,9 @@
 <template>
   <div class="pass">
-    <h1>{{ changePassMsg }}</h1>
     <form class="newpass-container">
       <tbody>
         <table>
-       <!---   <th>{{ loginmsg }}</th>-->
+        <th colspan="2">{{ changePassMsg }}</th>
           <tr>
             <td>
               <label>{{ oldPass }}</label>
@@ -72,6 +71,10 @@ export default {
 
 td {
   text-align: right;
+}
+th{
+  font-size: 25px;
+  padding: 3%;
 }
 
 </style>

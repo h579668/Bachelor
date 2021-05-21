@@ -3,11 +3,15 @@
     <div>
       <h1>{{ title }}</h1>
     </div>
+    <!-- role="main" means that it is the main content on the page-->
     <div role="main"> 
     <fieldset>
     <legend> {{ information }}</legend>
+    <!--v-for-loop to get all the quiestions from the quiz table
+      the table is not yet created in the database, but it should be in the future-->
     <div v-for="(item, index) in quizItems" :key="index">
       <div id="questions">
+
         <h2>{{ item.question }}</h2>
         <p>{{ item.info }}</p>
         <div id="inputRadio">
@@ -28,7 +32,8 @@
     </div>
 
     <div>
-      <button @click="changeComponent()" id="btn-navigation" class="btn-navigation navigation-purple">
+      <!-- disabled button because it is only one page at the moment-->
+      <button disabled id="btn-navigation" class="btn-navigation navigation-purple">
         Gå tilbake
       </button>
       <!--<button @click="nextQuestions" id="btn-navigation" class="btn-navigation navigation-purple">
@@ -46,9 +51,6 @@ export default {
   name: "QuestionPage",
   data() {
     return {
-       minQuestions: 0,
-       maxQuestions: 4,
-       picked:null,
        title: "Hvordan liker du å trene?",
       information: "Kartlegging av hvordan du liker å drive med aktiviteter",
       yesNoTitle: "Nå har vi noen ja/nei spørsmål",
@@ -84,31 +86,9 @@ export default {
     };
   },
   methods: {
-    changeComponent(){
-                this.$emit("nextComponent","QuestionYesNo");
-            },
     result() {
       this.$router.push({ path: "/questions/results" });
     },
-    nextQuestions(){
-      console.log("NEXT!");
-      this.minQuestions + 4;
-      this.maxQuestions + 4;
-      this.quizList = this.quizItems.slice(this.minQuestions,this.maxQuestions);
-    
-    },
-    previousQuestions(){
-      if(this.maxQuestions > 3){
-        this.maxQuestions - 4;
-        this.minQuestions -4;
-        this.quizList= this.quizItems.slice(this.minQuestions,this.maxQuestions);
-      }
-    },
-    computed: {
-      filterRange (){
-        return this.quizList = this.quizItems.slice(this.minQuestions,this.maxQuestions);
-      }
-    }
   },
 };
 </script>

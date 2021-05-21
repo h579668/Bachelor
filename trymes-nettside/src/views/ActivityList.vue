@@ -1,5 +1,6 @@
 <template>
-     <div>
+<!-- role="main" means that it is the main content on the page-->
+     <div role="main">
         <h1> {{msg}} </h1>
    
         <!-- Tab links -->

@@ -1,5 +1,7 @@
+<!-- Menu for the admin, overview for possible future actions-->
 <template>
-  <div class="admenu">
+<!-- role="main" means that it is the main content on the page-->
+  <div class="admenu" role="main">
     <h1>{{ menumsg }}</h1>
 
     <form class="logginn-container">
@@ -15,9 +17,12 @@
 <script>
 export default {
   name: "AdMenu",
-  props: {
-    menumsg: String,
-  },
+  data(){
+    return{
+        menumsg: "Admin Meny"
+    }
+  }
+  
 };
 </script>
 

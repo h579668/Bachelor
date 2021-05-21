@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 //A function that allows import of the views the user visits.
+//Using lazyloading to get a cleaner code
 function lazyLoad(view){
   return() => import(`@/views/${view}.vue`)
 }
@@ -41,7 +42,7 @@ const routes = [
     component: lazyLoad("ActivityList"),
   },
   {
-    path: "/changePasswor",
+    path: "/changePassword",
     name: "ChangePassword",
     component: lazyLoad("ChangePassword"),
   },

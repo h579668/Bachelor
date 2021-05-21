@@ -1,8 +1,9 @@
 <template>
-  <div class="deleteActivity">
+<!-- role="main" means that it is the main content on the page-->
+  <div class="deleteActivity" role="main">
     <h1>{{ msg }}</h1>
     <form>
-    <table class="deleteActivity-container">
+    <table class="deleteActivity-container" >
         <thead>
             <tr>
                 <th colspan="2">Aktivitet informasjon</th>
