@@ -1,5 +1,5 @@
 import http from "../http-commons.js";
-
+// fetching the data from the database
 class AgeDataService {
   getAll() {
     return http.get("/age_intervals");

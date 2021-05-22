@@ -1,7 +1,8 @@
 <template>
   <div class="createNewActivity">
     <h1>{{ msg }}</h1>
-    <form class="newActivity-container">
+    <!-- role="main" means that it is the main content on the page-->
+    <form class="newActivity-container" role="main">
         <p>
             <label for="name">Navn på aktivitet: </label><input type="text" id="name">
         </p>

@@ -1,6 +1,7 @@
 <template>
   <div class="pass">
-    <form class="newpass-container">
+    <!-- role="main" means that it is the main content on the page-->
+    <form class="newpass-container" role="main">
       <tbody>
         <table>
         <th colspan="2">{{ changePassMsg }}</th>

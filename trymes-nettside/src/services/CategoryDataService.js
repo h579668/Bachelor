@@ -1,10 +1,10 @@
 import http from "../http-commons.js";
-
+// fetching the data from the database
 class CategoryDataService {
   getAll() {
     return http.get("/categories");
   }
-
+/*
   findOne(id) {
     return http.get(`/categories/${id}`);
   }
@@ -27,9 +27,7 @@ class CategoryDataService {
 
   findByTitle(navn) {
     return http.get(`/categories?navn=${navn}`);
-  }
+  }*/
 }
-
-
 
 export default new CategoryDataService(); 

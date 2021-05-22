@@ -10,48 +10,48 @@ const run = async () => {
     categories_name: "Koordinative egenskaper"
   });
 
-  const feat1 = await controller.createFeature(cat1.id, {
+  const feat1 = await controller.createFeature(cat1.categories_id, {
     features_name: "bezkode",
   });
 
-  await controller.createFeature(cat1.id, {
+  await controller.createFeature(cat1.categories_id, {
     features_name: "zkoder",
   });
 
-  const feat2 = await controller.createFeature(cat2.id, {
+  const feat2 = await controller.createFeature(cat2.categories_id, {
     features_name: "aKoder",
   });
 
-  await controller.createFeature(cat2.id, {
+  await controller.createFeature(cat2.categories_id, {
     features_name: "anotherKoder",
   });
 
-  const cat1Data = await controller.findCategoryById(cat1.id);
+  const cat1Data = await controller.findCategoryById(cat1.categories_id);
   console.log(
-    ">> Category id=" + cat1Data.id,
+    ">> Category id=" + cat1Data.categories_id,
     JSON.stringify(cat1Data, null, 2)
   );
 
-  const cat2Data = await controller.findCategoryById(cat2.id);
+  const cat2Data = await controller.findCategoryById(cat2.categories_id);
   console.log(
-    ">> Category id=" + cat2Data.id,
+    ">> Category id=" + cat2Data.categories_id,
     JSON.stringify(cat2Data, null, 2)
   );
 
-  const feat1Data = await controller.findFeatureById(feat1.id);
+  const feat1Data = await controller.findFeatureById(feat1.features_id);
   console.log(
-    ">> Feature id=" + feat1.id,
+    ">> Feature id=" + feat1.features_id,
     JSON.stringify(feat1Data, null, 2)
   );
 
-  const feat2Data = await controller.findFeatureById(feat2.id);
+  const feat2Data = await controller.findFeatureById(feat2.features_id);
   console.log(
-    ">> Feature id=" +  feat2.id,
+    ">> Feature id=" +  feat2.features_id,
     JSON.stringify(feat2Data, null, 2)
   );
 
   const Categories = await controller.findAll();
-  console.log(">> All Categorys", JSON.stringify(Categories, null, 2));
+  console.log(">> All Categories", JSON.stringify(Categories, null, 2));
 };
 /*
 const run = async () => {

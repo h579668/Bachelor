@@ -2,9 +2,9 @@ import http from "../http-commons.js";
 // fetching the data from the database
 class FeatureDataService {
   getAll() {
-    return http.get("/features");
+    return http.get("/activities_features");
   }
-
+/*
   findOne(id) {
     return http.get(`/features/${id}`);
   }
@@ -27,7 +27,7 @@ class FeatureDataService {
 
   findByTitle(navn) {
     return http.get(`/features?navn=${navn}`);
-  }
+  }*/
 }
 
 

@@ -47,7 +47,7 @@ db.associations = require("./association.model.js")(sequelize, Sequelize);
 //Activities_Features table
 db.activities.belongsToMany(db.features,{ 
   through: db.activities_features, 
-  as: "feeatures",
+  as: "features",
   foreignKey: "activities_id"
 });
 
@@ -70,10 +70,11 @@ db.age_intervals.belongsToMany(db.activities, {
   foreignKey: "age_id",
 });
 
-//ActivityFK is created in Association
+//AssociationFK is created in Activties
 db.activities.belongsTo(db.associations, {
   foreignKey:{
-      name: "associations_id"
+      name: "associations_id",
+      as:"associations"
   }
 });
 db.associations.hasMany(db.activities, {
@@ -85,7 +86,8 @@ db.associations.hasMany(db.activities, {
 //AgeFK is created in User
 db.users.belongsTo(db.age_intervals, {
   foreignKey: {
-      name: "age_id"
+      name: "age_id",
+      as:"age_intervals"
   }
 });
 db.age_intervals.hasMany(db.users, {
@@ -96,11 +98,12 @@ db.age_intervals.hasMany(db.users, {
 
 //AreaFK is created in User
 db.users.belongsTo(db.areas, {
-  foreignKey: "age_id"
+  foreignKey: "areas_id",
+  as: "areas"
 });
 
 db.areas.hasMany(db.users, {
-  foreignKey: "age_id"
+  foreignKey: "areas_id"
 });
 
 //Associations_Area table
@@ -116,7 +119,6 @@ db.areas.belongsToMany(db.associations, {
     foreignKey: "areas_id"
 }
 );
-
 
 //Users_Activities table
 db.users.belongsToMany(db.activities, { 
@@ -146,14 +148,12 @@ db.features.belongsToMany(db.users, {
 
 //CategoriesFK is created in Features
 db.features.belongsTo(db.categories, {
-  foreignKey:{
-      name: "categories_id"
-  }
+  foreignKey:"categories_id",
+      as: "categories",
 });
 db.categories.hasMany(db.features, {
-  foreignKey: {
-      name:"categories_id"
-  }
+  foreignKey: "categories_id",
+      as: "features"
 });
 
 //db.relations = require("./relations.js")(sequelize, Sequelize);

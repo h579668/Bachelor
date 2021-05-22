@@ -25,13 +25,23 @@ router.delete("/age_intervals/:id", age.delete); // Delete an age with id
 router.delete("/age_intervals/", age.deleteAll); // Delete all ages
 
 /* Category Router */
-router.post("/categories/", category.create); //create
-router.get("/categories/", category.findAll); // Retrieve all category
-router.get("/categories/published", category.findAllPublished); // Retrieve all published category
-router.get("/categories/:id", category.findOne); // Retrieve a single category with id
-router.put("/categories/:id", category.update); // Update a category with id
-router.delete("/categories/:id", category.delete); // Delete a category with id
-router.delete("/categories/", category.deleteAll); // Delete all category
+//router.post("/categories/", category.create); //create
+router.get("/categories/", category.findAll); // Retrieve all categories
+//router.get("/categories/published", category.findAllPublished); // Retrieve all published category
+//router.get("/categories/:id", category.findOne); // Retrieve a single category with id
+//router.put("/categories/:id", category.update); // Update a category with id
+//router.delete("/categories/:id", category.delete); // Delete a category with id
+//router.delete("/categories/", category.deleteAll); // Delete all category
+
+/* ActivityFeature Router */
+//router.post("/features/", feature.create); //create
+router.get("/activities_features/", feature.findAll); // Retrieve all feature
+/*router.get("/features/published", feature.findAllPublished); // Retrieve all published feature
+router.get("/features/:id", feature.findOne); // Retrieve a single feature with id
+router.put("/features/:id", feature.update); // Update a feature with id
+router.delete("/features/:id", feature.delete); // Delete a feature with id
+router.delete("/features/", feature.deleteAll); // Delete all feature*/
+
 
 /* Feature Router */
 router.post("/features/", feature.create); //create

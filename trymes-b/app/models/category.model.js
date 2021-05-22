@@ -15,8 +15,5 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
     });
- /* Category.associate = function(models){
-    Category.belongsToMany(models.feature);
-  };*/
     return Category;
   };

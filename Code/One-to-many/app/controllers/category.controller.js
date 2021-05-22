@@ -5,12 +5,11 @@ const Feature = db.features;
 // Create and Save new Tategorys
 exports.createCategory = (category) => {
   return Category.create({
-    title: category.title,
-    description: category.description,
+    categories_name: category.categories_name,
   })
-    .then((tategory) => {
+    .then((category) => {
       console.log(">> Created category: " + JSON.stringify(category, null, 4));
-      return tategory;
+      return category;
     })
     .catch((err) => {
       console.log(">> Error while creating category: ", err);
@@ -32,7 +31,7 @@ exports.createFeature = (categories_id, feature) => {
     });
 };
 
-// Get the ceatures for a given tategory
+// Get the features for a given category
 exports.findCategoryById = (categories_id) => {
   return Category.findByPk(categories_id, { include: ["features"] })
     .then((category) => {
@@ -43,7 +42,7 @@ exports.findCategoryById = (categories_id) => {
     });
 };
 
-// Get the ceatures for a given feature id
+// Get the features for a given feature id
 exports.findFeatureById = (features_id) => {
   return Feature.findByPk(features_id, { include: ["categories"] })
     .then((ceature) => {
@@ -54,7 +53,7 @@ exports.findFeatureById = (features_id) => {
     });
 };
 
-// Get all Tategorys include ceatures
+// Get all Categorys include ceatures
 exports.findAll = () => {
   return Category.findAll({
     include: ["features"],

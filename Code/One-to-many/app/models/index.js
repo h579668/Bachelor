@@ -35,7 +35,11 @@ db.sequelize = sequelize;
 db.categories = require("./category.model.js")(sequelize, Sequelize);
 db.features = require("./feature.model.js")(sequelize, Sequelize);
 
-db.categories.hasMany(db.features, { as: "features", foreignKey: "categories_id" });
+db.categories.hasMany(db.features, { 
+  as: "features", 
+  foreignKey: "categories_id" 
+});
+
 db.features.belongsTo(db.categories, {
   foreignKey: "categories_id",
   as: "categories",

@@ -1,5 +1,6 @@
 <!-- Admin login menu-->
 <template>
+<!-- role="main" means that it is the main content on the page-->
   <div class="login" role="main">
     <form class="logginn-container">
         <table>
