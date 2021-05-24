@@ -11,7 +11,7 @@ import activityChartData from "../activity-data.js";
 import ActivityDataService from "@/services/ActivityDataService.js";
 
 export default {
-  name: "Restults",
+  name: "Results",
     data(){
       return { 
         activityChartData: activityChartData,

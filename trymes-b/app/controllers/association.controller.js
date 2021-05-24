@@ -1,5 +1,6 @@
 const db = require("../models");
 const Association = db.associations;
+const Activity = db.activities;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Association
@@ -30,7 +31,7 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Association from the database.
+/* Retrieve all Association from the database.
 exports.findAll = (req, res) => {
     const ass_name = req.query.ass_name;
     var condition = ass_name ? { ass_name: { [Op.iLike]: `%${ass_name}%` } } : null;
@@ -45,6 +46,23 @@ exports.findAll = (req, res) => {
             err.message || "Some error occurred while retrieving Association."
         });
       });
+};*/
+
+// Get all associations including Activities
+exports.findAll = (req,res) => {
+  Association.findAll({
+    include: ["activities"],
+  }).then((data) => {
+    res.send(data)
+    //return categories;
+  })
+
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Associations."
+      });
+  });
 };
 
 // Find an single Association with an id

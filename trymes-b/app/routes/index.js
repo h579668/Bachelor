@@ -5,6 +5,7 @@ const activity = require("../controllers/activity.controller.js");
 const age = require("../controllers/age_interval.controller.js");
 const category = require("../controllers/category.controller.js");
 const feature = require("../controllers/feature.controller.js");
+const association = require("../controllers/association.controller.js");
 
 /* Activity Router */
 router.post("/activities/", activity.create); //create
@@ -42,6 +43,7 @@ router.put("/features/:id", feature.update); // Update a feature with id
 router.delete("/features/:id", feature.delete); // Delete a feature with id
 router.delete("/features/", feature.deleteAll); // Delete all feature*/
 
+router.get("/associations/", association.findAll);
 
 /* Feature Router */
 router.post("/features/", feature.create); //create

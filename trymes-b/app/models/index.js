@@ -72,15 +72,13 @@ db.age_intervals.belongsToMany(db.activities, {
 
 //AssociationFK is created in Activties
 db.activities.belongsTo(db.associations, {
-  foreignKey:{
-      name: "associations_id",
+  foreignKey: "associations_id",
       as:"associations"
-  }
+  
 });
 db.associations.hasMany(db.activities, {
-  foreignKey: {
-      name:"associations_id"
-  }
+  foreignKey:"associations_id",
+  as: "activities"
 });
 
 //AgeFK is created in User
