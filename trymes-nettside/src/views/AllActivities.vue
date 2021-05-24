@@ -3,7 +3,7 @@
 <template>
 <div id="app">
 
-<div id="activityTable">
+<div id="activityTable" class="tableFixHead">
   <table>
     <thead>
       <tr>
@@ -104,6 +104,15 @@ export default {
 </script>
 
 <style scoped>
+.tableFixHead {
+  overflow-y: auto;
+  height: 500px;
+}
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+}
+
 #activityTable {
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
@@ -111,25 +120,11 @@ export default {
   text-align: left;
 }
 
-#activityTable header, #activityTable th{
-  table-layout: fixed;
-  display: block;
-}
-
-#activityTable tbody{
-  display:block;
-  width: 100%;
-  overflow: auto;
-  height: 100px;
-}
-
 #activityTable td, #activityTable th {
    border-bottom: 1px solid #ddd;
     padding: 8px;
 }
-#activittTable tr:nth-child(even) {
-  background-color: #f2f2f2
-}
+
 #activityTable tr:hover {
   background-color: #ddd;
   }
