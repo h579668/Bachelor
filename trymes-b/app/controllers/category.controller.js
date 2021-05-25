@@ -40,21 +40,27 @@ exports.createFeature = (categories_id, feature) => {
 };
 
 // Get the ceatures for a given category
-exports.findCategoryById = (categories_id) => {
-  return Category.findByPk(categories_id, { include: ["features"] })
-    .then((category) => {
-      return category;
+exports.findCategoryById = (req,res) => {
+  Category.findByPk(categories_id, { 
+    include: ["features"] })
+    .then((data) => {
+      res.send(data);
     })
     .catch((err) => {
-      console.log(">> Error while finding category: ", err);
+      res.status(500).send({
+        message:
+        err.message || ">> Error while finding category."
+      })
+     // console.log(">> Error while finding category: ", err);
     });
 };
 
 // Get the features for a given feature id
-exports.findFeatureById = (features_id) => {
-  return Feature.findByPk(features_id, { include: ["categories"] })
-    .then((ceature) => {
-      return ceature;
+exports.findFeatureById = (freq,res) => {
+  Feature.findByPk(features_id, { 
+      include: ["categories"] })
+    .then((data) => {
+      res.send(data);
     })
     .catch((err) => {
       console.log(">> Error while finding feature: ", err);

@@ -4,22 +4,23 @@
             <el-tab-pane v-for="cat in categories" :key="cat.categories_name" 
             :label="cat.categories_name">{{ cat.categories_name }}    
         <template>
-           <table>
+           <table id="activity_featureTable">
                <thead>
                    <tr>
                         <th>Aktivitet</th>
-                        <th v-for="feat in features" :key="feat.features_id">
+                        <th v-for="feat in cat.features" :key="feat.features_id">
                             {{feat.features_name}}
+                        </th>
                     </tr>
                </thead>
-             <!-- <tbody>
+             <tbody>
                    <tr v-for="act in activities" :key="act.activities_id">
                        <td>{{act.activities_name}} </td>
-                       <td v-for="f in features" :key="f.features_id">
-                           {{f.activity_features_values}}
+                       <td v-for="f in act.features" :key="f.features_id">
+                           {{f.activities_features_values}}
                        </td>
                    </tr>
-               </tbody>-->
+               </tbody>
            </table>
         </template>
         </el-tabs>
@@ -28,7 +29,8 @@
 
 <script>
 import CategoryDataService from "@/services/CategoryDataService.js";
-import FeatureDataService from "@/services/FeatureDataService.js";
+import ActiivtyDataService from "@/services/ActivityDataService.js";
+//import FeatureDataService from "@/services/FeatureDataService.js";
 
   export default {
     name: "EntireList",
@@ -39,7 +41,7 @@ import FeatureDataService from "@/services/FeatureDataService.js";
         msg: "Aktiviteter med egenskaper",
         activities_features_values:"",
 
-        //activities: [],
+        activities: [],
         activities_name: "",
 
         categories: [],
@@ -47,20 +49,6 @@ import FeatureDataService from "@/services/FeatureDataService.js";
 
         
       };
-    },
-    computed:{
-      /*  activities() {
-            console.log("HERE");
-            let activities ={};
-            this.features.forEach((row) => {
-                row.activities.forEach((activity) => {
-                activities[activity.activities_name] = 1;
-            console.log(activity.activities_name);
-            });
-        });
-        return Object.keys(activities);
-    },*/
-     
     },
     methods:{
     retrieveCategories() {
@@ -73,10 +61,10 @@ import FeatureDataService from "@/services/FeatureDataService.js";
           console.log(e);
         });
       },
-      retrieveFeatures() {
-        FeatureDataService.getAll()
+      retrieveActivities() {
+        ActiivtyDataService.getAll()
             .then(response => {
-            this.features = response.data;
+            this.activities = response.data;
             console.log(response.data);
           })
           .catch(e => {
@@ -85,19 +73,51 @@ import FeatureDataService from "@/services/FeatureDataService.js";
       },
       refreshList() {
         this.retrieveCategories();
-        this.retrieveFeatures();
+        this. retrieveActivities();
       
       },
     },
     mounted() {
       this.retrieveCategories();
-      this.retrieveFeatures();
+      this. retrieveActivities();
     }   
 };
 </script>
 
 <style scoped>
 @import url("//unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css");
+.tableFixHead {
+  overflow-y: auto;
+  height: 500px; 
+}
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+}
+
+#activity_featureTable {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+#activity_featureTable td, #activity_featureTable th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+#activity_featureTable tr:hover {
+  border-bottom: 1px solid #ddd;
+  }
+
+#activity_featureTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #548687;
+  color: white;
+}
+
 
 </style>
 <!--

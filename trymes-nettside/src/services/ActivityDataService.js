@@ -8,7 +8,7 @@ class ActivityDataService {
   get(id) {
     return http.get(`/activities/${id}`);
   }
-
+/*
   create(data) {
     return http.post("/activities", data);
   }
@@ -27,7 +27,7 @@ class ActivityDataService {
 
   findByTitle(navn) {
     return http.get(`/activities?navn=${navn}`);
-  }
+  }*/
 }
 
 

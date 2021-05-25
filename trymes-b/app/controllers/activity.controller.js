@@ -1,7 +1,6 @@
-const { activities, associations } = require("../models");
 const db = require("../models");
 const Activity = db.activities;
-const Association = db.associations;
+const Feature = db.features;
 const Op = db.Sequelize.Op;
 
 //Create and Save a new Activity
@@ -44,34 +43,36 @@ exports.create = (req, res) => {
 };
 
 //Retrieve all activities
-exports.findAll = (req, res) => {
+ // Get all Features
+ exports.findAll = (req, res) => {
+  const activities_name = req.query.activities_name;
+  var condition = activities_name ? { activities_name: { [Op.iLike]: `%${activities_name}%` } } : null;
   Activity.findAll({
+    condition,
+    order: [['activities_name', 'ASC']],
     include: [
       {
         model: Feature,
         as: "features",
-        attributes: ["features_id", "features_name"],
+        attributes: ["features_id", "features_name",],
         through: {
-          attributes: [],
+          attributes: ["activities_features_values"],
         },
-        // through: {
-        //   attributes: ["tag_id", "activity_id"],
-        // },
       },
     ],
+  
   })
-    .then((data) => {
+    .then(data => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        // console.log(">> Error while retrieving activities: ", err);
-        message:
-          err.message || ">> Error while retrieving activities "
-        })
-     
+        message: err.message || "Error retrieving all Features"
+      })
+      //console.log(">> Error while retrieving Features: ", err);
     });
 };
+
 //Get the activity for a given activity id
 exports.findById = (req,res) => {
   const activities_id = req.params.activities_id;
@@ -82,7 +83,7 @@ exports.findById = (req,res) => {
         as: "features",
         attributes: ["features_id", "features_name"],
         through: {
-          attributes: [],
+          attributes: ["activities_features_values"],
         },
         // through: {
         //   attributes: ["tag_id", "activity_id"],
@@ -101,9 +102,40 @@ exports.findById = (req,res) => {
       //console.log(">> Error while finding activities: ", err);
     });
 };
+
+exports.addFeature = (req,res) => {
+  const features_id = req.params.features_id;
+  const activities_id= req.params.activities_id;
+  const numbers= req.body.numbers;
+
+    Activity.findByPk(activities_id)
+      .then((activity) => {
+        if (!activity) {
+          console.log("Activity not found!");
+          return null;
+        }
+        Feature.findByPk(features_id).then((feature) => {
+          if (!feature) {
+            console.log("Feature not found!");
+            return null;
+          }
+  
+          activity.addFeature(feature, { 
+            through: {
+              activities_features_values:numbers
+            }
+          });
+          console.log(`>> added Feature id=${feature.features_id} to Activity id=${activity.activities_id} where values equals=${numbers}`);
+          return feature;
+        });
+      })
+      .catch((err) => {
+        console.log(">> Error while adding Activity to Feature: ", err);
+      });
+  };
 //------------------------------------------
 
-// Retrieve all Activities from the database.
+/* Retrieve all Activities from the database.
 exports.findAll = (req, res) => {
     const activities_name = req.query.activities_name;
     var condition = activities_name ? { activities_name: { [Op.iLike]: `%${activities_name}%` } } : null;
@@ -218,3 +250,4 @@ exports.findAllPublished = (req, res) => {
       });
     });
 };
+*/
