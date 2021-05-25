@@ -1,152 +1,109 @@
-const { features } = require("../models");
 const db = require("../models");
+const Activity = db.activities;
 const Feature = db.features;
-const Category = db.categories;
-const Op = db.Sequelize.Op;
+const Activity_Feature = db.activities_features;
 
-// Create and Save a new Feature
-exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.features_name) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
-  }
-
-  // Create a Feature
-  const feature = {
-    features_name: req.body.features_name,
-    category_id: req.body.category_id,
+  // Create and Save new Feature
+exports.create = (req,res) => {
+  const features_name = req.body.features_name
+    Feature.create({
+      features_name: feature.features_name,
+    })
+      .then((data) => {
+       // console.log(">> Created Feature: " + JSON.stringify(data, null, 2));
+        //return feature;
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: 
+            err.message || ">> Error while creating Feature: ", err
+          
+        })
+       // console.log(">> Error while creating Feature: ", err);
+      });
   };
 
-  // Save Feature in the database
-  Feature.create(category_id,feature)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the feature."
-      });
-    });
-};
-
-// Retrieve all Features from the database.
-exports.findAll = (req, res) => {
-    const features_name = req.query.features_name;
-    //var condition = features_name ? { features_name: { [Op.iLike]: `%${features_name}%` } } : null;
+  // Find a Feature for a given Feature id
+exports.findById = (req,res) => {
+  const id = req.params.features_id;
   
-    Feature.findAll( {
-      include:[ { 
-        model: db.categories,
-        attributes: ["categories_name"],
-        required: false
-      }]})
+  Feature.findByPk(id, {
+      include: [
+        {
+          model: Activity,
+          as: "activities",
+          attributes: ["activities_id", "activities_name"],
+          through: {
+            attributes: ["activities_features_values"],
+          }
+        },
+      ],
+    })
       .then(data => {
         res.send(data);
       })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving Features."
-        });
-      });
-};
-
-// Find an single Feature with an id
-exports.findOne = (req, res) => {
-    const id = req.params.id;
-
-    Feature.findByPk(id)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).send({
           message: "Error retrieving Feature with id=" + id
-        });
-      });
-};
-
-// Update a Feature by the id in the request
-exports.update = (req, res) => {
-    const id = req.params.id;
-
-    Feature.update(req.body, {
-      where: { id: id }
-    })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "Feature was updated successfully."
-          });
-        } else {
-          res.send({
-            message: `Cannot update Feature with id=${id}. Maybe Feature was not found or req.body is empty!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error updating Feature with id=" + id
-        });
-      });
-};
-
-// Delete a Feature with the specified id in the request
-exports.delete = (req, res) => {
-    const id = req.params.id;
-
-    Feature.destroy({
-      where: { id: id }
-    })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "Feature was deleted successfully!"
-          });
-        } else {
-          res.send({
-            message: `Cannot delete Feature with id=${id}. Maybe Feature was not found!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Could not delete Feature with id=" + id
-        });
-      });
-};
-
-// Delete all Features from the database.
-exports.deleteAll = (req, res) => {
-  Feature.destroy({
-        where: {},
-        truncate: false
-      })
-        .then(nums => {
-          res.send({ message: `${nums} Features were deleted successfully!` });
         })
-        .catch(err => {
-          res.status(500).send({
-            message:
-              err.message || "Some error occurred while removing all Features."
-          });
-        })
-};
-
-// Find all published Features
-exports.findAllPublished = (req, res) => {
-  Feature.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Features."
+       // console.log(">> Error while finding Feature: ", err);
       });
-    });
-};
+  };
+
+  // Get all Features
+  exports.findAll = (req, res) => {
+    Feature.findAll({
+      include: [
+        {
+          model: Activity,
+          as: "activities",
+          attributes: ["activities_id", "activities_name"],
+          through: {
+            attributes: ["activities_features_values"],
+          },
+        },
+      ],
+    })
+      .then(data => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Error retrieving all Features"
+        })
+        //console.log(">> Error while retrieving Features: ", err);
+      });
+  };
+
+  //Add an Activity to a Feature
+exports.addActivity = (req,res) => {
+  const features_id = req.params.features_id;
+  const activities_id= req.params.activities_id;
+  const numbers= req.body.numbers;
+
+    Feature.findByPk(features_id)
+      .then((feature) => {
+        if (!feature) {
+          console.log("Feature not found!");
+          return null;
+        }
+        Activity.findByPk(activities_id).then((activity) => {
+          if (!activity) {
+            console.log("Activity not found!");
+            return null;
+          }
+  
+          feature.addActivity(activity, { 
+            through: {
+              activities_features_values:numbers
+            }
+          });
+          console.log(`>> added Activity id=${activity.activities_id} to Feature id=${feature.features_id} where values equals=${numbers}`);
+          return feature;
+        });
+      })
+      .catch((err) => {
+        console.log(">> Error while adding Activity to Feature: ", err);
+      });
+  };

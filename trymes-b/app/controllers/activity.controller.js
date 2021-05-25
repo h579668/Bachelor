@@ -4,7 +4,7 @@ const Activity = db.activities;
 const Association = db.associations;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Activity
+//Create and Save a new Activity
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.activities_name) {
@@ -43,6 +43,66 @@ exports.create = (req, res) => {
     });
 };
 
+//Retrieve all activities
+exports.findAll = (req, res) => {
+  Activity.findAll({
+    include: [
+      {
+        model: Feature,
+        as: "features",
+        attributes: ["features_id", "features_name"],
+        through: {
+          attributes: [],
+        },
+        // through: {
+        //   attributes: ["tag_id", "activity_id"],
+        // },
+      },
+    ],
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        // console.log(">> Error while retrieving activities: ", err);
+        message:
+          err.message || ">> Error while retrieving activities "
+        })
+     
+    });
+};
+//Get the activity for a given activity id
+exports.findById = (req,res) => {
+  const activities_id = req.params.activities_id;
+  Activity.findByPk(activities_id, {
+    include: [
+      {
+        model: Feature,
+        as: "features",
+        attributes: ["features_id", "features_name"],
+        through: {
+          attributes: [],
+        },
+        // through: {
+        //   attributes: ["tag_id", "activity_id"],
+        // },
+      },
+    ],
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+        err.message || ">> Error while finding activities"
+       })
+      //console.log(">> Error while finding activities: ", err);
+    });
+};
+//------------------------------------------
+
 // Retrieve all Activities from the database.
 exports.findAll = (req, res) => {
     const activities_name = req.query.activities_name;
@@ -71,7 +131,8 @@ exports.findOne = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Activity with id=" + id
+          message: 
+          err.message || "Error retrieving Activity with id=" + id
         });
       });
 };
@@ -96,7 +157,8 @@ exports.update = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Activity with id=" + id
+          messag:
+          err.message || "Error updating Activity with id=" + id
         });
       });
 };
