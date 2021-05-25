@@ -8,13 +8,13 @@ const feature = require("../controllers/feature.controller.js");
 const association = require("../controllers/association.controller.js");
 
 /* Activity Router */
-router.post("/activities/", activity.create); //create
+//router.post("/activities/", activity.create); //create
 router.get("/activities/", activity.findAll); // Retrieve all activities
-router.get("/activities/published", activity.findAllPublished); // Retrieve all published activities
-router.get("/activities/:id", activity.findOne); // Retrieve a single activity with id
-router.put("/activities/:id", activity.update); // Update an activity with id
-router.delete("/activities/:id", activity.delete); // Delete an activity with id
-router.delete("/actactivitiesvity/", activity.deleteAll); // Delete all activity
+//router.get("/activities/published", activity.findAllPublished); // Retrieve all published activities
+router.get("/activities/:id", activity.findById); // Retrieve a single activity with id
+//router.put("/activities/:id", activity.update); // Update an activity with id
+//router.delete("/activities/:id", activity.delete); // Delete an activity with id
+//router.delete("/actactivitiesvity/", activity.deleteAll); // Delete all activity
 
 /* Age_Interval Router */
 router.post("/age_intervals/", age.create); //create
@@ -29,7 +29,7 @@ router.delete("/age_intervals/", age.deleteAll); // Delete all ages
 //router.post("/categories/", category.create); //create
 router.get("/categories/", category.findAll); // Retrieve all categories
 //router.get("/categories/published", category.findAllPublished); // Retrieve all published category
-//router.get("/categories/:id", category.findOne); // Retrieve a single category with id
+router.get("/categories/:id", category.findCategoryById); // Retrieve a single category with id
 //router.put("/categories/:id", category.update); // Update a category with id
 //router.delete("/categories/:id", category.delete); // Delete a category with id
 //router.delete("/categories/", category.deleteAll); // Delete all category
@@ -37,22 +37,21 @@ router.get("/categories/", category.findAll); // Retrieve all categories
 /* ActivityFeature Router */
 //router.post("/features/", feature.create); //create
 router.get("/activities_features/", feature.findAll); // Retrieve all feature
-/*router.get("/features/published", feature.findAllPublished); // Retrieve all published feature
-router.get("/features/:id", feature.findOne); // Retrieve a single feature with id
-router.put("/features/:id", feature.update); // Update a feature with id
-router.delete("/features/:id", feature.delete); // Delete a feature with id
-router.delete("/features/", feature.deleteAll); // Delete all feature*/
+router.get("/features/:id", feature.findById); // Retrieve a single feature with id
+router.put("/features/:id", feature.addActivity); // Update a feature with id
+//router.delete("/features/:id", feature.delete); // Delete a feature with id
+//router.delete("/features/", feature.deleteAll); // Delete all feature*/
 
 router.get("/associations/", association.findAll);
 
 /* Feature Router */
-router.post("/features/", feature.create); //create
+//router.post("/features/", feature.create); //create
 router.get("/features/", feature.findAll); // Retrieve all feature
-router.get("/features/published", feature.findAllPublished); // Retrieve all published feature
-router.get("/features/:id", feature.findOne); // Retrieve a single feature with id
-router.put("/features/:id", feature.update); // Update a feature with id
-router.delete("/features/:id", feature.delete); // Delete a feature with id
-router.delete("/features/", feature.deleteAll); // Delete all feature
+//router.get("/features/published", feature.findAllPublished); // Retrieve all published feature
+//router.get("/features/:id", feature.findOne); // Retrieve a single feature with id
+//router.put("/features/:id", feature.update); // Update a feature with id
+//router.delete("/features/:id", feature.delete); // Delete a feature with id
+//router.delete("/features/", feature.deleteAll); // Delete all feature
 
 
 
