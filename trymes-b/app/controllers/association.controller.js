@@ -52,6 +52,7 @@ exports.findAll = (req, res) => {
 exports.findAll = (req,res) => {
   Association.findAll({
     include: ["activities"],
+    order: [['activities','activities_name','ASC']]
   }).then((data) => {
     res.send(data)
     //return categories;

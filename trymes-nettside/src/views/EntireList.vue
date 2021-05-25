@@ -16,9 +16,12 @@
              <tbody>
                    <tr v-for="act in activities" :key="act.activities_id">
                        <td>{{act.activities_name}} </td>
-                       <td v-for="f in act.features" :key="f.features_id">
-                           {{f.activities_features_values}}
-                       </td>
+                       <td> {{activities[0].features[0].activities_feature.activities_features_values}}</td>
+                     <!--<td v-for="f in act.features.activities_feature" :key="f">
+                       
+                           
+                      
+                     </td>-->
                    </tr>
                </tbody>
            </table>
@@ -39,6 +42,7 @@ import ActiivtyDataService from "@/services/ActivityDataService.js";
         features: [],
         features_name: "",
         msg: "Aktiviteter med egenskaper",
+        activities_feature: "",
         activities_features_values:"",
 
         activities: [],
@@ -49,6 +53,9 @@ import ActiivtyDataService from "@/services/ActivityDataService.js";
 
         
       };
+    },
+    computed:{
+     
     },
     methods:{
     retrieveCategories() {

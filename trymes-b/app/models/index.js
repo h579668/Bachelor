@@ -154,6 +154,7 @@ db.categories.hasMany(db.features, {
       as: "features"
 });
 
+
 //db.relations = require("./relations.js")(sequelize, Sequelize);
 
 module.exports = db;

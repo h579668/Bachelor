@@ -54,7 +54,7 @@ exports.create = (req, res) => {
       {
         model: Feature,
         as: "features",
-        attributes: ["features_id", "features_name",],
+        attributes: ["features_id", "features_name"],
         through: {
           attributes: ["activities_features_values"],
         },
