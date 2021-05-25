@@ -3,9 +3,11 @@ let router = express.Router();
 
 const activity = require("../controllers/activity.controller.js");
 const age = require("../controllers/age_interval.controller.js");
+const association = require("../controllers/association.controller.js");
 const category = require("../controllers/category.controller.js");
 const feature = require("../controllers/feature.controller.js");
-const association = require("../controllers/association.controller.js");
+
+const question = require("../controllers/question.controller.js");
 
 /* Activity Router */
 //router.post("/activities/", activity.create); //create
@@ -53,7 +55,7 @@ router.get("/features/", feature.findAll); // Retrieve all feature
 //router.delete("/features/:id", feature.delete); // Delete a feature with id
 //router.delete("/features/", feature.deleteAll); // Delete all feature
 
-
+router.get("/questions/", question.findAll);
 
 
 module.exports = router;

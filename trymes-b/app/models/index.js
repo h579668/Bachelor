@@ -31,18 +31,27 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.users = require("./user.model.js")(sequelize, Sequelize);
-db.age_intervals = require("./age_interval.model.js")(sequelize, Sequelize);
+//models starts with a
 db.activities = require("./activity.model.js")(sequelize, Sequelize);
 db.activities_features = require("./activity_feature.model.js")(sequelize, Sequelize);
+db.age_intervals = require("./age_interval.model.js")(sequelize, Sequelize);
 db.areas = require("./area.model.js")(sequelize, Sequelize);
-db.features = require("./feature.model.js")(sequelize, Sequelize);
-db.categories = require("./category.model.js")(sequelize, Sequelize);
-db.users_activities = require("./user_activity.model.js")(sequelize, Sequelize);
-db.users_features= require("./user_feature.model.js")(sequelize, Sequelize);
 db.associations = require("./association.model.js")(sequelize, Sequelize);
 
-//Associations
+//models starts with c
+db.categories = require("./category.model.js")(sequelize, Sequelize);
+
+//models starts with f
+db.features = require("./feature.model.js")(sequelize, Sequelize);
+
+//models starts with u
+db.users = require("./user.model.js")(sequelize, Sequelize);
+db.users_activities = require("./user_activity.model.js")(sequelize, Sequelize);
+db.users_features= require("./user_feature.model.js")(sequelize, Sequelize);
+
+db.questions = require("./question.model.js")(sequelize, Sequelize);
+
+/*******************Associations******************/
 
 //Activities_Features table
 db.activities.belongsToMany(db.features,{ 

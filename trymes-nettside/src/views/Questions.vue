@@ -9,11 +9,11 @@
     <legend> {{ information }}</legend>
     <!--v-for-loop to get all the quiestions from the quiz table
       the table is not yet created in the database, but it should be in the future-->
-    <div v-for="(item, index) in quizItems" :key="index">
+    <div v-for="item in questions" :key="item.question_id">
       <div id="questions">
 
-        <h2>{{ item.question }}</h2>
-        <p>{{ item.info }}</p>
+        <h2>{{ item.question_category }}</h2>
+        <p>{{ item.question }}</p>
         <div id="inputRadio">
           
           <input type="radio" :id="item.id + 'a'" :name="item.id" :value="item.id + 'a'" />
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import QuestionDataService from "@/services/QuestionDataService.js"
 export default {
   name: "QuestionPage",
   data() {
@@ -54,7 +55,10 @@ export default {
        title: "Hvordan liker du å trene?",
       information: "Kartlegging av hvordan du liker å drive med aktiviteter",
       yesNoTitle: "Nå har vi noen ja/nei spørsmål",
-      quizItems: [
+      questions:[],
+      question:"",
+      question_category:"",
+      /*quizItems: [
         {
           id: "1",
           question: "Styrkeøvelser",
@@ -81,7 +85,7 @@ export default {
           info:
             "(gå på bom/line, stå på en fot, bygge store tårn, stå på tærne osv)",
         },
-      ],
+      ],*/
      
     };
   },
@@ -89,7 +93,25 @@ export default {
     result() {
       this.$router.push({ path: "/questions/results" });
     },
-  },
+    retrieveQuestions() {
+        QuestionDataService.getAll()
+            .then(response => {
+            this.questions = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+          console.log(e);
+        });
+      },
+      refreshList() {
+        this.retrieveQuestions();
+      },
+    },
+    mounted() {
+      this.retrieveQuestions();
+    }   
+    
+  
 };
 </script>
 
