@@ -16,12 +16,11 @@
              <tbody>
                    <tr v-for="act in activities" :key="act.activities_id">
                        <td>{{act.activities_name}} </td>
-                       <td> {{activities[0].features[0].activities_feature.activities_features_values}}</td>
-                     <!--<td v-for="f in act.features.activities_feature" :key="f">
                        
-                           
-                      
-                     </td>-->
+                       <td v-for="feat in act.features" :key="feat.features_id">
+                          <div> {{feat.activities_feature.activities_features_values}}</div>
+                       </td>
+                       
                    </tr>
                </tbody>
            </table>
