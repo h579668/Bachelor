@@ -76,20 +76,20 @@ select * from associations;
 
 
 ---- ACTIVITIES ----
-insert into activities(associations_id, activities_name, telephone, email, activities_comments,individual) values
-(1, 'Skateboard', '454 64 166', 'henning@norb.no', '', 1),
-(1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', '', 1),
-(2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', '', 1),
-(3, 'Fallskjermhopping', '907 04 646', 'janerik.wang@nlf.no', '', 1),
-(4, 'Bueskyting', '', '', '', 1),
-(5, 'Enduro motorsykkel', '415 64 430', 'a.sletholt@gmail.com', '', 2),
-(6, 'Aikido', '918 64 797', 'idalagosandersen@gmail.com', '', 1),
-(7, 'Amerikansk fotball', '47201596', 'tone.sparby@nif.idrett.no', '', 0),
-(7, 'Cheerleading', '98666494', 'daniela.ohnstad@nif.idrett.no', '', 0),
-(7, 'Freesbeegolf', '472 01 596', 'tone.sparby@nif.idrett.no', '', 1),
-(7, 'Lacrosse', '971 80 074', 'leder@naiflacrosse.no', '', 0),
-(8, 'Badminton', '93038999', 'espen.larsen@badminton.no', '', 1),
-(9, 'Innebandy', '450 35 235', 'eivind.tysdal@bandyforbundet.no', '', 0)
+insert into activities(associations_id, activities_name, telephone, email, activities_comments,activities_type) values
+(1, 'Skateboard', '454 64 166', 'henning@norb.no', '', 'Individuell'),
+(1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', '', 'Individuell'),
+(2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', '', 'individuell'),
+(3, 'Fallskjermhopping', '907 04 646', 'janerik.wang@nlf.no', '', 'Individuell'),
+(4, 'Bueskyting', '', '', '', 'Individuell'),
+(5, 'Enduro motorsykkel', '415 64 430', 'a.sletholt@gmail.com', '', 'Motor'),
+(6, 'Aikido', '918 64 797', 'idalagosandersen@gmail.com', '', 'Individuell'),
+(7, 'Amerikansk fotball', '47201596', 'tone.sparby@nif.idrett.no', '', 'Lag'),
+(7, 'Cheerleading', '98666494', 'daniela.ohnstad@nif.idrett.no', '', 'Lag'),
+(7, 'Freesbeegolf', '472 01 596', 'tone.sparby@nif.idrett.no', '', 'Individuell'),
+(7, 'Lacrosse', '971 80 074', 'leder@naiflacrosse.no', '', 'Lag'),
+(8, 'Badminton', '93038999', 'espen.larsen@badminton.no', '', 'Individuell'),
+(9, 'Innebandy', '450 35 235', 'eivind.tysdal@bandyforbundet.no', '', 'Lag')
 ;
 
 select * from activities;
