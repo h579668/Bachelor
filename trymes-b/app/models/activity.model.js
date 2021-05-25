@@ -24,6 +24,9 @@ module.exports = (sequelize, Sequelize) => {
       activities_comments: {
         type: Sequelize.STRING
       },
+      individual: {
+        type: Sequelize.INTEGER
+      }
     });
   /*
     Activity.associate = function(models){
