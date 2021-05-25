@@ -76,20 +76,20 @@ select * from associations;
 
 
 ---- ACTIVITIES ----
-insert into activities(associations_id, activities_name, telephone, email, activities_comments) values
-(1, 'Skateboard', '454 64 166', 'henning@norb.no', ''),
-(1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', ''),
-(2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', ''),
-(3, 'Fallskjermhopping', '907 04 646', 'janerik.wang@nlf.no', ''),
-(4, 'Bueskyting', '', '', ''),
-(5, 'Enduro motorsykkel', '415 64 430', 'a.sletholt@gmail.com', ''),
-(6, 'Aikido', '918 64 797', 'idalagosandersen@gmail.com', ''),
-(7, 'Amerikansk fotball', '47201596', 'tone.sparby@nif.idrett.no', ''),
-(7, 'Cheerleading', '98666494', 'daniela.ohnstad@nif.idrett.no', ''),
-(7, 'Freesbeegolf', '472 01 596', 'tone.sparby@nif.idrett.no', ''),
-(7, 'Lacrosse', '971 80 074', 'leder@naiflacrosse.no', ''),
-(8, 'Badminton', '93038999', 'espen.larsen@badminton.no', ''),
-(9, 'Innebandy', '450 35 235', 'eivind.tysdal@bandyforbundet.no', '')
+insert into activities(associations_id, activities_name, telephone, email, activities_comments,individual) values
+(1, 'Skateboard', '454 64 166', 'henning@norb.no', '', 1),
+(1, 'Snøbrett', '922 49 073', 'magnus@snowboardforbundet.no', '', 1),
+(2, 'Baneskyting', '975 92 754', 'ofh@dfs.no', '', 1),
+(3, 'Fallskjermhopping', '907 04 646', 'janerik.wang@nlf.no', '', 1),
+(4, 'Bueskyting', '', '', '', 1),
+(5, 'Enduro motorsykkel', '415 64 430', 'a.sletholt@gmail.com', '', 2),
+(6, 'Aikido', '918 64 797', 'idalagosandersen@gmail.com', '', 1),
+(7, 'Amerikansk fotball', '47201596', 'tone.sparby@nif.idrett.no', '', 0),
+(7, 'Cheerleading', '98666494', 'daniela.ohnstad@nif.idrett.no', '', 0),
+(7, 'Freesbeegolf', '472 01 596', 'tone.sparby@nif.idrett.no', '', 1),
+(7, 'Lacrosse', '971 80 074', 'leder@naiflacrosse.no', '', 0),
+(8, 'Badminton', '93038999', 'espen.larsen@badminton.no', '', 1),
+(9, 'Innebandy', '450 35 235', 'eivind.tysdal@bandyforbundet.no', '', 0)
 ;
 
 select * from activities;
@@ -282,3 +282,57 @@ insert into users_features(users_id, features_id, users_features_values) values
 (2, 28, 2);
 
 select * from users_features;
+
+insert into activities_age_interval(activities_id, age_id) values 
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(3, 3),
+(3, 4),
+(4, 4),
+(5, 2),
+(5, 3),
+(5, 4),
+(6, 2),
+(6, 3),
+(6, 4),
+(7, 1),
+(7, 2),
+(7, 3),
+(7, 4),
+(8, 3),
+(8, 4),
+(9, 3),
+(9, 4),
+(10, 3),
+(10, 4),
+(11, 3),
+(11, 4),
+(12, 1),
+(12, 2),
+(12, 3),
+(12, 4),
+(13, 1),
+(13, 2),
+(13, 3),
+(13, 4)
+;
+
+select * from activities_age_interval;
+
+insert into associations_areas(associations_id, areas_id) values
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1);
+
+select * from associations_areas;
