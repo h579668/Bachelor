@@ -73,7 +73,7 @@ create table activities(
 	telephone varchar,
 	email varchar,
 	activities_comments varchar,
-	individual int,
+	activities_type varchar,
 	constraint activities_PK primary key(activities_id)
 	--constraint age_intervalls_FK foreign key(age_id) references age_intervalls(age_id),
 	--constraint associations_FK foreign key(associations_id) references associations(associations_id)
