@@ -16,6 +16,11 @@ const routes = [
     component: lazyLoad("HomePage"),
   },
   {
+    path: "/",
+    name: "EntireList",
+    component: lazyLoad("EntireList"),
+  },
+  {
     path: "/questions",
     name: "Questions",
     component: lazyLoad("Questions"),

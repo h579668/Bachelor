@@ -4,6 +4,7 @@
       <router-link :to="{ name: 'HomePage' }">Hjem</router-link> |
       <router-link :to="{ name: 'AdLogin' }">Logg Inn</router-link>|
       <router-link :to="{ name: 'AllActivities' }">Alle aktiviteter</router-link>
+      <router-link :to="{ name: 'EntireList' }">Alle aktiviteter22</router-link>
     </div>
 </template>
 
