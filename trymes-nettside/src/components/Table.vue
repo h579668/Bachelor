@@ -25,12 +25,13 @@
 
 #activityTable {
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
   margin: auto;
   border-collapse: collapse;
   text-align: left;
 }
-
+table {
+  width:100%;
+}
 #activityTable td, #activityTable th {
     border-bottom: 1px solid #ddd;
     padding: 8px;

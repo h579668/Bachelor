@@ -24,7 +24,7 @@ exports.create = (req, res) => {
     age_values: req.body.age_values
   };
   const association ={
-    associations_name: req.boyd.associations
+    associations_name: req.body.associations
   };
 
   // Save Activity in the database
@@ -133,6 +133,31 @@ exports.addFeature = (req,res) => {
         console.log(">> Error while adding Activity to Feature: ", err);
       });
   };
+
+  //Retrieve all activities
+exports.findAllActivities = () => {
+  return Activity.findAll({
+    include: [
+      {
+        model: Feature,
+        as: "features",
+        attributes: ["features_id", "features_name"],
+        through: {
+          attributes: ["activities_features_values"],
+        },
+        // through: {
+        //   attributes: ["tag_id", "activity_id"],
+        // },
+      },
+    ],
+  })
+    .then((activities) => {
+      return activities;
+    })
+    .catch((err) => {
+      console.log(">> Error while retrieving activities: ", err);
+    });
+};
 //------------------------------------------
 
 /* Retrieve all Activities from the database.

@@ -100,8 +100,4 @@ import TableData from "@/components/Table.vue";
 <style scoped>
 @import url("//unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css");
 
- .activity_values{
-    text-align: center;
-  }
-
 </style>
