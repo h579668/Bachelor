@@ -1,30 +1,25 @@
 <script src="//unpkg.com/vue/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.15.1/lib/index.js"></script>
 <template>
-<div id="app">
+  <div id="app">
+    <TableData>
+      <thead>
+        <tr>
+          <th>Aktivitetsnavn</th>
+          <th >Forbund</th>
+          <th>Email</th>
+        </tr>
+      </thead>
 
-<div id="activityTable" class="tableFixHead">
-  <table>
-    <thead>
-      <tr>
-        <th>Aktivitetsnavn</th>
-        <th >Forbund</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    
-  <tbody v-for="ass in associations" 
-  :key="ass.associations_id">
-    <tr v-for="act in ass.activities" :key="act.activities_id" >
-      <td> {{act.activities_name}}</td>
-      <td> {{ass.associations_name}}</td>
-      <td> {{act.email}}</td> 
-    </tr>
-  </tbody>
-  </table>
-</div>
-
-
+      <tbody v-for="ass in associations" 
+      :key="ass.associations_id">
+        <tr v-for="act in ass.activities" :key="act.activities_id" >
+          <td> {{act.activities_name}}</td>
+          <td> {{ass.associations_name}}</td>
+          <td> {{act.email}}</td> 
+        </tr>
+      </tbody>
+    </TableData>
   </div>
 </template>
 
@@ -33,11 +28,14 @@
 //Is not going to be like this...
 //import Categories from "@/views/Categories.vue";
 import AssociationDataService from "@/services/AssociationDataService.js";
+import TableData from "@/components/Table.vue";
 
 export default {
   name: "AllActivities",
 
-  //components: {
+  components: {
+    TableData
+  },
 
   //Categories,
   //},
@@ -104,37 +102,6 @@ export default {
 </script>
 
 <style scoped>
-.tableFixHead {
-  overflow-y: auto;
-  height: 500px;
-}
-.tableFixHead thead th {
-  position: sticky;
-  top: 0;
-}
 
-#activityTable {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-#activityTable td, #activityTable th {
-   border-bottom: 1px solid #ddd;
-    padding: 8px;
-}
-
-#activityTable tr:hover {
-  background-color: #ddd;
-  }
-
-#activityTable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #548687;
-  color: white;
-}
 
 </style>
