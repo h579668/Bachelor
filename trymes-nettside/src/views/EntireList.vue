@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <el-tabs type="border-card">
+        <el-tabs type="border-card" v-model="activeName ">
             <el-tab-pane v-for="cat in categories" :key="cat.categories_name" 
-            :label="cat.categories_name">{{ cat.categories_name }}    
+            :label="cat.categories_name">{{ cat.categories_name }}
         <template>
            <table id="activity_featureTable">
                <thead>
@@ -16,9 +16,12 @@
              <tbody>
                    <tr v-for="act in activities" :key="act.activities_id">
                        <td>{{act.activities_name}} </td>
-                       
-                       <td v-for="feat in act.features" :key="feat.features_id">
-                          <div> {{feat.activities_feature.activities_features_values}}</div>
+
+                       <!-- Making only the features that are active is visible -->
+                       <td v-for="feat in cat.features" :key="feat.features_id">
+                       <div v-for="feature in act.features" :key="feature.features_id" v-show="feature.features_id === feat.features_id">
+                          <div class="activity_values"> {{feature.activities_feature.activities_features_values}}</div>
+                       </div>
                        </td>
                        
                    </tr>
@@ -122,8 +125,11 @@ import ActiivtyDataService from "@/services/ActivityDataService.js";
   text-align: left;
   background-color: #548687;
   color: white;
-}
 
+}
+ .activity_values{
+    text-align: center;
+  }
 
 </style>
 <!--
