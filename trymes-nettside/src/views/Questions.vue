@@ -33,7 +33,7 @@
 
     <div>
       <!-- disabled button because it is only one page at the moment-->
-      <button disabled id="btn-navigation" class="btn-navigation navigation-purple">
+      <button @click="RegisterUser" id="btn-navigation" class="btn-navigation navigation-purple">
         Gå tilbake
       </button>
       <!--<button @click="nextQuestions" id="btn-navigation" class="btn-navigation navigation-purple">
@@ -42,6 +42,11 @@
      <button @click="result" id="btn-navigation" class="btn-navigation navigation-purple">
         Gå til resultater
       </button>
+
+      <!--<el-button-group>
+        <el-button class="btn-navigation" icon="el-icon-arrow-left" @click="RegisterUser">Previous Page</el-button>
+        <el-button class="btn-navigation" icon="el-icon-arrow-right el-icon-right" @click="result">Next Page</el-button>
+      </el-button-group>-->
     </div>
   </div>
 </template>
@@ -92,6 +97,9 @@ export default {
   methods: {
     result() {
       this.$router.push({ path: "/questions/results" });
+    },
+    RegisterUser() {
+      this.$router.push({ path: "/register" });  
     },
     retrieveQuestions() {
         QuestionDataService.getAll()
