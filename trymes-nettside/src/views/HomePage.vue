@@ -27,7 +27,7 @@
 export default {
   name: "HomePage",
   data () {
-    return{ msg: "Velkommen"}
+    return{ msg: "TryMes - Trygg Mestringsarena"}
     
   }
 };
