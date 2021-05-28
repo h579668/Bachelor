@@ -1,6 +1,7 @@
-const { regexp } = require("sequelize/types/lib/operators");
+const { sequelize } = require("../models");
 const db = require("../models");
 const User = db.users;
+const Feature = db.features;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new User
@@ -131,16 +132,15 @@ exports.deleteAll = (req, res) => {
         })
 };
 //Find on specific user and the user´s answers
-exports.findOneUserAnswers = () => {
-  
-  return User.findOne({
+exports.findOneUserAnswersById = (users_id) => {
+  return User.findByPk(users_id ,{
     include: [
       {
         model: Feature,
         as: "features",
         attributes: ["features_id", "features_name"],
         through: {
-          attributes: [],
+          attributes: ["users_features_values"],
         },
       },
     ],
@@ -162,7 +162,7 @@ exports.findAllUsersAnswers = () => {
         as: "features",
         attributes: ["features_id", "features_name"],
         through: {
-          attributes: [],
+          attributes: ["users_features_values"],
         },
       },
     ],

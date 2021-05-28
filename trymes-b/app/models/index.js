@@ -148,7 +148,7 @@ db.users.belongsToMany(db.features, {
 db.features.belongsToMany(db.users, { 
   through: db.users_features,
   as: "users",
-  foreignKey: "feature_id"
+  foreignKey: "features_id"
   
 });
 

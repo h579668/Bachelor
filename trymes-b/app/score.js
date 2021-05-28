@@ -2,24 +2,34 @@
 const db = require("./models");
 const Activity = db.activities;
 const ActivityController = require("./controllers/activity.controller.js");
+const UserController = require("./controllers/user.controller.js");
+
 const { activities_features } = require("./models");
 
 exports.calculate= async ()=>{
-    const activities_values = await ActivityController.findAllActivities();
-    const user_table = [1,2,3,2,2,2,3,1,1,1,1,1,1,1,1,1];
+      /* first testing object
+    *const user_table = [1,2,3,2,2,2,3,1,1,1,1,1,1,1,1,1];
 
     let userScore = user_table.reduce((a,b) => {
         return a+b
     });
-
-    let result = looping(activities_values,userScore, user_table);
+     */
+    const activities_values = await ActivityController.findAllActivities();
+   
+    // second testing object
+    const user_table = await UserController.findOneUserAnswersById(1);
+    
+    //A Test to check that we´re getting the correct values
+    //console.log(user_table.features[0].users_feature.users_features_values)
+    
+    let result = looping(activities_values, user_table);
 
     return result;
 
 };
 
 //A looping method to calculate a score with the user´s answers compared to the activities
-const looping = (activities_values, userScore, user_table) => {
+const looping = (activities_values, user_table) => {
     let table ={};
     
     //Looping through all activities
@@ -36,7 +46,7 @@ const looping = (activities_values, userScore, user_table) => {
                 score:0,
                 hit:0
            }
-           //Must be reset for each activity
+           //Is reset for each activity --> is necessary
            let totalValue=0; 
            
            /*
@@ -45,14 +55,13 @@ const looping = (activities_values, userScore, user_table) => {
            */ 
             for(let j = 0; j < activities_values[i].features.length && j < 16; j++){
                 let value= activities_values[i].features[j].activities_feature.activities_features_values;
-                    
+                let userValue = user_table.features[j].users_feature.users_features_values  
                     /*
                     * Must calculate the absolute number here, in order to prevent negative numbers
                     * Also sums up a sum for all the features in one activity at a time
                     * and to make sure it calculates the correct score
                     */
-                    totalValue += Math.abs(user_table[j]-value);
-
+                    totalValue += Math.abs(userValue-value);
             }   
 
             //calculating the percentage of the totalValue

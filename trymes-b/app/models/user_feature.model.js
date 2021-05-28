@@ -5,12 +5,12 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const User_Feature = sequelize.define("users_feature", {
-      user_feature_id:{
+     /* users_features_id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
+      },*/
       users_features_values: {
         type: Sequelize.INTEGER
       },
