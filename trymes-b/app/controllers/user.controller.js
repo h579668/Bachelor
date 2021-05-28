@@ -130,17 +130,47 @@ exports.deleteAll = (req, res) => {
           });
         })
 };
-
-// Find all published User
-exports.findAllPublished = (req, res) => {
-  User.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
+//Find on specific user and the user´s answers
+exports.findOneUserAnswers = () => {
+  
+  return User.findOne({
+    include: [
+      {
+        model: Feature,
+        as: "features",
+        attributes: ["features_id", "features_name"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
+  })
+    .then((user) => {
+      return user;
     })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Users."
-      });
+    .catch((err) => {
+      console.log(">> Error while retrieving the user : ", err);
+    });
+};
+
+// Find all Users answers
+exports.findAllUsersAnswers = () => {
+  return User.findAll({
+    include: [
+      {
+        model: Feature,
+        as: "features",
+        attributes: ["features_id", "features_name"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
+  })
+    .then((users) => {
+      return users;
+    })
+    .catch((err) => {
+      console.log(">> Error while retrieving users: ", err);
     });
 };

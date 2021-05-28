@@ -51,7 +51,7 @@ db.users_features= require("./user_feature.model.js")(sequelize, Sequelize);
 
 db.questions = require("./question.model.js")(sequelize, Sequelize);
 
-/*******************Associations******************/
+/******************* RELATIONS BETWEEN MODELS ******************/
 
 //Activities_Features table
 db.activities.belongsToMany(db.features,{ 
@@ -64,7 +64,6 @@ db.features.belongsToMany(db.activities,{
   through: db.activities_features, 
   as: "activities",
   foreignKey: "features_id"
-  
 });
 
 //Activities_Age_Interval table
@@ -163,7 +162,5 @@ db.categories.hasMany(db.features, {
       as: "features"
 });
 
-
-//db.relations = require("./relations.js")(sequelize, Sequelize);
 
 module.exports = db;

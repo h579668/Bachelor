@@ -76,6 +76,31 @@ exports.findById = (req,res) => {
       });
   };
 
+  exports.findAllFeatures = () => {
+    return Feature.findAll({
+      include: [
+        {
+          model: Activity,
+          as: "activities",
+          attributes: ["activities_id", "activities_name"],
+          through: {
+            attributes: ["activities_features_values"],
+          },
+          // through: {
+          //   attributes: ["tag_id", "activity_id"],
+          // },
+        },
+      ],
+    })
+      .then((features) => {
+        return features;
+      })
+      .catch((err) => {
+        console.log(">> Error while retrieving activities: ", err);
+      });
+  };
+  
+
   //Add an Activity to a Feature
 exports.addActivity = (req,res) => {
   const features_id = req.params.features_id;

@@ -1,8 +1,17 @@
+const { sequelize } = require("../models");
 const db = require("../models");
 const Activity = db.activities;
 const Feature = db.features;
 const Op = db.Sequelize.Op;
 
+const { QueryTypes } = require('sequelize');
+      
+exports.alll = async () => {
+const joined = await db.sequelize.query(
+  'SELECT * FROM  "activities"');
+  return joined;
+
+};
 //Create and Save a new Activity
 exports.create = (req, res) => {
   // Validate request
@@ -134,7 +143,9 @@ exports.addFeature = (req,res) => {
       });
   };
 
-  //Retrieve all activities
+ //Retrieve all activities
+ //Just in use in the score.js file
+ //used to calculate user-score
 exports.findAllActivities = () => {
   return Activity.findAll({
     include: [
@@ -145,9 +156,6 @@ exports.findAllActivities = () => {
         through: {
           attributes: ["activities_features_values"],
         },
-        // through: {
-        //   attributes: ["tag_id", "activity_id"],
-        // },
       },
     ],
   })
@@ -158,6 +166,10 @@ exports.findAllActivities = () => {
       console.log(">> Error while retrieving activities: ", err);
     });
 };
+
+
+
+
 //------------------------------------------
 
 /* Retrieve all Activities from the database.
