@@ -18,7 +18,7 @@ export default {
 #nav {
   font-size: 20px;
   padding: 5px;
-  background-color: #98473E;
+  background-color: #5ead73;
 }
 
 #nav a {
