@@ -8,6 +8,7 @@ const category = require("../controllers/category.controller.js");
 const feature = require("../controllers/feature.controller.js");
 
 const question = require("../controllers/question.controller.js");
+const questionCategory = require("../controllers/questionCategory.controller.js");
 
 /* Activity Router */
 //router.post("/activities/", activity.create); //create
@@ -56,6 +57,7 @@ router.get("/features/", feature.findAll); // Retrieve all feature
 //router.delete("/features/", feature.deleteAll); // Delete all feature
 
 router.get("/questions/", question.findAll);
+router.get("/questionCategory/", questionCategory.findAll);
 
 
 module.exports = router;

@@ -9,6 +9,8 @@ const Area = require('./area.model.js')(sequelize, Sequelize);
 const Feature = require('./feature.model.js')(sequelize, Sequelize);
 const Category = require('./category.model.js')(sequelize, Sequelize);
 const Association = require('./association.model.js')(sequelize, Sequelize);
+const Question = require('./question.model.js')(sequelize, Sequelize);
+const Question_Category = require('./questions_categories.model.js')(sequelize, Sequelize);
 
 //many-to-many tables
 const User_Activity = require('./user_activity.model.js')(sequelize, Sequelize);
@@ -144,4 +146,19 @@ Area.hasMany(User, {
     foreignKey: 'age_id'
 });
 
+
+//One-to-many relation (1-N)
+//QuestionFK is created in Question_Category
+Question.belongsTo(Question_Category, {
+    foreignKey:{
+        name: 'questions_category_id'
+    }
+});
+Question_Category.hasMany(Question, {
+    foreignKey: {
+        name:'questions_category_id'
+    }
+});
+
 }
+

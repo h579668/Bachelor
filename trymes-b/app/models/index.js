@@ -50,6 +50,7 @@ db.users_activities = require("./user_activity.model.js")(sequelize, Sequelize);
 db.users_features= require("./user_feature.model.js")(sequelize, Sequelize);
 
 db.questions = require("./question.model.js")(sequelize, Sequelize);
+db.questionCategory = require("./questionCategory.model.js")(sequelize, Sequelize);
 
 /******************* RELATIONS BETWEEN MODELS ******************/
 
@@ -161,6 +162,17 @@ db.categories.hasMany(db.features, {
   foreignKey: "categories_id",
       as: "features"
 });
+
+//QuestionCategoriesFK is created in Question
+db.questions.belongsTo(db.questionCategory, {
+  foreignKey:"questions_category_id",
+      as: "questionsCategories",
+});
+db.questionCategory.hasMany(db.questions, {
+  foreignKey: "questions_category_id",
+      as: "questions"
+});
+
 
 
 module.exports = db;

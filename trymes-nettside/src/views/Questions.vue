@@ -1,19 +1,22 @@
 <template>
   <div class="quiz">
     <div>
-      <h1>{{ title }}</h1>
+      <h1></h1>
     </div>
     <!-- role="main" means that it is the main content on the page-->
     <div role="main"> 
     <fieldset>
     <legend> {{ information }}</legend>
+    <div v-for="cat in questionCategory" :key="cat.questions_category_id">
+      <p>{{ cat.title }}</p>
+    </div>
     <!--v-for-loop to get all the quiestions from the quiz table
       the table is not yet created in the database, but it should be in the future-->
     <div v-for="item in questions" :key="item.question_id">
       <div id="questions">
 
-        <h2>{{ item.question_category }}</h2>
-        <p>{{ item.question }}</p>
+        <h2>{{ item.feature}}</h2>
+        <p>{{ item.description }}</p>
         <div id="inputRadio">
           
           <input type="radio" :id="item.id + 'a'" :name="item.id" :value="item.id + 'a'" />
@@ -28,6 +31,7 @@
         </div>
       </div>
     </div>
+
     </fieldset>
     </div>
 
@@ -53,16 +57,22 @@
 
 <script>
 import QuestionDataService from "@/services/QuestionDataService.js"
+import QuestionCategoryDataService from "@/services/QuestionCategoryDataService.js"
+
 export default {
   name: "QuestionPage",
   data() {
     return {
-       title: "Hvordan liker du å trene?",
+      //title: "Hvordan liker du å trene?",
       information: "Kartlegging av hvordan du liker å drive med aktiviteter",
       yesNoTitle: "Nå har vi noen ja/nei spørsmål",
       questions:[],
-      question:"",
-      question_category:"",
+      feature:"",
+      description:"",
+
+      questionCategory: [],
+      title: "",
+
       /*quizItems: [
         {
           id: "1",
@@ -110,16 +120,29 @@ export default {
           .catch(e => {
           console.log(e);
         });
-      },
-      refreshList() {
-        this.retrieveQuestions();
-      },
     },
-    mounted() {
-      this.retrieveQuestions();
-    }   
+    retrieveQuestionCategory() {
+      QuestionCategoryDataService.getAll()
+            .then(response => {
+            this.questionCategory = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+          console.log(e);
+        });
+    },
     
-  
+    refreshList() {
+      this.retrieveQuestions();
+      this.retrieveQuestionCategory();
+    },
+  },
+
+  mounted() {
+    this.retrieveQuestions();
+    this.retrieveQuestionCategory();
+  } 
+ 
 };
 </script>
 

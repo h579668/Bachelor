@@ -12,10 +12,10 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      question_category: { 
+      feature: { 
         type: Sequelize.STRING
       },
-      question: { 
+      description: { 
         type: Sequelize.STRING
       },
 
