@@ -7,14 +7,11 @@
     <div role="main"> 
     <fieldset>
     <legend> {{ information }}</legend>
-    <div v-for="cat in questionCategory" :key="cat.questions_category_id">
-      <p>{{ cat.title }}</p>
-    </div>
     <!--v-for-loop to get all the quiestions from the quiz table
       the table is not yet created in the database, but it should be in the future-->
-    <div v-for="item in questions" :key="item.question_id">
-      <div id="questions">
-
+    <div v-for="cat in questionCategory" :key="cat.questions_category_id">
+      <h1>{{ cat.title }}</h1>
+      <div id="questions" v-for="item in cat.questions" :key="item.questions_id">
         <h2>{{ item.feature}}</h2>
         <p>{{ item.description }}</p>
         <div id="inputRadio">
@@ -63,7 +60,6 @@ export default {
   name: "QuestionPage",
   data() {
     return {
-      //title: "Hvordan liker du å trene?",
       information: "Kartlegging av hvordan du liker å drive med aktiviteter",
       yesNoTitle: "Nå har vi noen ja/nei spørsmål",
       questions:[],
