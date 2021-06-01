@@ -26,6 +26,7 @@ export default {
 
 .el-menu .doc-right {
   float: right;
+  cursor: pointer;
 }
 
 
