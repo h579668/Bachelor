@@ -59,7 +59,11 @@ h1 {
   background-color: #424242;
   color: #ffffff;
   font-size: 30px;
+  cursor: pointer;
 }
+#quizButton:hover {
+   background-color: #548687;
+ }
 
 h3 {
   font-size: 20px;

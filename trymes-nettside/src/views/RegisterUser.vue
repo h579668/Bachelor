@@ -163,6 +163,7 @@ select {
   padding: 1%;
   width: 22%;
   font-size: 17px;
+  cursor: pointer;
 }
 
 option {
@@ -174,6 +175,7 @@ option {
   background-color: #424242;
   color: #ffffff;
   font-size: 23px;
+  cursor: pointer;
 }
 
 #nextbtn:hover {
