@@ -21,7 +21,7 @@ alter table questions
 add constraint questions_FK foreign key (questions_category_id) references questions_categories(questions_category_id);
 
 insert into questions_categories(title) values 
-('Hvordan du liker å trene?'),
+('Hvordan liker du å trene?'),
 ('Hva slags konkurranseform liker du best?'),
 ('Hvilken aktivtetsarena liker du best?');
 
