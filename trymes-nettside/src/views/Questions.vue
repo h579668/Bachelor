@@ -14,15 +14,15 @@
       <div id="questions" v-for="item in cat.questions" :key="item.questions_id">
         <h2>{{ item.feature}}</h2>
         <p>{{ item.description }}</p>
-        <div id="inputRadio">
+        <div id="inputRadio" name="inputFields">
           
-          <input type="radio" :id="item.id + 'a'" :name="item.id" :value="item.id + 'a'" />
+          <input type="radio" :id="item.id + 'a'" :name="item.id" :value="3" />
           <label :for="item.id + 'a'"> Synes det er kjempegøy </label> <br />
 
-          <input type="radio" :id="item.id + 'b'" :name="item.id" :value="item.id + 'b'"  />
+          <input type="radio" :id="item.id + 'b'" :name="item.id" :value="2"  />
           <label :for="item.id + 'b'"> Helt greit </label><br />
 
-          <input type="radio" :id="item.id + 'c'" :name="item.id" :value="item.id + 'c'"  />
+          <input type="radio" :id="item.id + 'c'" :name="item.id" :value="1"  />
           <label :for="item.id + 'c'"> Liker ikke i det hele tatt </label>
           
         </div>
@@ -101,6 +101,42 @@ export default {
     };
   },
   methods: {
+    radioButtons(){
+      let inputs = inputFields.elements;
+      let radios =[];
+      let result={ features_id: "", users_features_values: ""};
+
+      //Loop and find only the Radios
+    for (let i = 0; i < inputs.length; ++i) {
+        if (inputs[i].type == 'radio') {
+            radios.push(inputs[i]);
+        }
+    }
+
+    for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            result[i].users_features_values= radios[i].value;
+            if((radios[i].id).contains("[a-zA-Z]"))
+                radios[i].id.slice(0,radios[i].length-1);
+            result[i].features_id = radios[i].id;
+        }
+    }
+    },
+    saveUserWithInput(){
+      let newUser = {
+        age_id: this.select_age,
+        area_id: this.select_area,
+      };
+      UserDataService.create(newUser)
+      .then(response => {
+        this.user.users_id = response.newUser.users_id;
+        console.log(response.data)
+      })
+       .catch(e => {
+          console.log(e);
+        });
+     
+    },
     result() {
       this.$router.push({ path: "/questions/results" });
     },

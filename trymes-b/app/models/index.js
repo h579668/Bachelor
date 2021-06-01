@@ -52,6 +52,7 @@ db.users_features= require("./user_feature.model.js")(sequelize, Sequelize);
 db.questions = require("./question.model.js")(sequelize, Sequelize);
 db.questionCategory = require("./questionCategory.model.js")(sequelize, Sequelize);
 
+
 /******************* RELATIONS BETWEEN MODELS ******************/
 
 //Activities_Features table

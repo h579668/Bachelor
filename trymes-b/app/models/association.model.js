@@ -15,10 +15,5 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
     });
-  
-    /*Association.associate = function(models){
-      Association.belongsTo(models.user);
-      Association.belongsToMany(models.activity);
-    }*/
     return Association;
   };

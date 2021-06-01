@@ -1,7 +1,19 @@
-const { regexp } = require("sequelize/types/lib/operators");
+
 const db = require("../models");
 const Area = db.areas;
 const Op = db.Sequelize.Op;
+
+
+exports.findById = (id) => {
+  return Area.findByPk(id, { 
+  })
+    .then((area) => {
+      return area;
+    })
+    .catch((err) => {
+      console.log(">> Error while finding area: ", err);
+    });
+};
 
 // Create and Save a new Area
 exports.create = (req, res) => {
@@ -38,7 +50,7 @@ exports.findAll = (req, res) => {
     const county = req.query.county;
     var condition = county ? { county: { [Op.iLike]: `%${county}%` } } : null;
   
-    county.findAll({ where: condition })
+    Area.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -63,6 +75,17 @@ exports.findOne = (req, res) => {
           message: "Error retrieving Area with id=" + id
         });
       });
+};
+
+// Find an single Area with an id just in use in the user.controller
+exports.findByPK = (area_id) => {
+  return Area.findByPk(area_id)
+    .then(area => {
+      return (area);
+    })
+    .catch(err => {
+      console.log("Error retrieving Area with id=" + id);
+    });
 };
 
 // Update an Area by the id in the request

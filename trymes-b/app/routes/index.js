@@ -3,12 +3,15 @@ let router = express.Router();
 
 const activity = require("../controllers/activity.controller.js");
 const age = require("../controllers/age_interval.controller.js");
+const area = require("../controllers/area.controller.js");
 const association = require("../controllers/association.controller.js");
 const category = require("../controllers/category.controller.js");
 const feature = require("../controllers/feature.controller.js");
 
 const question = require("../controllers/question.controller.js");
 const questionCategory = require("../controllers/questionCategory.controller.js");
+
+const user = require("../controllers/user.controller.js");
 
 /* Activity Router */
 //router.post("/activities/", activity.create); //create
@@ -27,6 +30,8 @@ router.get("/age_intervals/:id", age.findOne); // Retrieve a single age with id
 router.put("/age_intervals/:id", age.update); // Update an age with id
 router.delete("/age_intervals/:id", age.delete); // Delete an age with id
 router.delete("/age_intervals/", age.deleteAll); // Delete all ages
+
+router.get("/areas/", area.findAll); // Retrieve all ages
 
 /* Category Router */
 //router.post("/categories/", category.create); //create
@@ -58,6 +63,9 @@ router.get("/features/", feature.findAll); // Retrieve all feature
 
 router.get("/questions/", question.findAll);
 router.get("/questionCategory/", questionCategory.findAll);
+
+router.post("/users/", user.create);
+router.get("/users/", user.findAll);
 
 
 module.exports = router;

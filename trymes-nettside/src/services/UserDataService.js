@@ -1,18 +1,18 @@
 import http from "../http-commons.js";
 // fetching the data from the database
-class AssociationDataService {
+class UserDataService {
   getAll() {
-    return http.get("/associations");
+    return http.get("/users");
   }
 /*
   findOne(id) {
     return http.get(`/associations/${id}`);
   }
-
+*/
   create(data) {
-    return http.post("/features", data);
+    return http.post("/users", data);
   }
-
+/*
   update(id, data) {
     return http.put(`/features/${id}`, data);
   }
@@ -30,4 +30,6 @@ class AssociationDataService {
   }*/
 }
 
-export default new AssociationDataService(); 
+
+
+export default new UserDataService(); 

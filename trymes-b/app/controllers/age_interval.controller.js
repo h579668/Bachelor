@@ -47,6 +47,17 @@ exports.findAll = (req, res) => {
       });
 };
 
+exports.findById = (id) => {
+  return Age.findByPk(id, { 
+  })
+    .then((age) => {
+      return age;
+    })
+    .catch((err) => {
+      console.log(">> Error while finding age: ", err);
+    });
+};
+
 // Find an single Age with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
@@ -61,6 +72,19 @@ exports.findOne = (req, res) => {
         });
       });
 };
+
+// Find an single Age with an id, only in use in User.controller
+exports.findOne = (age_id) => {
+
+  return Age.findByPk(age_id)
+    .then(area => {
+      return (area);
+    })
+    .catch(err => {
+      console.log( "Error retrieving Age with id=" + id)
+    });
+};
+
 
 // Update an Age by the id in the request
 exports.update = (req, res) => {

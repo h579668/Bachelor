@@ -1,28 +1,27 @@
+const { response } = require("express");
 const { sequelize } = require("../models");
 const db = require("../models");
 const User = db.users;
 const Feature = db.features;
+const Area = db.areas;
+const Age = db.age_intervals;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new User
 exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.areas_id) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
+
+  let data={
+    areas_id : req.body.areas_id,
+    age_id : req.body.age_id
   }
-
-  // Create a User
-  const user = {
-    area : req.body.area,
-    age : req.body.age
-  };
-
+  console.log("DATABASEN " + JSON.stringify(data, null, 4))
   // Save User in the database
-  User.create(user)
+  User.create(
+   data
+  )
     .then(data => {
+     // console.log(data.areas_id)
+      console.log(">> Created user: " + JSON.stringify(data, null, 4));
       res.send(data);
     })
     .catch(err => {
@@ -32,6 +31,7 @@ exports.create = (req, res) => {
       });
     });
 };
+
 
 // Retrieve all User from the database.
 exports.findAll = (req, res) => {
@@ -172,5 +172,40 @@ exports.findAllUsersAnswers = () => {
     })
     .catch((err) => {
       console.log(">> Error while retrieving users: ", err);
+    });
+};
+// Create and Save new Users (ONLY FOR BACKEND TESTING)
+exports.createUser = (age_id,areas_id) => {
+  return User.create({ 
+    age_id: age_id,
+    areas_id: areas_id,
+  })
+    .then((user) => {
+        console.log(">> Created user: " + JSON.stringify(user, null, 4));
+        return user;
+   })
+    .catch((err) => {
+       console.log(">> Error while creating user: ", err);
+  });
+};
+
+
+exports.findUserById = (users_Id) => {
+  return User.findByPk(users_Id, { 
+    include:[{ 
+      model: Area,
+      as:"areas",
+      attributes: ["areas_id"]
+    }, 
+    { 
+      model: Age,
+      attributes:["age_id"]
+    }] 
+  })
+    .then((user) => {
+      return user;
+    })
+    .catch((err) => {
+      console.log(">> Error while finding user: ", err);
     });
 };
