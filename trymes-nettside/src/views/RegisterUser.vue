@@ -103,16 +103,20 @@ export default {
 
       UserDataService.create(data)
       .then(response => {
-        console.log(" AGE ID PLASS NR 2 " + data.age_id);
         this.user.users_id = response.data.users_id;
-        console.log("User " + this.user.users_id);
-       // this.$store.dispatch('registered', { newUser })
-        console.log(data.response)
+        console.log("USER ID HERE " +this.user.users_id);
+        //this.$store.dispatch('registered', { newUser })
+        if(this.$session.exists()){
+          this.$session.destroy();
+        }
+        this.$session.start();
+        this.$session.set("user", this.user.users_id)
+        this.quizpage();
       })
        .catch(e => {
           console.log(e);
         });
-      this.quizpage();
+     // this.quizpage();
     },
 
     

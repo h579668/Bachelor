@@ -1,16 +1,16 @@
 import http from "../http-commons.js";
 // fetching the data from the database
-class UserDataService {
-  getAll() {
+class UserFeatureDataService {
+ /* getAll() {
     return http.get("/users");
-  }
+  }*/
 /*
   findOne(id) {
     return http.get(`/associations/${id}`);
   }
 */
-  create(data) {
-    return http.post("/users", data);
+  addFeature(input) {
+    return http.post("/users_features", input);
   }
 /*
   addFeature(user) {
@@ -36,4 +36,4 @@ class UserDataService {
 
 
 
-export default new UserDataService(); 
+export default new UserFeatureDataService(); 

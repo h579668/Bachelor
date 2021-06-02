@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     areas_id : req.body.areas_id,
     age_id : req.body.age_id
   }
-  console.log("DATABASEN " + JSON.stringify(data, null, 4))
+  //console.log("DATABASEN " + JSON.stringify(data, null, 4))
   // Save User in the database
   User.create(
    data
@@ -189,7 +189,6 @@ exports.createUser = (age_id,areas_id) => {
   });
 };
 
-
 exports.findUserById = (users_Id) => {
   return User.findByPk(users_Id, { 
     include:[{ 
@@ -209,3 +208,40 @@ exports.findUserById = (users_Id) => {
       console.log(">> Error while finding user: ", err);
     });
 };
+
+/*addFeature in the m:m relation
+exports.addFeature = (req, res) => {
+  let users_id = req.body.user_id;
+  let features = req.body.features;
+  let numbers = 0;
+
+
+  User.findByPk(users_id)
+  .then((user) => {
+    if(!user){
+      console.log("User not found!");
+      return null;
+    }
+    for(let i = 0; i < features.length; i++){
+      Feature.findByPk(i+1).then((feature) => {
+        if(!feature){
+          console.log("Feature not found!");
+          return null;
+        }
+        numbers = features[i]
+
+        user.addFeature(feature, { 
+          through: {
+            users_features_values:numbers
+          }
+        });
+        console.log(`>> added Feature id=${feature.features_id} to User id=${user.id} where values equals=${numbers}`);
+          res.send(user);
+      });
+    }
+    })
+    .catch((err) => {
+      console.log(">> Error while adding Feature to user: ", err);
+    });
+
+};*/

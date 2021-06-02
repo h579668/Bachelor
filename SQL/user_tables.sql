@@ -3,17 +3,6 @@ create schema user_tables;
 
 set search_path = user_tables;
 
---drop table if exists categories;
---drop table if exists features;
---drop table if exists users_features;
---drop table if exists areas;
---drop table if exists associations;
---drop table if exists activities;
---drop table if exists activities_features;
---drop table if exists users_activities;
---drop table if exists age_intervalls;
-
-
 create table categories(
 	categories_id serial,
 	categories_name varchar,

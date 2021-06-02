@@ -4,7 +4,15 @@ import router from "./router";
 import store from "./store";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import VueSession from 'vue-session'
+/*
+const token = localStorage.getItem('token')
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
+*/
 
+Vue.use(VueSession);
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 

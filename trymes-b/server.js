@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const running = require("./app/score.js")
 
+
+const controller = require("./app/controllers/user.controller.js");
+
 const path = __dirname + '/app/views/';
 
 const app = express();
@@ -31,4 +34,22 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-running.calculate();
+//const userObject = controller.createUser(2,1);
+//console.log(userObject);
+ /*const run = async () => {
+ // console.log(userObject);
+ // await controller.addToDatabase(userObject);
+  
+  const user = await controller.createUser(2,1);
+
+  const userData = await controller.findUserById(user.users_id);
+  console.log(
+    ">> User id=" + userData.users_id,
+    (userData)
+  );
+
+ }
+
+ run();
+*/
+//running.calculate();

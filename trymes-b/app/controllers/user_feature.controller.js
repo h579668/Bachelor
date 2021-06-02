@@ -1,8 +1,52 @@
+const { response } = require("express");
+const { sequelize } = require("../models");
 const db = require("../models");
-const User_Feature = db.users_features;
+const User = db.users;
+const Feature = db.features;
+const Area = db.areas;
+const Age = db.age_intervals;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new User_Feature
+//addFeature in the m:m relation
+exports.addFeature = (req, res) => {
+  let users_id = req.body.users_id;
+  let features = req.body.features;
+  let numbers = 0;
+
+  console.log("USERS_ID " + req.body.users_id)
+
+
+  User.findByPk(users_id)
+  .then((user) => {
+    if(!user){
+      console.log("User not found!" + user);
+      return null;
+    }
+    for(let i = 0; i < features.length; i++){
+      Feature.findByPk(i+1).then((feature) => {
+        if(!feature){
+          console.log("Feature not found!");
+          return null;
+        }
+        numbers = features[i]
+
+        user.addFeature(feature, { 
+          through: {
+            users_features_values:numbers
+          }
+        });
+        console.log(`>> added Feature id=${feature.features_id} to User id=${user.id} where values equals=${numbers}`);
+          res.send(user);
+      });
+    }
+    })
+    .catch((err) => {
+      console.log(">> Error while adding Feature to user: ", err);
+    });
+
+};
+
+/* Create and Save a new User_Feature
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.us_fe_value) {
@@ -141,4 +185,4 @@ exports.findAllPublished = (req, res) => {
           err.message || "Some error occurred while retrieving Users_Features."
       });
     });
-};
+};*/

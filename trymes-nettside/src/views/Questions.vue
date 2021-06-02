@@ -9,44 +9,54 @@
         <legend> {{ information }}</legend>
         <!--v-for-loop to get all the quiestions from the quiz table
         the table is not yet created in the database, but it should be in the future-->
-        <div v-for="cat in questionCategory" :key="cat.questions_category_id">
+    
+        <div v-for="cat in questionCategory" :key="cat.questions_category_id" v-show="cat.questions_category_id == number">
           <h1>{{ cat.title }}</h1>
           <div id="questions" v-for="item in cat.questions" :key="item.questions_id">
             <h2>{{ item.feature}}</h2>
             <p>{{ item.description }}</p>
-            <div id="inputRadio">
+
+            <!-- three alternatives for the user to answer -->
+            <form id="inputRadio"  name="inputFields" v-show="cat.questions_category_id < 2">
             
-              <input type="radio" :id="item.questions_id + 'a'" :name="item.questions_id" :value="3" />
+              <input type="radio" :id="item.questions_id + 'a'" :name="item.questions_id" :value="3" v-model="features[item.questions_id-1]" />
               <label :for="item.questions_id + 'a'"> Synes det er kjempegøy </label> <br />
 
-              <input type="radio" :id="item.questions_id + 'b'" :name="item.questions_id" :value="2"  />
+              <input type="radio" :id="item.questions_id + 'b'" :name="item.questions_id" :value="2" v-model="features[item.questions_id-1]" />
               <label :for="item.questions_id + 'b'"> Helt greit </label><br />
 
-              <input type="radio" :id="item.questions_id + 'c'" :name="item.questions_id" :value="1"  />
+              <input type="radio" :id="item.questions_id + 'c'" :name="item.questions_id" :value="1" v-model="features[item.questions_id-1]" />
               <label :for="item.questions_id + 'c'"> Liker ikke i det hele tatt </label>
+            </form>
 
-            </div>
+            <!-- yes and no questions-->
+            <form id="inputRadio"  name="inputFields" v-show="cat.questions_category_id > 1">
+            
+              <input type="radio" :id="item.questions_id + 'a'" :name="item.questions_id" :value="1" v-model="features[item.questions_id-1]" />
+              <label :for="item.questions_id + 'a'"> Ja</label> <br />
+
+              <input type="radio" :id="item.questions_id + 'b'" :name="item.questions_id" :value="0" v-model="features[item.questions_id-1]" />
+              <label :for="item.questions_id + 'b'"> Nei </label><br />
+
+            </form>
+       
           </div>
         </div>
       </fieldset>
     </div>
 
     <div>
-      <!-- disabled button because it is only one page at the moment-->
-      <button @click="RegisterUser" class="btn-navigation" >
+      
+       <button @click="previousQuestions" class="btn-navigation" v-show="number > 1">
         Gå tilbake
       </button>
-      <!--<button @click="nextQuestions" id="btn-navigation" class="btn-navigation navigation-purple">
+      <button @click="nextQuestions" class="btn-navigation" v-show="number < questionCategory.length">
         Neste
-      </button>-->
-     <button @click="result" class="btn-navigation" >
+      </button>
+     <button @click="saveUsersInput" class="btn-navigation" v-show="number == questionCategory.length">
         Gå til resultater
       </button>
-
-      <!--<el-button-group>
-        <el-button class="btn-navigation" icon="el-icon-arrow-left" @click="RegisterUser">Previous Page</el-button>
-        <el-button class="btn-navigation" icon="el-icon-arrow-right el-icon-right" @click="result">Next Page</el-button>
-      </el-button-group>-->
+      
     </div>
   </div>
 </template>
@@ -55,6 +65,8 @@
 import QuestionDataService from "@/services/QuestionDataService.js"
 import QuestionCategoryDataService from "@/services/QuestionCategoryDataService.js"
 import UserDataService from "@/services/UserDataService.js"
+import UserFeatureDataService from "@/services/UserFeatureDataService.js"
+
 
 export default {
   name: "QuestionPage",
@@ -68,45 +80,49 @@ export default {
 
       questionCategory: [],
       title: "",
+
+      features: [],
+      number: 1,
+
+      user: null,
      
     };
   },
   methods: {
-    /*radioButtons(){
-      let inputs = inputFields.elements;
-      let radios =[];
-      let result={ features_id: "", users_features_values: ""};
-
-      //Loop and find only the Radios
-    for (let i = 0; i < inputs.length; ++i) {
-        if (inputs[i].type == 'radio') {
-            radios.push(inputs[i]);
-        }
-    }
-
-    for (let i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            result[i].users_features_values= radios[i].value;
-            if((radios[i].id).contains("[a-zA-Z]"))
-                radios[i].id.slice(0,radios[i].length-1);
-            result[i].features_id = radios[i].id;
-        }
-    }
-    },*/
-    saveUserWithInput(){
-      let newUser = {
-        age_id: this.select_age,
-        area_id: this.select_area,
+    nextQuestions(){
+      if(this.number < this.questionCategory.length)
+         this.number++;
+    },
+    previousQuestions(){
+      if(this.number > 1){
+        this.number--;
+      }
+    },
+    saveUsersInput(){
+      var input = {
+        users_id: this.user,
+        features: this.features,
       };
-      UserDataService.create(newUser)
+      console.log("DETTE HER " + input.users_id)
+      UserFeatureDataService.addFeature(input)
       .then(response => {
-        this.user.users_id = response.newUser.users_id;
+        //this.user.users_id = response.data.users_id;
         console.log(response.data)
+       // this.result();
       })
        .catch(e => {
           console.log(e);
         });
      
+    },
+  checkSession() { 
+    if(!this.$session.exists()){
+      this.$router.push('/');
+    }else if(this.$session.get("user")){
+        this.user = this.$session.get("user")
+        console.log("I SESSION " + this.user);
+    } 
+    
     },
     result() {
       this.$router.push({ path: "/questions/results" });
@@ -144,6 +160,9 @@ export default {
   mounted() {
     this.retrieveQuestions();
     this.retrieveQuestionCategory();
+  },
+  created: function(){
+    this.checkSession();
   } 
  
 };
