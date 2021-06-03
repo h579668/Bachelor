@@ -32,11 +32,11 @@
             <!-- yes and no questions-->
             <form id="inputRadio"  name="inputFields" v-show="cat.questions_category_id > 1">
             
-              <input type="radio" :id="item.questions_id + 'a'" :name="item.questions_id" :value="1" v-model="features[item.questions_id-1]" />
-              <label :for="item.questions_id + 'a'"> Ja</label> <br />
+              <input type="radio" :id="item.questions_id + 'd'" :name="item.questions_id" :value="1" v-model="features[item.questions_id-1]" />
+              <label :for="item.questions_id + 'd'"> Ja</label> <br />
 
-              <input type="radio" :id="item.questions_id + 'b'" :name="item.questions_id" :value="0" v-model="features[item.questions_id-1]" />
-              <label :for="item.questions_id + 'b'"> Nei </label><br />
+              <input type="radio" :id="item.questions_id + 'e'" :name="item.questions_id" :value="0" v-model="features[item.questions_id-1]" />
+              <label :for="item.questions_id + 'e'"> Nei </label><br />
 
             </form>
        
@@ -47,14 +47,19 @@
 
     <div>
       
-       <button @click="previousQuestions" class="btn-navigation" v-show="number > 1">
-        Gå tilbake
+   
+       <button @click="previousQuestions" class="btn-navigation" v-show="number > 1 || number == (questionCategory.length+1) ">
+        Forrige
       </button>
+       
       <button @click="nextQuestions" class="btn-navigation" v-show="number < questionCategory.length">
         Neste
       </button>
      <button @click="saveUsersInput" class="btn-navigation" v-show="number == questionCategory.length">
-        Gå til resultater
+        Ferdig
+      </button>
+       <button @click="calculateTheScore" class="btn-navigation" v-show="number == (questionCategory.length+1)">
+        Hent resultater
       </button>
       
     </div>
@@ -64,8 +69,8 @@
 <script>
 import QuestionDataService from "@/services/QuestionDataService.js"
 import QuestionCategoryDataService from "@/services/QuestionCategoryDataService.js"
-import UserDataService from "@/services/UserDataService.js"
 import UserFeatureDataService from "@/services/UserFeatureDataService.js"
+import UserActivityDataService from "@/services/UserActivityDataService.js"
 
 
 export default {
@@ -90,7 +95,7 @@ export default {
   },
   methods: {
     nextQuestions(){
-      if(this.number < this.questionCategory.length)
+      if(this.number < this.questionCategory.length + 1)
          this.number++;
     },
     previousQuestions(){
@@ -106,15 +111,35 @@ export default {
       console.log("DETTE HER " + input.users_id)
       UserFeatureDataService.addFeature(input)
       .then(response => {
+        
         //this.user.users_id = response.data.users_id;
         console.log(response.data)
-       // this.result();
+       this.nextQuestions();
       })
        .catch(e => {
           console.log(e);
         });
      
     },
+   calculateTheScore(){
+     //console.log("HERE IN CALCULATE FRONT END " );
+     let user_data ={
+       users_id: this.user
+     };
+     console.log(user_data.users_id)
+     UserActivityDataService.addActivity(user_data)
+     .then(response => {
+       console.log(response.data)
+       this.result();
+       })
+       .catch(e => {
+          console.log(e);
+        });
+      console.log("HERE IN CALCULATE FRONT END NUMBER 3" );
+     console.log(user_data.users_id);
+
+
+   },
   checkSession() { 
     if(!this.$session.exists()){
       this.$router.push('/');

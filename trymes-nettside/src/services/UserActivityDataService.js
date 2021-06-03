@@ -1,18 +1,13 @@
 import http from "../http-commons.js";
 // fetching the data from the database
-class UserFeatureDataService {
+class UserActivitiesDataService {
  /* getAll() {
     return http.get("/users");
   }*/
 
-  getAUsersScores(user) {
-    return http.get(`/users_features/`, user);
+  addActivity(data) {
+    return http.post("/users_activities", data);
   }
-
-  addFeature(input) {
-    return http.post("/users_features", input);
-  }
-
 /*
   addFeature(user) {
     return http.post("/users", user);
@@ -37,4 +32,4 @@ class UserFeatureDataService {
 
 
 
-export default new UserFeatureDataService(); 
+export default new UserActivitiesDataService(); 

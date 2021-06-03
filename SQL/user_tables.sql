@@ -78,14 +78,14 @@ create table activities_features (
 );
 
 create table users_activities (
-	users_activities_id serial,
+	--users_activities_id serial,
 	users_id int,
 	activities_id int,
 	score int,
-	hit int,	  --treff
+	hit varchar,	  --treff
 	relevant int, --aktuell
-	strength int,
-	constraint users_activities_PK primary key(users_activities_id)
+	strength int
+	--constraint users_activities_PK primary key(users_activities_id)
 	--constraint users_FK foreign key (users_id) references users(users_id),
 	--constraint activities_FK foreign key (activities_id) references activities(activities_id);
 );

@@ -1,35 +1,44 @@
 'use strict';
 const db = require("./models");
 const Activity = db.activities;
+const User = db.users;
+const Feature = db.features;
 const ActivityController = require("./controllers/activity.controller.js");
 const UserController = require("./controllers/user.controller.js");
+const UserFeatureController = require("./controllers/user_feature.controller.js");
 
 const { activities_features } = require("./models");
 
-exports.calculate= async ()=>{
+exports.calculate= async ( users_id)=>{
       /* first testing object
     *const user_table = [1,2,3,2,2,2,3,1,1,1,1,1,1,1,1,1];
-
     let userScore = user_table.reduce((a,b) => {
         return a+b
     });
      */
+
+   // let users_id = 2;
+    let result = [];
     const activities_values = await ActivityController.findAllActivities();
-   
+
     // second testing object
-    const user_table = await UserController.findOneUserAnswersById(1);
     
+    const user_table = await UserController.findOneUserAnswersById(users_id)
+
+   
     //A Test to check that we´re getting the correct values
     //console.log(user_table.features[0].users_feature.users_features_values)
+    //let result = [];
+    result = looping(activities_values, user_table);
+
+   // const store = await UserFeatureController.addActivity(result, users_id);
+   //console.log(">> user", JSON.stringify(result, null, 2));
+   return result;
     
-    let result = looping(activities_values, user_table);
-
-    return result;
-
 };
 
 //A looping method to calculate a score with the user´s answers compared to the activities
-const looping = (activities_values, user_table) => {
+function looping (activities_values, user_table) {
     let table ={};
     
     //Looping through all activities
@@ -42,7 +51,7 @@ const looping = (activities_values, user_table) => {
             */
            table[i]= { 
                 activities_id: activities_values[i].activities_id,
-                activities_name: activities_values[i].activities_name,
+              //  activities_name: activities_values[i].activities_name,
                 score:0,
                 hit:0
            }
@@ -71,9 +80,9 @@ const looping = (activities_values, user_table) => {
             table[i].score=(totalValue);
             table[i].hit=(parseFloat(totalHit).toFixed(2)+"%");
 
-            console.log(table[i]);
+           
 }}
-   
+   // console.log(">> table", JSON.stringify(table, null, 2));
     return table;
 }
 

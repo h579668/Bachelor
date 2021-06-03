@@ -5,17 +5,17 @@
 */
 module.exports = (sequelize, Sequelize) => {
     const Users_Activities = sequelize.define("users_activitie", {
-      user_activities_id:{
+     /* user_activities_id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
+      },*/
       score: {
         type: Sequelize.INTEGER
       },
       hit: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       relevant: {
         type: Sequelize.INTEGER

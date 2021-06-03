@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const running = require("./app/score.js")
 
-
-const controller = require("./app/controllers/user.controller.js");
+//const controller = require("./app/controllers/user.controller.js");
+const controller = require("./app/controllers/user_activity.controller.js");
 
 const path = __dirname + '/app/views/';
 
@@ -53,3 +53,4 @@ app.listen(PORT, () => {
  run();
 */
 //running.calculate();
+//controller.addActivity();

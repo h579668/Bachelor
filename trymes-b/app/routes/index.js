@@ -13,6 +13,8 @@ const questionCategory = require("../controllers/questionCategory.controller.js"
 
 const user = require("../controllers/user.controller.js");
 const users_features =require("../controllers/user_feature.controller.js");
+const users_activities = require("../controllers/user_activity.controller.js");
+
 //const { users_features } = require('../models/index.js');
 
 /* Activity Router */
@@ -67,6 +69,9 @@ router.get("/questions/", question.findAll);
 router.get("/questionCategory/", questionCategory.findAll);
 
 router.post("/users_features/", users_features.addFeature);
+router.post("/users_activities/", users_activities.addActivity);
+
+//router.get("/users_features",users_features.findAllResults);
 
 router.post("/users/", user.create);
 router.get("/users/", user.findAll);
