@@ -69,7 +69,9 @@ router.get("/questions/", question.findAll);
 router.get("/questionCategory/", questionCategory.findAll);
 
 router.post("/users_features/", users_features.addFeature);
+
 router.post("/users_activities/", users_activities.addActivity);
+router.get("/users_activities/", users_activities.findAllUsersActivities);
 
 //router.get("/users_features",users_features.findAllResults);
 

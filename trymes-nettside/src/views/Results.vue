@@ -2,6 +2,13 @@
   <div>
     <h1> {{ table_of_results }} </h1>
     <canvas id="activity-chart"></canvas>
+
+    <div v-for="users in users_activities" :key="users.users_id">
+      <ul v-for="act in user.activities" :key="act.activities_id">
+        <li>Bruker ID: {{user.users_id}}, Aktivitetsnavn: {{ act.activities_name }},  Skår: {{ act.users_activitie.score }}, Prosent: {{ act.users_activitie.hit }}</li>
+      </ul>
+  </div>
+
   </div>
 </template>
 
@@ -9,6 +16,7 @@
 import Chart from "chart.js";
 import activityChartData from "../activity-data.js";
 import ActivityDataService from "@/services/ActivityDataService.js";
+import UserActivityDataService from "@/services/UserActivityDataService.js";
 
 export default {
   name: "Results",
@@ -35,36 +43,55 @@ export default {
          //Must be spelled correctly like models in the database
         activities: [],
         activities_name:"",
-        telephone: "",
-        email:"",
-        activities_comments:"",
+        score: "",
+        hit:"",
+
+        users_activities: [],
+        //telephone: "",
+        //email:"",
+        //activities_comments:"",
+
+        user : null
 
       };
     },
     methods: {
+    checkSession() { 
+    if(!this.$session.exists()){
+      this.$router.push('/');
+    }else if(this.$session.get("user")){
+        this.user = this.$session.get("user")
+        console.log("I SESSION " + this.user);
+    } 
+    
+    },
+
       //Method from bezcoders front end vue fullstack app. Link in readme
       //Getting all activities from database and storing them in activities table
-      retrieveLabels() {
-        ActivityDataService.getAll()
+      retrieveActivities() {
+        UserActivityDataService.findAllUsersActivities()
             .then(response => {
-            this.activities = response.data;
+            this.users_activities= response.data;
             console.log(response.data);
           })
           .catch(e => {
           console.log(e);
         });
-      },
-      //Refreshing the list
-      refreshList() {
-        this.retrieveLabels();
-      },
+        },
+            
+    refreshList() {
+      this.retrieveActivities();
     },
-     //Putting it on the page
-    mounted() {
-      this.retrieveLabels();
-      const ctx = document.getElementById("activity-chart");
-    new Chart(ctx, this.activityChartData);
-    } 
+  },
+
+  mounted() {
+    this.retrieveActivities();
+
+  },
+    
+  created: function(){
+    this.checkSession();
+  } 
 };
 </script>
 

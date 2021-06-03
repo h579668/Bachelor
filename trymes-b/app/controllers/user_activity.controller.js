@@ -11,10 +11,38 @@ const UserController = require("./user.controller.js");
 
 const Op = db.Sequelize.Op;
 const score = require("../score.js");
+
+// Find all Users answers
+exports.findAllUsersActivities = (req,res) => {
+  return User.findAll({
+    include: [
+      {
+        model: Activity,
+        as: "activities",
+        attributes: ["activities_id", "activities_name"],
+        through: {
+          attributes: ["hit", "score"],
+        },
+      },
+    ],
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+        err.message || ">> Error while getting user"
+      })});
+};
+
 // Find all Users Activities
 //Find on specific user and the user´s answers
-exports.findUserActivitiesById = (users_id) => {
-  return User.findByPk(users_id ,{
+exports.findUserActivitiesById = (req, res) => {
+
+  let users_id = req.body.users_id;
+
+  User.findByPk(users_id ,{
     include: [
       {
         model: Activity,
@@ -27,11 +55,16 @@ exports.findUserActivitiesById = (users_id) => {
     ],
   })
     .then((user) => {
-      return user;
+      res.send(user);
     })
     .catch((err) => {
-      console.log(">> Error while retrieving the user : ", err);
-    });
+      res.status(500).send({
+        message:
+        err.message || ">> Error while getting user"
+       })/*
+       console.log(">> Error while adding Activity to user: ", err);
+      */
+      });
 };
 
 //addScore in the m:m relation

@@ -1,9 +1,9 @@
 import http from "../http-commons.js";
 // fetching the data from the database
 class UserActivitiesDataService {
- /* getAll() {
-    return http.get("/users");
-  }*/
+  findAllUsersActivities() {
+    return http.get("/users_activities");
+  }
 
   addActivity(data) {
     return http.post("/users_activities", data);
