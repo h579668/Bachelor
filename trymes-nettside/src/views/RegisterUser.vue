@@ -17,9 +17,9 @@
         </option>
       </select>
       <br />
-      <div id="spanelement">
+      <!--<div id="spanelement">
         <span> Valgt område: {{ user.areas_id }} </span>
-      </div>
+      </div>-->
     </div>
     <br />
     <br />
@@ -37,9 +37,9 @@
         </option>
       </select>
       <br />
-      <div id="spanelement">
+      <!--<div id="spanelement">
         <span> Valgt alder: {{ user.age_id }} </span>
-      </div>
+      </div>-->
     </div>
     <button id="nextbtn" @click="saveUser"> {{ next }} </button>
   </div>

@@ -6,7 +6,8 @@
     <!-- role="main" means that it is the main content on the page-->
     <div role="main"> 
       <fieldset>
-        <legend> {{ information }}</legend>
+        <legend v-show="number <= questionCategory.length"> {{ information }}</legend>
+        <legend v-show="number == questionCategory.length+1"> {{ resultInfo }}</legend>
         <!--v-for-loop to get all the quiestions from the quiz table
         the table is not yet created in the database, but it should be in the future-->
     
@@ -48,7 +49,7 @@
     <div>
       
    
-       <button @click="previousQuestions" class="btn-navigation" v-show="number > 1 || number == (questionCategory.length+1) ">
+      <button @click="previousQuestions" class="btn-navigation" v-show="number > 1 || number == (questionCategory.length+1) ">
         Forrige
       </button>
        
@@ -67,17 +68,21 @@
 </template>
 
 <script>
-import QuestionDataService from "@/services/QuestionDataService.js"
-import QuestionCategoryDataService from "@/services/QuestionCategoryDataService.js"
-import UserFeatureDataService from "@/services/UserFeatureDataService.js"
-import UserActivityDataService from "@/services/UserActivityDataService.js"
+import QuestionDataService from "@/services/QuestionDataService.js";
+import QuestionCategoryDataService from "@/services/QuestionCategoryDataService.js";
+import UserFeatureDataService from "@/services/UserFeatureDataService.js";
+import UserActivityDataService from "@/services/UserActivityDataService.js";
+
 
 
 export default {
   name: "QuestionPage",
+  
+
   data() {
     return {
       information: "Kartlegging av hvordan du liker å drive med aktiviteter",
+      resultInfo: "Klikk for å gå videre til resultater",
       yesNoTitle: "Nå har vi noen ja/nei spørsmål",
       questions:[],
       feature:"",
