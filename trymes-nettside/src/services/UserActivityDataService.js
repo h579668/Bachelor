@@ -8,10 +8,10 @@ class UserActivitiesDataService {
   addActivity(data) {
     return http.post("/users_activities", data);
   }
-/*
-  addFeature(user) {
-    return http.post("/users", user);
-  }*/
+
+  findUserActivitiesById(user) {
+    return http.get("/users/", user);
+  }
 /*
   update(id, data) {
     return http.put(`/features/${id}`, data);

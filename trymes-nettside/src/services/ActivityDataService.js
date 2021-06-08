@@ -8,11 +8,11 @@ class ActivityDataService {
   get(id) {
     return http.get(`/activities/${id}`);
   }
-/*
+
   create(data) {
     return http.post("/activities", data);
   }
-
+/*
   update(id, data) {
     return http.put(`/activities/${id}`, data);
   }

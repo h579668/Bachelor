@@ -2,54 +2,56 @@ const { sequelize } = require("../models");
 const db = require("../models");
 const Activity = db.activities;
 const Feature = db.features;
+const Association = db.associations;
 const Op = db.Sequelize.Op;
 
 const { QueryTypes } = require('sequelize');
       
-exports.alll = async () => {
-const joined = await db.sequelize.query(
-  'SELECT * FROM  "activities"');
-  return joined;
 
-};
 //Create and Save a new Activity
 exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.activities_name) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
-  }
+  
+  //Activity
+  const activities_name= req.body.activities_name;
+  const telephone= req.body.telephone;
+  const email = req.body.email;
+  const activities_comments = req.body.activities_comments;
 
-  // Create an Activity
-  const activity = {
-    activities_name: req.body.activities_name,
-    telephone: req.body.telephone,
-    email: req.body.email,
-    activities_comments: req.body.activities_comments,
-  };
-  const age ={
-    age_values: req.body.age_values
-  };
-  const association ={
-    associations_name: req.body.associations
-  };
+  //Features-table
+  const features = req.body.features;
 
   // Save Activity in the database
-  Activity.create(activity)
-    //.then((activity) => { activity.add(age) })
-    //.then((activity)=> { activity.add(association) })
+  Activity.create({
+    activities_name,
+    telephone,
+    email,
+    activities_comments
+  })
     .then(data => {
+      for(let i = 0; i < features.length; i++){
+        Feature.findByPk(i+1).then((feature) => {
+          if(!feature){
+            console.log("Feature not found!");
+            return null;
+          }
+          data.addFeature(feature, { 
+            through: {
+              activities_features_values: features[i]
+            }
+          });
+        });
+        
+      }
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Activity."
+          err.message || "Some error occurred while creating the Activity with features."
       });
     });
 };
+
 
 //Retrieve all activities
  // Get all Features

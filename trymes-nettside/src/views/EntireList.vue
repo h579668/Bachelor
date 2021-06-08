@@ -37,7 +37,7 @@
 
 <script>
 import CategoryDataService from "@/services/CategoryDataService.js";
-import ActiivtyDataService from "@/services/ActivityDataService.js";
+import ActivtyDataService from "@/services/ActivityDataService.js";
 //import FeatureDataService from "@/services/FeatureDataService.js";
 import TableData from "@/components/Table.vue";
 
@@ -81,7 +81,7 @@ import TableData from "@/components/Table.vue";
         });
       },
       retrieveActivities() {
-        ActiivtyDataService.getAll()
+        ActivtyDataService.getAll()
             .then(response => {
             this.activities = response.data;
             console.log(response.data);
