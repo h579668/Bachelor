@@ -1,21 +1,16 @@
 <template>
     <div>
-    <!--  Create new Association  -->
-    <el-button type="primary" plain @click="openCreateFields" >
-            Opprett et nytt forbund
-    </el-button>
-     <el-button type="primary" plain @click="openLookFields" >
-           Finn forbund med aktiviteter
-    </el-button>
-     <el-button type="primary" plain @click="openAddFields" >
-            Legg aktiviteter til forbund
-    </el-button>
-     <el-button type="primary" plain @click="openEditFields" >
-            Endre eller slette forbund
-    </el-button>
-    <form>
 
-        <template v-if="createFieldsOpen">
+      <div id="app">
+      <!-- el-tabs start-->
+      <el-tabs type="border-card" v-model="activeName" @tab-click="handleClick">
+
+        <!-- tabCreate start -->
+        <el-tab-pane label="Opprett nytt Forbund" id="tab-0" name="tabCreate"> 
+         <!--  Create new Association  -->
+        <form>
+
+        <template>
         <br />
         <fieldset>
             <legend> 
@@ -31,17 +26,22 @@
             </el-button>
         </fieldset>
         </template>
-    </form>
-<!--  Look at the activities connected with an association -->
+       </form>
+        </el-tab-pane>
+        <!-- tabCreate end -->
+
+        <!-- tabActivities start -->
+        <el-tab-pane label="Finn Aktiviteter under Forbund" id="tab-1" name="tabActivities">  
+          <!-- Look at the activities connected with an association -->
     <form>
        
-        <template v-if="lookFieldsOpen">
+        <template>
 
         <fieldset>
           <legend>
             <b>
             Finn aktiviteter som er registrert til et forbund:
-            <b>
+            </b>
           </legend>
          <label for="select"> Velg Forbund </label> <br />
           <select
@@ -59,11 +59,11 @@
             </el-button>
 
         
-      <template v-if="showActivities">  
+      <template>  
         <p>
             Forbundets registrerte aktiviteter:
           </p>
-<!-- Table with registerd activities connected with the association-->
+<!--Table with registerd activities connected with the association-->
       
         <table>
             <thead> 
@@ -81,7 +81,7 @@
             </tbody>
           </table>
           <br/>
-          <!-- Table with the registered areas connected with the association -->
+         Table with the registered areas connected with the association 
          <table>
             <thead> 
               <tr>
@@ -110,45 +110,13 @@
 
       </fieldset>
     </form>
+        </el-tab-pane>
 
 
-    <!--  Update or delete an association -->
-    <template v-if="editFieldsOpen">
-    <form>
-        <fieldset>
-        <legend>
-            <b> Endre eller slett en association </b>
-        </legend>
-        
-         <label for="select"> Velg Forbund </label> <br />
-            <select
-             class="form-control"
-              v-model="associations.associations_id"
-              :required="true">
-            <option disabled value=""> Velg forbund</option>
-            <option v-for="association in associations" :value="association.associations_id" :key="association.associations_id" :id="association.associations_id">
-              {{ association.associations_name }}
-            </option>
-          </select> 
-        <br />
-         
-        <label for="text"> Endre navn på valgt forbund</label> <br />
-            <input type="text" placeholder="Navn" v-model="editName"/>
-           
-        <br />
-            <el-button size="small" type="success" @click="editAssociation"  icon="el-icon-edit"> 
-                Endre valgt forbund    
-            </el-button>
-             <el-button size="small" type="danger" @click="deleteAssociation" icon="el-icon-delete">
-                Slett valgt forbund
-            </el-button>
-
-        </fieldset>
-    </form>
-    </template>
-
-    <!-- Add more activities to the association  -->
-    <template v-if="addFieldsOpen">
+ 
+        <el-tab-pane label="Legg Aktiviteter til i Forbund" id="tab-2" name="tabAdd"> 
+            <!--Add more activities to the association  -->
+    <template>
       <form>
           <fieldset>
               <legend> 
@@ -182,6 +150,65 @@
     
       </form>
     </template>
+        </el-tab-pane>
+
+        <el-tab-pane label="Endre/slette Forbund" id="tab-3" name="tabEdit"> 
+        <!-- Update or delete an association -->
+    <template>
+    <form>
+        <fieldset>
+        <legend>
+            <b> Endre eller slett en association </b>
+        </legend>
+        
+         <label for="select"> Velg Forbund </label> <br />
+            <select
+             class="form-control"
+              v-model="associations.associations_id"
+              :required="true">
+            <option disabled value=""> Velg forbund</option>
+            <option v-for="association in associations" :value="association.associations_id" :key="association.associations_id" :id="association.associations_id">
+              {{ association.associations_name }}
+            </option>
+          </select> 
+        <br />
+         
+        <label for="text"> Endre navn på valgt forbund</label> <br />
+            <input type="text" placeholder="Navn" v-model="editName"/>
+           
+        <br />
+            <el-button size="small" type="success" @click="editAssociation"  icon="el-icon-edit"> 
+                Endre valgt forbund    
+            </el-button>
+             <el-button size="small" type="danger" @click="deleteAssociation" icon="el-icon-delete">
+                Slett valgt forbund
+            </el-button>
+
+        </fieldset>
+    </form>
+    </template>
+    </el-tab-pane>
+
+      </el-tabs>
+
+   <!-- navButtons
+    <el-button type="primary" plain @click="openCreateFields" >
+            Opprett et nytt forbund
+    </el-button>
+     <el-button type="primary" plain @click="openLookFields" >
+           Finn forbund med aktiviteter
+    </el-button>
+     <el-button type="primary" plain @click="openAddFields" >
+            Legg aktiviteter til forbund
+    </el-button>
+     <el-button type="primary" plain @click="openEditFields" >
+            Endre eller slette forbund
+    </el-button>-->
+
+  
+ 
+    
+   
   
 
     </div>
@@ -190,19 +217,16 @@
 <script>
 import AssociationDataService from "@/services/AssociationDataService.js";
 import ActivityDataService from "@/services/ActivityDataService.js";
+//import NavButtons from "@/components/NavButtons.vue";
+//import EditAssociation from "@/components/EditAssociation.vue";
+//import EditAssociationsActivities from "@/components/EditAssociationsActivities.vue"
 
 export default {
     name: "Assocation",
 
     data(){
         return{
-
-            createFieldsOpen: true,
-            lookFieldsOpen: false,
-            editFieldsOpen: false,
-            addFieldsOpen: false,
-
-            associations_activities: null,
+            associations_activities: "",
             showActivities: false,
             newAsso: false,
             name: "",
@@ -272,7 +296,12 @@ export default {
                 });
 
         },
-        openCreateFields(){
+        handleClick(tab) {
+          this.activeName = tab.name;
+
+          console.log(tab.name);
+      },
+       /* openCreateFields(){
             this.createFieldsOpen= true;
             this.lookFieldsOpen = false;
             this.editFieldsOpen = false;
@@ -297,7 +326,7 @@ export default {
             this.lookFieldsOpen= false;
             this.editFieldsOpen = false;
             this.addFieldsOpen= true;
-         },
+         },*/
         newAssociation(){
             if(this.name.length != 0 ){
                 let data = {
@@ -341,6 +370,7 @@ export default {
                      console.log(e);
                 });
             },
+    
         retrieveAssociations() {
             AssociationDataService.getAll()
                  .then((response) => {
@@ -370,8 +400,8 @@ export default {
      mounted() {
         this.retrieveAssociations();
         this.retrieveActivities();
-  },
-
+  
+     }
 }
 </script>
   

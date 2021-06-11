@@ -16,22 +16,34 @@
 
 <script>
 import AssociationDataService from "@/services/AssociationDataService.js";
+//import NavButtons from "@/components/NavButtons.vue";
 //import AreaDataService from "@/services/AreaDataService.js";
 //import AgeDataService from "@/services/AgeDataService.js";
 //import ActivityDataService from "@/services/ActivityDataService.js";
 //import TableData from "@/components/Table.vue";
-import Association from "@/components/Association.vue";
+//import EditAssociation from "@/components/EditAssociation.vue";
+//import EditAssociationsActivities from "@/components/EditAssociationsActivities.vue";
+import Association from '@/components/Association.vue';
 
 export default {
   name: "AddToActivity",
   components:{
    // TableData,
-     Association,
+    // NavButtons,
+     //EditAssociation,
+     //EditAssociationsActivities,
+    Association,
   },
 
   data() {
     return {
       activeName: 'tabActivity',
+      associations: [
+        {
+          associations_id: "",
+          associations_name:"",
+        }
+      ],
 
     };
   },
@@ -52,6 +64,36 @@ export default {
         console.log(tab, event);
       },
 
+    /*retrieveAssociations() {
+            AssociationDataService.getAll()
+                 .then((response) => {
+                    this.associations = response.data;
+                    console.log(response.data);
+                 })
+                .catch((e) => {
+                    console.log(e);
+                 });
+            },
+            retrieveActivities() {
+            ActivityDataService.getAll()
+                 .then((response) => {
+                    this.activities = response.data;
+                    console.log(response.data);
+                 })
+                .catch((e) => {
+                    console.log(e);
+                 });
+            },
+        refreshList() {
+            this.retrieveAssociations();
+            this.retrieveActivities();
+        },
+  
+    },*
+     mounted() {
+        this.retrieveAssociations();
+        this.retrieveActivities();
+  },
     /*retrieveAreas() {
       AreaDataService.getAll()
         .then((response) => {
@@ -78,12 +120,12 @@ export default {
     this.retrieveAreas();
     this.retrieveAges();
    // this.retrieveAssociations();*/
-  },
+
+
 
   /* created: function(){
-        this.checkSession();
-      }*/
-      
+        this.checkSession();*/
+  } 
 };
 </script>
 
