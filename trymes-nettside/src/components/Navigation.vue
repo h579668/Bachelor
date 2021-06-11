@@ -1,6 +1,7 @@
 <!-- contains the three main navigation at the top of the page-->
 <template>
     <div id="nav">
+       <router-link :to="{ name: 'AddToActivity' }">Legg til forbund, område eller alder</router-link>
       <router-link :to="{ name: 'HomePage' }">Hjem</router-link> |
       <router-link :to="{ name: 'AdLogin' }">Logg Inn</router-link>|
       <router-link :to="{ name: 'AllActivities' }">Alle aktiviteter</router-link>

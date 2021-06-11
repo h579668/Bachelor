@@ -4,23 +4,23 @@ class AssociationDataService {
   getAll() {
     return http.get("/associations");
   }
-/*
+
   findOne(id) {
     return http.get(`/associations/${id}`);
   }
 
   create(data) {
-    return http.post("/features", data);
+    return http.post("/associations", data);
   }
 
-  update(id, data) {
-    return http.put(`/features/${id}`, data);
+  updateName(id, data) {
+    return http.put(`/associations/${id}`, data);
   }
 
   delete(id) {
-    return http.delete(`/features/${id}`);
+    return http.delete(`/associations/${id}`);
   }
-
+/*
   deleteAll() {
     return http.delete(`/features`);
   }

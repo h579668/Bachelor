@@ -36,7 +36,7 @@ export default {
   name: "AdLogin",
   methods: {
     login() {
-      this.$router.push({ path: "/admenu" });
+      this.$router.push({ path: "/admenu", name: "AdMenu", component: '@/views/AdMenu.vue' }).catch(() => true);;
       //window.location.href = "http://localhost:8080/?#/admenu"
     },
   },

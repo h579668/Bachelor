@@ -18,7 +18,7 @@ const users_activities = require("../controllers/user_activity.controller.js");
 //const { users_features } = require('../models/index.js');
 
 /* Activity Router */
-//router.post("/activities/", activity.create); //create
+router.post("/activities/", activity.create); //create
 router.get("/activities/", activity.findAll); // Retrieve all activities
 //router.get("/activities/published", activity.findAllPublished); // Retrieve all published activities
 router.get("/activities/:id", activity.findById); // Retrieve a single activity with id
@@ -54,7 +54,12 @@ router.put("/features/:id", feature.addActivity); // Update a feature with id
 //router.delete("/features/:id", feature.delete); // Delete a feature with id
 //router.delete("/features/", feature.deleteAll); // Delete all feature*/
 
-router.get("/associations/", association.findAll);
+router.post("/associations/", association.create);//create
+router.put("/associations/:id", association.updateName); // Update an associations with id
+router.get("/associations/", association.findAll); // Retrieve all associations
+router.get("/associations/:id", association.findOne); // Retrieve a single association with id
+router.delete("/associations/:id", association.delete); // Delete a feature with id
+
 
 /* Feature Router */
 //router.post("/features/", feature.create); //create
@@ -72,11 +77,13 @@ router.post("/users_features/", users_features.addFeature);
 
 router.post("/users_activities/", users_activities.addActivity);
 router.get("/users_activities/", users_activities.findAllUsersActivities);
+router.get("/users_activities/", users_activities.findUserActivitiesById);
 
 //router.get("/users_features",users_features.findAllResults);
 
 router.post("/users/", user.create);
 router.get("/users/", user.findAll);
+
 
 
 module.exports = router;

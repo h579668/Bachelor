@@ -7,7 +7,6 @@ const Op = db.Sequelize.Op;
 
 const { QueryTypes } = require('sequelize');
       
-
 //Create and Save a new Activity
 exports.create = (req, res) => {
   
@@ -28,10 +27,15 @@ exports.create = (req, res) => {
     activities_comments
   })
     .then(data => {
+      console.log("**********************" + features.length);
       for(let i = 0; i < features.length; i++){
-        Feature.findByPk(i+1).then((feature) => {
+        Feature.findByPk(i+1)
+        .then((feature) => {
+          console.log("---------------------------------------------------------------");
+          console.log("DBHJGBSKJGHSDKGHSUGHO " + feature.features_id + " INDEX " +i);
+          console.log("---------------------------------------------------------------");
           if(!feature){
-            console.log("Feature not found!");
+            console.log("Feature not found!" + i);
             return null;
           }
           data.addFeature(feature, { 

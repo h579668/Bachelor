@@ -37,6 +37,11 @@ const routes = [
     component: lazyLoad("AdMenu"),
   },
   {
+    path: "/addtoactivity",
+    name: "AddToActivity",
+    component: lazyLoad("AddToActivity"),
+  },
+  {
     path: "/questions/results",
     name: "Results",
     component: lazyLoad("Results"),

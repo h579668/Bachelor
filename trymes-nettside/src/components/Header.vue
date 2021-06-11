@@ -11,6 +11,7 @@
           </el-col>
           <el-menu-item index="/AdLogin" class="doc-right">Logg Inn</el-menu-item>
           <el-menu-item index="/AllActivities" class="doc-right">Alle aktiviteter</el-menu-item>
+          <el-menu-item index="/AddToActivity" class="doc-right">Legg til forbund</el-menu-item>
           <el-menu-item index="/" class="doc-right">Hjem</el-menu-item>
       </el-menu>
     </div>

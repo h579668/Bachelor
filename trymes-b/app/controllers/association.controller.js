@@ -1,25 +1,20 @@
 const db = require("../models");
 const Association = db.associations;
 const Activity = db.activities;
+const Area = db.areas;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Association
 exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.ass_name) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
-  }
-
+  
   // Create a Association
-  const association = {
-    ass_name: req.body.ass_name,
-  };
+  
+   let associations_name = req.body.associations_name;
 
   // Save Association in the database
-  Association.create(association)
+  Association.create({
+    associations_name:associations_name
+  })
     .then(data => {
       res.send(data);
     })
@@ -31,6 +26,38 @@ exports.create = (req, res) => {
     });
 };
 
+exports.addAreaToAssociation= (res,req) => {
+
+  let associations_id = req.body.associations_id;
+  let areas_id = req.body.areas_id;
+
+
+  Association.findByPk(associations_id )
+  .then((association) => {
+    if (!association) {
+      console.log("Association not found!");
+      return null;
+    }
+    Area.findByPk(areas_id).then((areas) => {
+      if (!areas) {
+        console.log("Area not found!");
+        return null;
+      }
+
+      association.addArea(area);
+      res.send(association);
+    });
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message:
+        err.message || "Error while adding  Feature to Activity: "
+    });
+  
+  });
+
+
+ }
 /* Retrieve all Association from the database.
 exports.findAll = (req, res) => {
     const ass_name = req.query.ass_name;
@@ -70,7 +97,14 @@ exports.findAll = (req,res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Association.findByPk(id)
+    Association.findOne({
+      where:{
+        associations_id: id
+      },
+      include: 
+        ["activities","areas"]
+
+    })
       .then(data => {
         res.send(data);
       })
@@ -81,12 +115,45 @@ exports.findOne = (req, res) => {
       });
 };
 
-// Update a Association by the id in the request
-exports.update = (req, res) => {
-    const id = req.params.id;
+/* Update a Association by the id in the request
+exports.update = (id, association) => {
+  
+  const associations_name = association.associtaions_name
 
-    Association.update(req.body, {
-      where: { id: id }
+  console.log("------------------------------------------------")
+  console.log("ID " + id + " NAME " + association.associations_name)
+  console.log("------------------------------------------------")
+
+  return Association.update(association, {
+    where: { associations_id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        
+          console.log( "Association was updated successfully.")
+      
+      } else {
+        
+        console.log( `Cannot update Association with id=${id}. Maybe Association was not found or req.body is empty!`)
+       
+      }
+    })
+    .catch(err => {
+     
+       console.log( "Error updating Association with id=" + id)
+  
+    });
+};*/
+
+//Update a Association by the id in the request
+exports.updateName = (req, res) => {
+    const id = req.params.id;
+    //const name = req.body.associations_name
+    let associations_name = req.body.associations_name;
+
+    Association.update(
+     {associations_name: associations_name}, {
+      where: { associations_id: id }
     })
       .then(num => {
         if (num == 1) {
@@ -111,7 +178,7 @@ exports.delete = (req, res) => {
     const id = req.params.id;
 
     Association.destroy({
-      where: { id: id }
+      where: { associations_id: id }
     })
       .then(num => {
         if (num == 1) {
@@ -148,16 +215,3 @@ exports.deleteAll = (req, res) => {
         })
 };
 
-// Find all published Association
-exports.findAllPublished = (req, res) => {
-  Association.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Association."
-      });
-    });
-};
