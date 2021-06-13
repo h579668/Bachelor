@@ -49,7 +49,7 @@
     <div>
       
    
-      <button @click="previousQuestions" class="btn-navigation" v-show="number > 1 || number == (questionCategory.length+1) ">
+      <button @click="previousQuestions" class="btn-navigation" v-show="number > 1 && number < (questionCategory.length+1) ">
         Forrige
       </button>
        

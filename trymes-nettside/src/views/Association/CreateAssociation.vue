@@ -11,14 +11,15 @@
                     <legend> 
                         <b>Opprett et nytt forbund</b> 
                     </legend>
-            
-                    <label for="text"> Navn på forbund</label> <br />
+                    <br />
+                    <label for="text"> Navn på forbund</label> <br /> <br />
                     <input type="text" placeholder="Navn" v-model="name"/>
                     <br />
 
                      <el-button type="success" size="small"  @click="newAssociation" >
                          Legg til Forbund
                     </el-button>
+
                     </fieldset>
                 </form>
             </el-main>
@@ -74,5 +75,11 @@ export default {
 
 }
 </script>
+<style scoped>
+
+el-button{
+    padding: 15px;
+}
+</style>
 
 

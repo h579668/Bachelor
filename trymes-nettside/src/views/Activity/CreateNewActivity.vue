@@ -20,25 +20,26 @@
             <el-col :span="6" ><div class="grid-content bg-purple">
              Navn på aktivitet:
             <br />
-            <input type="text" v-model="activity.activities_name" /> 
+            <input type="text" placeholder="Navn"  v-model="activity.activities_name" /> 
             </div>
           </el-col>
           <el-col :span="6" ><div class="grid-content bg-purple">
              Email:
             <br />
-            <input type="text" v-model="activity.email" /> 
+           
+          <input type="text" placeholder="Mail Addresse" v-model="activity.email" /> 
             </div>
           </el-col>
            <el-col :span="6" ><div class="grid-content bg-purple">
              Telefonnummer:
             <br />
-            <input type="text" v-model="activity.telephone" /> 
+           <input type="text" placeholder="Telefonnummer" v-model="activity.telephone" /> 
             </div>
           </el-col>
           <el-col :span="6" ><div class="grid-content bg-purple">
              Kommentar:
             <br />
-            <input type="text" v-model="activity.activities_comments" /> 
+            <input type="text" placeholder="Kommentar" v-model="activity.activities_comments" /> 
             </div>
           </el-col>
         </el-row>
@@ -53,7 +54,10 @@
                 <div class="grid-content bg-purple">
                   {{ feat.features_name }}
                   <br />
-                  <input type="number" v-model="features_list[feat.features_id-1]" /> 
+
+                  <el-input-number v-if="cat.categories_id < 4"  v-model="features_list[feat.features_id-1]" :min="0" :max="3"></el-input-number>
+                  <el-input-number v-else  v-model="features_list[feat.features_id-1]" :min="0" :max="1"></el-input-number>
+                 <!-- <input type="number" v-model="features_list[feat.features_id-1]" /> -->
                   <!-- have to use features_id-1 in order to start on index 0 --> 
               </div>
             </el-col>
@@ -61,13 +65,8 @@
                 
         </el-row>
 
-        <button @click="saveActivity">
-          Lagre Aktivitet
-        </button>
-
-        <button @click="nextPage" v-show="saved">
-          neste side
-          <button>
+        
+        <el-button type="success" size="medium" @click="saveActivity">Lagre Aktivitet</el-button>
 
       </fieldset>
     </form>
@@ -135,9 +134,6 @@ export default {
       refreshList() {
         this.retrieveCategory();
       },
-      nextPage(){
-        this.$router.push({  name: "AddToActivity", component: '@/views/AddToActivity.vue'}).catch(() => true);
-      },
 
       saveActivity(){
         let data = {
@@ -153,7 +149,13 @@ export default {
       ActivityDataService.create(data)
       .then(response => {
         this.activity.activities_id = response.data.activities_id;
-        console.log("ACTIVITY ID HERE " +this.activity.activities_id);
+         this.$notify({
+                    title: 'Aktiviteten er lagt til',
+                    message: data.activities_name,
+                    type: 'success'
+                });
+
+        this.refreshList();
         this.session();
         this.saved = true;
 
@@ -210,5 +212,6 @@ fieldset{
   height:550px;
 
 }
+
 
 </style>

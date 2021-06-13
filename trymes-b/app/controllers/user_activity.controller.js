@@ -56,6 +56,9 @@ exports.findOneUserAnswers = (req,res) => {
         through: {
           attributes: ["hit", "score"],
         },
+        order:[[
+          ["activities_name","ASC"]
+        ]]
       },
     ],
   })

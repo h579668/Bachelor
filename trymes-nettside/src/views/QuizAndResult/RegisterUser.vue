@@ -5,8 +5,10 @@
     
     <div>
         <!-- select geographical location-->
-      <h2> {{ area_title }} </h2>
+     <label for="area"> <b>{{ area_title }}</b> </label> <br />
       <select
+      id="area"
+      name="area"
         class="form-control"
         v-model="user.areas_id"
         :required="true"
@@ -25,8 +27,10 @@
     <br />
     <!-- select an age_interval -->
     <div>
-      <h2> {{ age_title }} </h2>
+      <label for="age"><b> {{ age_title }}</b></label> <br />
       <select
+      id="age"
+      name="age"
         class="form-control"
         v-model="user.age_id"
         :required="true"
@@ -100,7 +104,6 @@ export default {
          areas_id: this.user.areas_id,
          age_id: this.user.age_id
       }
-
       UserDataService.create(data)
       .then(response => {
         this.user.users_id = response.data.users_id;
@@ -163,7 +166,7 @@ export default {
 }
 
 select {
-  margin-top: 5%;
+ 
   padding: 1%;
   width: 22%;
   font-size: 17px;
@@ -184,5 +187,10 @@ option {
 
 #nextbtn:hover {
    background-color: #548687;
+ }
+
+ label{
+   font-size: 20px;
+
  }
 </style>

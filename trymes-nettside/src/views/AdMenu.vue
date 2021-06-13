@@ -49,4 +49,9 @@ export default {
 p:hover {
   text-decoration:underline;
 }
+a{
+  text-decoration: none;
+  color:black;
+  
+}
 </style>
