@@ -75,11 +75,4 @@ export default {
 
 }
 </script>
-<style scoped>
-
-el-button{
-    padding: 15px;
-}
-</style>
-
 

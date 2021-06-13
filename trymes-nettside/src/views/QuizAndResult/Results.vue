@@ -3,6 +3,10 @@
     <h1> {{ table_of_results }} </h1>
     <canvas id="activity-chart"></canvas>
 
+    <template v-if="!show">
+     <p> <i class="el-icon-loading"> laster inn </i> </p>
+    </template>
+
     <template v-if="show">
     <TableData>
       <thead>
@@ -106,7 +110,7 @@ export default {
         UserActivityDataService.findOneUserAnswers(id)
             .then(response => {
             this.users_activities= response.data;
-            if(response.data.activities.length == 0){
+            if(response.data.activities.length == 0 || response.data.activities.length <10){
                 this.refreshList();
             }else{
               this.show = true;

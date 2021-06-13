@@ -57,7 +57,7 @@ exports.findOneUserAnswers = (req,res) => {
           attributes: ["hit", "score"],
         },
         order:[[
-          ["activities_name","ASC"]
+          [Activity, "activities_name","ASC"]
         ]]
       },
     ],
