@@ -1,7 +1,10 @@
 <!-- Menu for the admin, overview for possible future actions-->
 <template>
 <!-- role="main" means that it is the main content on the page-->
+  <div>
+  <AdminNav />
   <div class="admenu" role="main">
+    
     <h1>{{ menumsg }}</h1>
 
     <form class="logginn-container">
@@ -12,11 +15,16 @@
       <p><router-link :to="{ name: 'ChangePassword' }">Endre passord</router-link></p>
     </form>
   </div>
+  </div>
 </template>
 
 <script>
+import AdminNav from "@/components/AdminNav"
 export default {
   name: "AdMenu",
+  components:{
+    AdminNav,
+  },
   data(){
     return{
         menumsg: "Admin Meny"

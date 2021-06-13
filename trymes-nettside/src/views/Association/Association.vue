@@ -54,7 +54,7 @@
             </option>
           </select> <br />
 
-           <el-button size="small" type="success" @click="findActivities"  iicon="el-icon-search"> 
+           <el-button size="small" type="success" @click="findActivities"  icon="el-icon-search"> 
                Finn tilhørende aktiviteter  
             </el-button>
 
@@ -191,26 +191,6 @@
 
       </el-tabs>
 
-   <!-- navButtons
-    <el-button type="primary" plain @click="openCreateFields" >
-            Opprett et nytt forbund
-    </el-button>
-     <el-button type="primary" plain @click="openLookFields" >
-           Finn forbund med aktiviteter
-    </el-button>
-     <el-button type="primary" plain @click="openAddFields" >
-            Legg aktiviteter til forbund
-    </el-button>
-     <el-button type="primary" plain @click="openEditFields" >
-            Endre eller slette forbund
-    </el-button>-->
-
-  
- 
-    
-   
-  
-
     </div>
 </template>
 
@@ -301,32 +281,6 @@ export default {
 
           console.log(tab.name);
       },
-       /* openCreateFields(){
-            this.createFieldsOpen= true;
-            this.lookFieldsOpen = false;
-            this.editFieldsOpen = false;
-            this.addFieldsOpen = false;
-
-        },
-        openLookFields(){
-            this.createFieldsOpen= false;
-            this.lookFieldsOpen= true;
-            this.editFieldsOpen= false;
-            this.addFieldsOpen= false;
-        },
-         openEditFields(){
-            this.createFieldsOpen = false;
-            this.lookFieldsOpen = false;
-            this.editFieldsOpen = true;
-            this.addFieldsOpen = false;
-
-         },
-         openAddFields(){
-            this.createFieldsOpen= false;
-            this.lookFieldsOpen= false;
-            this.editFieldsOpen = false;
-            this.addFieldsOpen= true;
-         },*/
         newAssociation(){
             if(this.name.length != 0 ){
                 let data = {

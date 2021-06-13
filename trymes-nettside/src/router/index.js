@@ -18,17 +18,17 @@ const routes = [
   {
     path: "/",
     name: "EntireList",
-    component: lazyLoad("EntireList"),
+    component: lazyLoad("ActivityFeature/EntireList"),
   },
   {
     path: "/questions",
     name: "Questions",
-    component: lazyLoad("Questions"),
+    component: lazyLoad("QuizAndResult/Questions"),
   },
   {
     path: "/adlogin",
     name: "AdLogin",
-    component: lazyLoad("AdLogin"),
+    component: lazyLoad("Login/AdLogin"),
 
   },
   {
@@ -37,14 +37,9 @@ const routes = [
     component: lazyLoad("AdMenu"),
   },
   {
-    path: "/addtoactivity",
-    name: "AddToActivity",
-    component: lazyLoad("AddToActivity"),
-  },
-  {
     path: "/questions/results",
     name: "Results",
-    component: lazyLoad("Results"),
+    component: lazyLoad("QuizAndResult/Results"),
   },
   {
     path: "/activities",
@@ -54,17 +49,17 @@ const routes = [
   {
     path: "/changePassword",
     name: "ChangePassword",
-    component: lazyLoad("ChangePassword"),
+    component: lazyLoad("Login/ChangePassword"),
   },
   {
     path: "/register",
     name: "RegisterUser",
-    component: lazyLoad("RegisterUser"),
+    component: lazyLoad("QuizAndResult/RegisterUser"),
   },
   {
     path: "/newActivity",
     name: "CreateNewActivity",
-    component: lazyLoad("CreateNewActivity"),
+    component: lazyLoad("Activity/CreateNewActivity"),
   },
   {
     path: "/changeActivity",
@@ -74,7 +69,27 @@ const routes = [
   {
     path: "/allActivities",
     name: "AllActivities",
-    component: lazyLoad("AllActivities"),
+    component: lazyLoad("Activity/AllActivities"),
+  },
+  {
+    path: "/createAssociation",
+    name: "CreateAssociation",
+    component: lazyLoad("Association/CreateAssociation"),
+  },
+  {
+    path: "/editAssociation",
+    name: "EditAssociation",
+    component: lazyLoad("Association/EditAssociation"),
+  },
+  {
+    path: "/addAssociations",
+    name: "AddAssociation",
+    component: lazyLoad("Association/AddAssociation"),
+  },
+  {
+    path: "/associationActivity",
+    name: "AssociationActivity",
+    component: lazyLoad("Association/AssociationActivity"),
   },
 ];
 

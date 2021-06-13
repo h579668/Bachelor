@@ -1,6 +1,11 @@
 <script src="//unpkg.com/vue/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.15.2/lib/index.js"></script>
 <template>
+  <el-container>
+     <el-aside style="width:70px">
+      <AdminNav />
+        </el-aside>
+    <el-main>
   <div class="createNewActivity">
     <h1>{{ msg }}</h1>
     <!-- role="main" means that it is the main content on the page-->
@@ -68,15 +73,22 @@
     </form>
 
   </div>
+    </el-main>
+  </el-container>
 </template> 
 
 <script>
 import CategoryDataService from "@/services/CategoryDataService.js";
 import ActivityDataService from "@/services/ActivityDataService.js";
+import AdminNav from "@/components/AdminNav";
+
 
 export default {
     
   name: "CreateNewActivity",
+  components:{
+        AdminNav
+    },
   data() {
         return { 
           categories: [{

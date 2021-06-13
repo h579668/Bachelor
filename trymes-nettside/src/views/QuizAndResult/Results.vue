@@ -29,7 +29,7 @@
 
 <script>
 import Chart from "chart.js";
-import activityChartData from "../activity-data.js";
+import activityChartData from "@/activity-data.js";
 //import ActivityDataService from "@/services/ActivityDataService.js";
 import UserActivityDataService from "@/services/UserActivityDataService.js";
 

@@ -1,6 +1,15 @@
 <template>
-  <div id="app">
+  <div>
+    <el-container>
+      <el-aside style="width:70px;"> 
+        <AdminNav />
+      </el-aside>
+
+      <el-main>
+      <div id="app">
+    
       <el-tabs type="border-card" v-model="activeName ">
+        
         <el-tab-pane v-for="cat in categories" :key="cat.categories_name" 
           :label="cat.categories_name">
           <h3>{{ cat.categories_name }}</h3>
@@ -32,6 +41,9 @@
         </TableData>
       </el-tab-pane>
     </el-tabs>
+    </div>
+  </el-main>
+ </el-container>
   </div>
 </template>
 
@@ -40,12 +52,14 @@ import CategoryDataService from "@/services/CategoryDataService.js";
 import ActivtyDataService from "@/services/ActivityDataService.js";
 //import FeatureDataService from "@/services/FeatureDataService.js";
 import TableData from "@/components/Table.vue";
+import AdminNav from "@/components/AdminNav";
 
   export default {
     name: "EntireList",
 
     components: {
-        TableData
+        TableData,
+        AdminNav
       },
 
     data(){
