@@ -9,8 +9,8 @@ class UserActivitiesDataService {
     return http.post("/users_activities", data);
   }
 
-  findUserActivitiesById(user) {
-    return http.get("/users/", user);
+  findOneUserAnswers(id) {
+    return http.get(`/users_activities/${id}`);
   }
 /*
   update(id, data) {

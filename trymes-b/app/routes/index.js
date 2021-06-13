@@ -76,13 +76,15 @@ router.get("/questionCategory/", questionCategory.findAll);
 router.post("/users_features/", users_features.addFeature);
 
 router.post("/users_activities/", users_activities.addActivity);
-router.get("/users_activities/", users_activities.findAllUsersActivities);
-router.get("/users_activities/", users_activities.findUserActivitiesById);
+router.get("/users_activities/:id", users_activities.findOneUserAnswers);
+//router.get("/users_activities/", users_activities.findAllUsersActivities);
+//router.get("/users_activities/", users_activities.findUserActivitiesById);
 
 //router.get("/users_features",users_features.findAllResults);
 
 router.post("/users/", user.create);
 router.get("/users/", user.findAll);
+
 
 
 

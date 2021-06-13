@@ -5,8 +5,8 @@ class UserDataService {
     return http.get("/users");
   }
 /*
-  findOne(id) {
-    return http.get(`/associations/${id}`);
+  findOneUserAnswers(id) {
+    return http.get(`/users/${id}`);
   }
 */
   create(data) {

@@ -37,12 +37,17 @@ exports.findAllUsersActivities = (req,res) => {
 };
 
 // Find all Users Activities
-//Find on specific user and the user´s answers
-exports.findUserActivitiesById = (req, res) => {
+//Find one specific user and the user´s answers
+exports.findOneUserAnswers = (req,res) => {
+  let id = req.params.id;
+  console.log("------------------")
+  console.log(id)
+  console.log("------------------")
 
-  let users_id = req.body.users_id;
-
-  User.findByPk(users_id ,{
+  User.findOne( { 
+    where: { 
+      users_id : id
+    },
     include: [
       {
         model: Activity,
@@ -54,16 +59,18 @@ exports.findUserActivitiesById = (req, res) => {
       },
     ],
   })
-    .then((user) => {
-      res.send(user);
+    .then((data) => {
+      res.send(data);
+      //console.log(data)
+      //console.log(" USER FOUND ")
     })
     .catch((err) => {
       res.status(500).send({
         message:
         err.message || ">> Error while getting user"
-       })/*
-       console.log(">> Error while adding Activity to user: ", err);
-      */
+       })
+    //   console.log(">> Error while retriving: ", err);
+    
       });
 };
 

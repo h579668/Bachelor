@@ -3,8 +3,25 @@
     <h1> {{ table_of_results }} </h1>
     <canvas id="activity-chart"></canvas>
 
+    <template v-if="show">
     <TableData>
       <thead>
+         <tr>
+          <th>Aktivitetsnavn</th>
+          <th>Skår</th>
+          <th>Prosent</th>
+        </tr>
+      </thead>
+      <tbody >
+          <tr v-for="user in users_activities.activities" :key="user.activities_id">
+            <td> {{user.activities_name}}</td>
+            <td> {{user.users_activitie.score}}</td>
+            <td> {{user.users_activitie.hit}}</td>
+          </tr>
+
+      </tbody>
+
+      <!--<thead>
         <tr>
           <td>Bruker ID:</td>
           <td>Aktivitetsnavn</td>
@@ -21,8 +38,9 @@
             <td> {{act.users_activitie.hit}}</td>
           </tr>
         </div>
-      </tbody>
+      </tbody>-->
     </TableData>
+    </template>
 
   </div>
 </template>
@@ -42,6 +60,7 @@ export default {
       },
     data(){
       return { 
+        show: false,
         activityChartData: activityChartData,
         list_of_results: "Liste over resultatene",
         table_of_results: "Tabell over resultatene",
@@ -71,10 +90,27 @@ export default {
 
       //Method from bezcoders front end vue fullstack app. Link in readme
       //Getting all activities from database and storing them in activities table
-      retrieveActivities() {
+      /*retrieveActivities() {
         UserActivityDataService.findAllUsersActivities()
             .then(response => {
             this.users_activities= response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+          console.log(e);
+        });
+        },*/
+        retrieveActivities() {
+          let id = this.user;
+          console.log(id)
+        UserActivityDataService.findOneUserAnswers(id)
+            .then(response => {
+            this.users_activities= response.data;
+            if(response.data.activities.length == 0){
+                this.refreshList();
+            }else{
+              this.show = true;
+            }
             console.log(response.data);
           })
           .catch(e => {

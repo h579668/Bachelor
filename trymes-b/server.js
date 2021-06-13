@@ -3,7 +3,7 @@ const cors = require("cors");
 const running = require("./app/score.js")
 
 //const controller = require("./app/controllers/user.controller.js");
-const controller = require("./app/controllers/association.controller.js");
+const controller = require("./app/controllers/user_activity.controller.js");
 
 const path = __dirname + '/app/views/';
 
@@ -35,20 +35,18 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-
 /*
+
  const run = async () => {
  // console.log(userObject);
  // await controller.addToDatabase(userObject);
   
   //const user = await controller.createUser(2,1);
 
-    const id = 20;
-    const newName = {
-      associations_name: "Jadda"
-    }
-    const newData = await controller.update(id,newName);
-  console.log( JSON.stringify(newData,null,2));
+    const id = 9;
+    
+  const newData = await controller.findOneUserAnswers(id);
+  console.log( newData);
 
  }
 
