@@ -6,20 +6,22 @@
       <thead>
         <tr>
           <th>Aktivitetsnavn</th>
-          <th >Forbund</th>
+          <th>Forbund</th>
           <th>Email</th>
         </tr>
       </thead>
-
-      <tbody v-for="ass in associations" 
-      :key="ass.associations_id">
-        <tr v-for="act in ass.activities" :key="act.activities_id" >
-          <td> {{act.activities_name}}</td>
-          <td> {{ass.associations_name}}</td>
-          <td> {{act.email}}</td> 
+      <template v-if="ready">
+      <tbody>
+        <tr v-for="act in activities" :key="act" >
+          <td> {{ act.activities_name }} </td>
+          <td > {{ act.associations.associations_name}} </td>
+          <td> {{ act.email }}</td> 
         </tr>
       </tbody>
+      </template>
+      
     </TableData>
+    
   </div>
 </template>
 
@@ -27,7 +29,7 @@
 // @ is an alias to /src
 //Is not going to be like this...
 //import Categories from "@/views/Categories.vue";
-import AssociationDataService from "@/services/AssociationDataService.js";
+import ActivityDataService from "@/services/ActivityDataService.js";
 import TableData from "@/components/Table.vue";
 
 export default {
@@ -41,8 +43,9 @@ export default {
   //},
   data() {
     return {
-      associations: [],
-      associations_name: "",
+      ready: false,
+      
+      
       activities_name: "",
       telephone: "",
       email: "",
@@ -50,7 +53,7 @@ export default {
       list_of_results: "Liste over resultatene",
     };
   },
-  computed: {
+  /*computed: {
     activities() {
       console.log("HERE");
       let activities = {};
@@ -63,11 +66,11 @@ export default {
       return Object.keys(activities);
     },
     
-  },
+  },*/
   methods: {
     //Method from bezcoders front end vue fullstack app. Link in readme
     //Getting all activities from database and storing them in activities table
-    cellFormatter(row, col) {
+    /*cellFormatter(row, col) {
       let key = JSON.parse(col.property);
       let d = row.activities.find(
         (r) => r.activities_name === key.activities_name
@@ -77,12 +80,13 @@ export default {
         return d[key.property];
       }
       return "0";
-    },
+    },*/
     
-    retrieveAssociations() {
-      AssociationDataService.getAll()
+    retrieveActivities() {
+      ActivityDataService.getAllAssociations()
         .then((response) => {
-          this.associations = response.data;
+          this.activities = response.data;
+          this.ready = true;
           console.log(response.data);
         })
         .catch((e) => {
@@ -91,12 +95,12 @@ export default {
     },
     //Refreshing the list
     refreshList() {
-      this.retrieveAssociations();
+      this.retrieveActivities();
     },
   },
   //Putting it on the page
   mounted() {
-    this.retrieveAssociations();
+    this.retrieveActivities();
   },
 };
 </script>

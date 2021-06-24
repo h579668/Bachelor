@@ -100,9 +100,10 @@ export default {
     },
     //saving the user in the database
     saveUser(){
-      var data = {
-         areas_id: this.user.areas_id,
-         age_id: this.user.age_id
+      if(this.user.areas_id && this.user.age_id){
+        let data = {
+          areas_id: this.user.areas_id,
+          age_id: this.user.age_id
       }
       UserDataService.create(data)
       .then(response => {
@@ -119,6 +120,17 @@ export default {
        .catch(e => {
           console.log(e);
         });
+        }else{
+          this.$alert('Vennligst velg "Anonym" hvis du ikke ønsker å velge alder og område', 'Varsel', {
+          confirmButtonText: 'OK',
+          callback: () => {
+            this.$message({
+              type: 'info',
+              message: 'Vennligst velg "Anonym" hvis du ikke ønsker å velge alder og område'
+            });
+          }
+        });
+        }
      // this.quizpage();
     },
 

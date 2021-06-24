@@ -68,6 +68,16 @@ db.features.belongsToMany(db.activities,{
   foreignKey: "features_id"
 });
 
+//Activities_Features table
+db.activities_features.belongsTo(db.activities, {
+  as:"activities",
+  foreignKey: "activities_id",
+});
+db.activities_features.belongsTo(db.features, {
+  as:"features",
+  foreignKey: "features_id",
+});
+
 //Activities_Age_Interval table
 db.activities.belongsToMany(db.age_intervals, {
   through: "activities_age_interval",

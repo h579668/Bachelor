@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container>
-      <el-aside style="width:70px;"> 
+      <el-aside  style="width:205px"> 
         <AdminNav />
       </el-aside>
 
@@ -95,7 +95,7 @@ import AdminNav from "@/components/AdminNav";
         });
       },
       retrieveActivities() {
-        ActivtyDataService.getAll()
+        ActivtyDataService.getAllFeatures()
             .then(response => {
             this.activities = response.data;
             console.log(response.data);

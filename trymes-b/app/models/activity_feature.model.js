@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 /*
  * We dropped writing the "s" on the end of the table names
  * The "s" is added automatically when the table is being initialized
@@ -10,6 +10,16 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      activities_id:{
+          type: Sequelize.INTEGER,
+          unique: false,
+          allowNull:false,
+      },
+      features_id:{
+        type: Sequelize.INTEGER,
+        unique: false,
+        allowNull:false,
       },
       activities_features_values: {          
         type: Sequelize.INTEGER

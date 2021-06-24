@@ -8,11 +8,11 @@ class AreaDataService {
   get(id) {
     return http.get(`/areas/${id}`);
   }
-/*
-  create(data) {
-    return http.post("/activities", data);
-  }
 
+  create(data) {
+    return http.post("/areas", data);
+  }
+/*
   update(id, data) {
     return http.put(`/activities/${id}`, data);
   }

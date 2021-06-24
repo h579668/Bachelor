@@ -19,14 +19,21 @@ exports.create = (req, res) => {
   //Features-table
   const features = req.body.features;
 
+  //Association
+  const associations_id = req.body.associations_id
+
+  console.log(associations_id)
+
   // Save Activity in the database
   Activity.create({
     activities_name,
     telephone,
     email,
-    activities_comments
+    activities_comments,
+    associations_id
   })
     .then(data => {
+ 
       console.log("**********************" + features.length);
       for(let i = 0; i < features.length; i++){
         Feature.findByPk(i+1)
@@ -59,7 +66,7 @@ exports.create = (req, res) => {
 
 //Retrieve all activities
  // Get all Features
- exports.findAll = (req, res) => {
+ exports.findAllFeatures = (req, res) => {
   const activities_name = req.query.activities_name;
   var condition = activities_name ? { activities_name: { [Op.iLike]: `%${activities_name}%` } } : null;
   Activity.findAll({
@@ -85,6 +92,35 @@ exports.create = (req, res) => {
         message: err.message || "Error retrieving all Features"
       })
       //console.log(">> Error while retrieving Features: ", err);
+    });
+};
+
+//Retrieve all activities
+ // Get all Associations
+ exports.findAllAssociations = (req, res) => {
+  const activities_name = req.query.activities_name;
+  var condition = activities_name ? { activities_name: { [Op.iLike]: `%${activities_name}%` } } : null;
+  Activity.findAll({
+    condition,
+    
+    order: [['activities_name', 'ASC']],
+    include: [
+      {
+        model: Association,
+        as: "associations",
+        attributes: [ "associations_name"],
+      },
+    ],
+  
+  })
+    .then(data => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Error retrieving all Associations"
+      })
+      //console.log(">> Error while retrieving Associations: ", err);
     });
 };
 

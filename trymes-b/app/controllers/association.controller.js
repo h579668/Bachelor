@@ -8,14 +8,22 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   
   // Create a Association
-  
-   let associations_name = req.body.associations_name;
+   const associations_name = req.body.associations_name;
+
+   const areas_id = req.body.areas_id;
 
   // Save Association in the database
   Association.create({
     associations_name:associations_name
   })
     .then(data => {
+      Area.findByPk(areas_id)
+      .then((area)=>{
+        if(!area){
+          return null;
+        }
+        data.addArea(area)
+      })
       res.send(data);
     })
     .catch(err => {

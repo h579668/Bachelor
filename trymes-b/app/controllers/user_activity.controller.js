@@ -54,7 +54,7 @@ exports.findOneUserAnswers = (req,res) => {
         as: "activities",
         attributes: ["activities_id", "activities_name"],
         through: {
-          attributes: ["hit", "score"],
+          attributes: ["hit", "score", "relevant"],
         },
         order:[[
           [Activity, "activities_name","ASC"]
@@ -106,7 +106,8 @@ exports.addActivity = async(req,res) => {
         user.addActivity(activity, { 
           through: {
             hit: arrayContent[i].hit,
-            score: arrayContent[i].score
+            score: arrayContent[i].score,
+            relevant: arrayContent[i].relevant
           }
         });
         

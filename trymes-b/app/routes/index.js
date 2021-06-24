@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 
 const activity = require("../controllers/activity.controller.js");
+const activity_features = require("../controllers/activity_features.controller.js");
 const age = require("../controllers/age_interval.controller.js");
 const area = require("../controllers/area.controller.js");
 const association = require("../controllers/association.controller.js");
@@ -19,23 +20,20 @@ const users_activities = require("../controllers/user_activity.controller.js");
 
 /* Activity Router */
 router.post("/activities/", activity.create); //create
-router.get("/activities/", activity.findAll); // Retrieve all activities
+router.get("/activities_associations/", activity.findAllAssociations); // Retrieve all activities with associations
 //router.get("/activities/published", activity.findAllPublished); // Retrieve all published activities
 router.get("/activities/:id", activity.findById); // Retrieve a single activity with id
 //router.put("/activities/:id", activity.update); // Update an activity with id
 //router.delete("/activities/:id", activity.delete); // Delete an activity with id
 //router.delete("/actactivitiesvity/", activity.deleteAll); // Delete all activity
 
-/* Age_Interval Router */
-router.post("/age_intervals/", age.create); //create
-router.get("/age_intervals/", age.findAll); // Retrieve all ages
-router.get("/age_intervals/published", age.findAllPublished); // Retrieve all published age
-router.get("/age_intervals/:id", age.findOne); // Retrieve a single age with id
-router.put("/age_intervals/:id", age.update); // Update an age with id
-router.delete("/age_intervals/:id", age.delete); // Delete an age with id
-router.delete("/age_intervals/", age.deleteAll); // Delete all ages
+router.get("/activities_features/", activity.findAllFeatures); // Retrieve all activities with features
 
-router.get("/areas/", area.findAll); // Retrieve all ages
+/* Age_Interval Router */
+router.get("/age_intervals/", age.findAll); // Retrieve all ages
+
+router.post("/areas/", area.create); // Retrieve all area
+router.get("/areas/", area.findAll); // Retrieve all areas
 
 /* Category Router */
 //router.post("/categories/", category.create); //create

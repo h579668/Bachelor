@@ -1,8 +1,11 @@
 import http from "../http-commons.js";
 // fetching the data from the database
 class ActivityDataService {
-  getAll() {
-    return http.get("/activities");
+  getAllFeatures() {
+    return http.get("/activities_features");
+  }
+  getAllAssociations() {
+    return http.get("/activities_associations");
   }
 
   get(id) {

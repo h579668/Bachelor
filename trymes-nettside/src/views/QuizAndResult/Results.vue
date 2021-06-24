@@ -1,5 +1,6 @@
 <template>
   <div>
+    <fieldset>
     <h1> {{ table_of_results }} </h1>
     <canvas id="activity-chart"></canvas>
 
@@ -14,6 +15,7 @@
           <th>Aktivitetsnavn</th>
           <th>Skår</th>
           <th>Prosent</th>
+          <th>Aktuell</th>
         </tr>
       </thead>
       <tbody >
@@ -21,31 +23,18 @@
             <td> {{user.activities_name}}</td>
             <td> {{user.users_activitie.score}}</td>
             <td> {{user.users_activitie.hit}}</td>
+            <td>
+              <template v-if="user.users_activitie.relevant == 0">
+                Nei
+              </template> 
+              <template v-else> Ja </template> 
+            </td>
           </tr>
-
       </tbody>
-
-      <!--<thead>
-        <tr>
-          <td>Bruker ID:</td>
-          <td>Aktivitetsnavn</td>
-          <td>Skår</td>
-          <td>Prosent</td>
-        </tr>
-      </thead>
-      <tbody >
-        <div v-for="user in users_activities" :key="user.users_id">
-          <tr v-for="act in user.activities" :key="act.activities_id">
-            <td> {{user.users_id}}</td>
-            <td> {{act.activities_name}}</td>
-            <td> {{act.users_activitie.score}}</td>
-            <td> {{act.users_activitie.hit}}</td>
-          </tr>
-        </div>
-      </tbody>-->
     </TableData>
+    <el-button @click="refreshList" type="primary" icon="el-icon-plus" round > Last inn flere aktivitieter</el-button>
     </template>
-
+    </fieldset>
   </div>
 </template>
 
@@ -74,6 +63,7 @@ export default {
         activities_name:"",
         score: "",
         hit:"",
+        relevant:"",
 
         users_activities: [],
 
@@ -149,8 +139,17 @@ export default {
   margin-top: 5%;
 }
 
-TableData {
-  width: 100%;
+.el-button:hover{
+  background-color: #548687;
+  color:  #ffff;
+  border-color: #0000; 
 }
+.el-button{
+  background-color: #ffff;
+  color:  #548687 ;
+  border-color:  #0000; 
+}
+
+
 
 </style>

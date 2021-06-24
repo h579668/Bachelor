@@ -1,6 +1,6 @@
 import http from "../http-commons.js";
 // fetching the data from the database
-class FeatureDataService {
+class ActivityFeatureDataService {
   getAll() {
     return http.get("/activities_features");
   }
@@ -32,4 +32,4 @@ class FeatureDataService {
 
 
 
-export default new FeatureDataService(); 
+export default new ActivityFeatureDataService(); 

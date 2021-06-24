@@ -1,8 +1,8 @@
 <template>
     <div>
       <el-container>
-        <el-aside style="width:70px">
-      <AdminNav />
+        <el-aside style="width:205px">
+          <AdminNav />
         </el-aside>
         <el-main>
     <!--  Look at the activities connected with an association -->
@@ -12,7 +12,7 @@
           <legend>
             <b>
             Finn aktiviteter som er registrert til et forbund:
-            <b>
+            </b>
           </legend>
          <label for="select"> Velg Forbund </label> <br />
           <select
@@ -39,7 +39,7 @@
         <table>
             <thead> 
               <tr>
-                <th>Aktivitetsnavn<th>
+                <th>Aktivitetsnavn</th>
               </tr>
             </thead>
             <tbody>
@@ -75,7 +75,8 @@
               </tr>
 
             </tbody>
-          </table>         
+          </table>
+      </template>        
          
       </fieldset>
     </form>
