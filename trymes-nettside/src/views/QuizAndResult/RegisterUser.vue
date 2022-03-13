@@ -1,3 +1,4 @@
+<!--registering a user and what the user wants to inform us of some basic information. The user does not need to choos specific answers-->
 <template>
   <div>
     <h1> {{ register }} </h1>

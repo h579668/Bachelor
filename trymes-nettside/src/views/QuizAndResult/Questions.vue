@@ -1,3 +1,4 @@
+<!--This files is holding the code for displaying the quiz-questions on the quiz.page-->
 <template>
   <div class="quiz">
     <div>

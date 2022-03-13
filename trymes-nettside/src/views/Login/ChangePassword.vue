@@ -1,3 +1,4 @@
+<!-- change password -->
 <template>
   <div class="pass">
     <!-- role="main" means that it is the main content on the page-->

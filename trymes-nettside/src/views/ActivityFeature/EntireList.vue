@@ -1,9 +1,10 @@
+<!--this file contains the code for displaying all activities with their features-->
 <template>
   <div>
     <el-container>
-      <el-aside  style="width:205px"> 
+      <el-header> 
         <AdminNav />
-      </el-aside>
+      </el-header>
 
       <el-main>
       <div id="app">

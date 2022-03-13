@@ -2,9 +2,9 @@
 <script src="//unpkg.com/element-ui@2.15.2/lib/index.js"></script>
 <template>
   <el-container>
-     <el-aside style="width:205px">
+     <el-header>
       <AdminNav />
-        </el-aside>
+        </el-header>
     <el-main>
   <div class="createNewActivity">
     <h1>{{ msg }}</h1>

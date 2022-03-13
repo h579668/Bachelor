@@ -1,3 +1,4 @@
+<!--The homepage of the website-->
 <template lang=en>
   <div class="home">
     <h1>{{ msg }}</h1>

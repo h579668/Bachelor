@@ -1,3 +1,4 @@
+<!--This file is used to display all the activities registerd in the database-->
 <script src="//unpkg.com/vue/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.15.1/lib/index.js"></script>
 <template>

@@ -1,9 +1,9 @@
 <template>
   <!-- Update or delete an association -->
   <el-container>
-    <el-aside width="205px">
+    <el-header>
       <AdminNav />
-    </el-aside>
+    </el-header>
     <el-main>
       <form>
         <fieldset>
@@ -28,13 +28,15 @@
             </option>
           </select>
           <br />
+          <br />
 
           <label for="text"> Endre navn på valgt forbund</label> <br />
           <input type="text" placeholder="Navn" v-model="editName" />
 
           <br />
+          <br />
           <el-button
-            size="small"
+            size="medium"
             type="success"
             @click="editAssociation"
             icon="el-icon-edit"
@@ -42,7 +44,7 @@
             Endre valgt forbund
           </el-button>
           <el-button
-            size="small"
+            size="medium"
             type="danger"
             @click="deleteAssociation"
             icon="el-icon-delete"
@@ -147,4 +149,9 @@ export default {
 };
 </script>
 <style scoped>
+input[type="text"],select {
+  padding: 6px;
+  border-color: #0000;
+  border: 1px solid;
+}
 </style>

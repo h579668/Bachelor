@@ -1,9 +1,13 @@
+<!--NOT IN  CURRENTLY USE
+
+
+--> 
 <template>
     <div>
         <!-- Add more activities to the association  -->
-      <el-aside width ="70px">
+      <el-header>
             <AdminNav />
-        </el-aside>
+      </el-header>
     <template >
       <form>
           <fieldset>

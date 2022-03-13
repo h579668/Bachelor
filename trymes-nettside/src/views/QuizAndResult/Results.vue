@@ -1,3 +1,4 @@
+<!--Displaying the results of which activities that might be the best fit for a user, after the results have been calculated in Back-end-->
 <template>
   <div>
     <fieldset>

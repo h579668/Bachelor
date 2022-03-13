@@ -1,13 +1,15 @@
+<!--: Here the Admin can add a new association, or look at one association and find all activities registered to it-->
 <template>
     <div>
         <el-container>
-            <el-aside width ="205px">
+            <el-header>
                 <AdminNav />
-            </el-aside>
+            </el-header>
             <el-main>
              <form>
                 <br />
                 <fieldset>
+                  <!--create new association-->
                     <legend> 
                         <b>Opprett et nytt forbund</b> 
                     </legend>
@@ -32,6 +34,7 @@
                         {{ a.country }} : {{ a.municipality }} : {{ a.county}}
                      </option>
                     </select>
+                    <!--create new area, if the area does not exist-->
                     <p>
                         Dersom ønsket område ikke eksisterer, kan det opprettes her:
                     </p>
@@ -67,6 +70,7 @@ import NewArea from "@/views/Area/NewArea";
 
 export default {
   name: "CreateAssociation",
+  //names of all components used with this file
   components: {
     AdminNav,
     NewArea
@@ -93,6 +97,7 @@ export default {
         this.show = true
         }
     },
+    //Creates new association
     newAssociation() {
       if (this.name.length && this.area.areas_id) {
         let data = {
@@ -116,6 +121,7 @@ export default {
             console.log(e);
           });
       } else {
+        //If something didn´t go the way as planned
         this.$notify({
           title: "Forbund er IKKE lagt til",
           message: "Vennligst skriv inn navn, eller velg område",

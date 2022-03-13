@@ -1,9 +1,10 @@
+ <!--  Look at the activities connected with an association -->
 <template>
     <div>
       <el-container>
-        <el-aside style="width:205px">
+        <el-header>
           <AdminNav />
-        </el-aside>
+        </el-header>
         <el-main>
     <!--  Look at the activities connected with an association -->
     <form>
@@ -25,9 +26,9 @@
             </option>
           </select> <br />
 
-           <el-button size="small" type="success" @click="findActivities"  iicon="el-icon-search"> 
+           <ButtonGeneral size="small" @click="findActivities"  iicon="el-icon-search"> 
                Finn tilhørende aktiviteter  
-            </el-button>
+            </ButtonGeneral>
 
 
       <template v-if="showActivities">  
@@ -90,11 +91,13 @@
 import AssociationDataService from "@/services/AssociationDataService.js";
 import ActivityDataService from "@/services/ActivityDataService.js";
 import AdminNav from "@/components/AdminNav";
+import ButtonGeneral from "@/components/ButtonGeneral";
 
 export default {
     name: "EditAssociation",
     components:{
-        AdminNav
+        AdminNav,
+        ButtonGeneral
     },
     data(){
         return{

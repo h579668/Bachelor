@@ -1,3 +1,7 @@
+<!--NOT IN USE : 
+Here the Admin can add a new association, 
+or look at one association and find all activities registered to it
+-->
 <template>
     <div>
 
@@ -36,7 +40,7 @@
     <form>
        
         <template>
-
+          <!--finds all activities registered to a specific association-->
         <fieldset>
           <legend>
             <b>
